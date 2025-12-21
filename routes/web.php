@@ -36,11 +36,16 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 
 // Product Routes
 Route::get('/products', [ProductController::class, 'index'])->name('products');
-Route::get('/product', [ProductController::class, 'index'])->name('product'); // Alias for old URLs
-Route::get('/product-all', [ProductController::class, 'all'])->name('product-all');
-Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/product', [ProductController::class, 'index'])->name('product'); // Legacy: product.php
+Route::get('/product-all', [ProductController::class, 'all'])->name('product-all'); // Legacy: product-all.php
+Route::get('/product-detail', [ProductController::class, 'show'])->name('product.show'); // Legacy: product-detail.php
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 Route::get('/search/suggestions', [ProductController::class, 'suggestions'])->name('search.suggestions');
+
+// Cart Action Placeholder (To be moved to CartController)
+Route::post('/uadd_to_cart', function() {
+    return redirect()->back()->with('success', 'Item added to cart (Simulation)');
+})->name('uadd_to_cart');
 
 // Static Pages
 Route::get('/about-us', [PageController::class, 'aboutUs'])->name('about-us');
