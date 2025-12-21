@@ -5,7 +5,6 @@
 {{-- Hero Carousel --}}
 <div id="gallery">
     <div class="carousel-slide-container">
-        {{-- Slides --}}
         <div class="carousel-slide active">
             <img src="{{ asset('assets/banners-main/new2/1.png') }}" alt="Banner 1">
         </div>
@@ -19,7 +18,6 @@
             <img src="{{ asset('assets/banners-main/new2/4.png') }}" alt="Banner 4">
         </div>
         
-        {{-- Navigation buttons --}}
         <button type="button" class="carousel-button carousel-prev" data-carousel-prev>
             <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
@@ -39,104 +37,120 @@
 <div class="p-5 mx-auto overflow-hidden">
     <div class="relative">
         <div class="flex space-x-4 pb-2 scrollbar-hide" id="productsContainer">
-            <a href="{{ route('product-all', ['type' => 'rings']) }}" class="story-item">
-                <div class="flex flex-col items-center justify-center">
-                    <img class="w-[122px] object-cover rounded-full border-4 border-yellow-300 border-double"
-                        src="{{ asset('assets/harees-jewellery-rings.webp') }}"
-                        alt="Ring" />
-                    <h1 class="mt-2 text-center text-sm">Rings</h1>
-                </div>
-            </a>
-            <a href="{{ route('product-all', ['type' => 'anklets']) }}" class="story-item">
-                <div class="flex flex-col items-center justify-center">
-                    <img class="w-[122px] object-cover rounded-full border-4 border-yellow-300 border-double"
-                        src="{{ asset('assets/harees-jewellery-anklets.webp') }}" alt="Anklets" />
-                    <h1 class="mt-2 text-center text-sm">Anklets</h1>
-                </div>
-            </a>
-            <a href="{{ route('product-all', ['type' => 'bangles']) }}" class="story-item">
-                <div class="flex flex-col items-center justify-center">
-                    <img class="w-[122px] object-cover rounded-full border-4 border-yellow-300 border-double"
-                        src="{{ asset('assets/harees-jewellery-bangles.webp') }}"
-                        alt="Bangle" />
-                    <h1 class="mt-2 text-center text-sm">Bangles</h1>
-                </div>
-            </a>
-            <a href="{{ route('product-all', ['type' => 'earrings']) }}" class="story-item">
-                <div class="flex flex-col items-center justify-center">
-                    <img class="w-[122px] object-cover rounded-full border-4 border-yellow-300 border-double"
-                        src="{{ asset('assets/harees-jewellery-earrings.webp') }}"
-                        alt="Earring" />
-                    <h1 class="mt-2 text-center text-sm">Earrings</h1>
-                </div>
-            </a>
-            <a href="{{ route('product-all', ['type' => 'nosepins']) }}" class="story-item">
-                <div class="flex flex-col items-center justify-center">
-                    <img class="w-[122px] object-cover rounded-full border-4 border-yellow-300 border-double"
-                        src="{{ asset('assets/harees-jewellery-nosepins.webp') }}"
-                        alt="Nosepins" />
-                    <h1 class="mt-2 text-center text-sm">Nosepins</h1>
-                </div>
-            </a>
-            <a href="{{ route('product-all', ['type' => 'necklaces']) }}" class="story-item">
-                <div class="flex flex-col items-center justify-center">
-                    <img class="w-[122px] object-cover rounded-full border-4 border-yellow-300 border-double"
-                        src="{{ asset('assets/harees-jewellery-necklace.webp') }}" alt="Necklaces" />
-                    <h1 class="mt-2 text-center text-sm">Necklaces</h1>
-                </div>
-            </a>
-            <a href="{{ route('product-all', ['type' => 'fancychains']) }}" class="story-item">
-                <div class="flex flex-col items-center justify-center">
-                    <img class="w-[122px] object-cover rounded-full border-4 border-yellow-300 border-double"
-                        src="{{ asset('assets/harees-jewellery-chains.webp') }}" alt="Fancy Chains" />
-                    <h1 class="mt-2 text-center text-sm">Fancy chains</h1>
-                </div>
-            </a>
-            <a href="{{ route('product-all', ['type' => 'studs']) }}" class="story-item">
-                <div class="flex flex-col items-center justify-center">
-                    <img class="w-[122px] object-cover rounded-full border-4 border-yellow-300 border-double"
-                        src="{{ asset('assets/harees-jewellery-studs.webp') }}" alt="Studs" />
-                    <h1 class="mt-2 text-center text-sm">Studs</h1>
-                </div>
-            </a>
-            <a href="{{ route('product-all', ['type' => 'bracelets']) }}" class="story-item">
-                <div class="flex flex-col items-center justify-center">
-                    <img class="w-[122px] object-cover rounded-full border-4 border-yellow-300 border-double"
-                        src="{{ asset('assets/harees-jewellery-bracelets.webp') }}" alt="Bracelets" />
-                    <h1 class="mt-2 text-center text-sm">Bracelets</h1>
-                </div>
-            </a>
-            <a href="{{ route('product-all', ['type' => 'chains']) }}" class="story-item">
-                <div class="flex flex-col items-center justify-center">
-                    <img class="w-[122px] object-cover rounded-full border-4 border-yellow-300 border-double"
-                        src="{{ asset('assets/harees-jewellery-chains.webp') }}" alt="Chains" />
-                    <h1 class="mt-2 text-center text-sm">Chains</h1>
-                </div>
-            </a>
-            <a href="{{ route('product-all', ['type' => 'pendants']) }}" class="story-item">
-                <div class="flex flex-col items-center justify-center">
-                    <img class="w-[122px] object-cover rounded-full border-4 border-yellow-300 border-double"
-                        src="{{ asset('assets/harees-jewellery-pendants.webp') }}" alt="Pendants" />
-                    <h1 class="mt-2 text-center text-sm">Pendants</h1>
-                </div>
-            </a>
+            @php
+            $categories = [
+                ['type' => 'rings', 'image' => 'harees-jewellery-rings.webp', 'name' => 'Rings'],
+                ['type' => 'anklets', 'image' => 'harees-jewellery-anklets.webp', 'name' => 'Anklets'],
+                ['type' => 'bangles', 'image' => 'harees-jewellery-bangles.webp', 'name' => 'Bangles'],
+                ['type' => 'earrings', 'image' => 'harees-jewellery-earrings.webp', 'name' => 'Earrings'],
+                ['type' => 'nosepins', 'image' => 'harees-jewellery-nosepins.webp', 'name' => 'Nosepins'],
+                ['type' => 'necklaces', 'image' => 'harees-jewellery-necklace.webp', 'name' => 'Necklaces'],
+                ['type' => 'fancychains', 'image' => 'harees-jewellery-chains.webp', 'name' => 'Fancy chains'],
+                ['type' => 'studs', 'image' => 'harees-jewellery-studs.webp', 'name' => 'Studs'],
+                ['type' => 'bracelets', 'image' => 'harees-jewellery-bracelets.webp', 'name' => 'Bracelets'],
+                ['type' => 'chains', 'image' => 'harees-jewellery-chains.webp', 'name' => 'Chains'],
+                ['type' => 'pendants', 'image' => 'harees-jewellery-pendants.webp', 'name' => 'Pendants'],
+                ['type' => 'kadas', 'image' => 'harees-jewellery-kadas.webp', 'name' => 'Kada'],
+            ];
+            @endphp
             
-            {{-- Duplicate items for infinite scroll effect --}}
-            <a href="{{ route('product-all', ['type' => 'rings']) }}" class="story-item">
+            @foreach($categories as $category)
+            <a href="{{ route('product-all', ['type' => $category['type']]) }}" class="story-item">
                 <div class="flex flex-col items-center justify-center">
                     <img class="w-[122px] object-cover rounded-full border-4 border-yellow-300 border-double"
-                        src="{{ asset('assets/harees-jewellery-rings.webp') }}" alt="Ring" />
-                    <h1 class="mt-2 text-center text-sm">Rings</h1>
+                        src="{{ asset('assets/' . $category['image']) }}"
+                        alt="{{ $category['name'] }}" />
+                    <h1 class="mt-2 text-center text-sm">{{ $category['name'] }}</h1>
                 </div>
             </a>
-            <a href="{{ route('product-all', ['type' => 'anklets']) }}" class="story-item">
-                <div class="flex flex-col items-center justify-center">
-                    <img class="w-[122px] object-cover rounded-full border-4 border-yellow-300 border-double"
-                        src="{{ asset('assets/harees-jewellery-anklets.webp') }}" alt="Anklets" />
-                    <h1 class="mt-2 text-center text-sm">Anklets</h1>
-                </div>
-            </a>
+            @endforeach
         </div>
+    </div>
+</div>
+
+{{-- Wedding Gold Booking Section --}}
+<div class="max-w-7xl mx-auto p-3 mb-3">
+    <h1 class="text-2xl font-bold text-blue-900 text-center mb-4">Wedding Gold Booking</h1>
+    <p class="text-center text-base mb-6">
+        Discover the perfect blend of tradition and versatility with our exclusive Gold wedding collection.
+    </p>
+
+    <div class="grid gap-2">
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="{{ asset('assets/1.png') }}" alt="Wedding Gold" />
+        </div>
+        <div class="grid grid-cols-5 gap-2">
+            @for($i = 1; $i <= 5; $i++)
+            <div>
+                <a href="{{ route('custom-jewellery') }}" class="block overflow-hidden rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                    <img class="h-auto max-w-full rounded-lg hover:brightness-110"
+                        src="{{ asset('assets/gold-booking-section/s-1.png') }}"
+                        alt="Gold Booking {{ $i }}" />
+                </a>
+            </div>
+            @endfor
+        </div>
+    </div>
+</div>
+
+{{-- Diamond Jewellery Grid --}}
+<div class="max-w-7xl mx-auto p-3">
+    <h1 class="text-2xl font-semibold text-blue-900 text-center mb-4">Diamond Jewellery</h1>
+    <p class="text-center text-base mb-6">
+        Discover the beauty of diamond with our timeless diamond collection
+    </p>
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-fr gap-2">
+        {{-- Large image at top-left --}}
+        <div class="md:col-span-2 md:row-span-2">
+            <img class="w-full h-full object-cover rounded-lg"
+                src="{{ asset('assets/jewelry-products/webp/1.webp') }}"
+                alt="Diamond Necklace" />
+        </div>
+
+        {{-- Regular images --}}
+        @for($i = 2; $i <= 9; $i++)
+        <div>
+            <img class="w-full h-full object-cover rounded-lg"
+                src="{{ asset('assets/jewelry-products/webp/' . $i . '.webp') }}"
+                alt="Diamond Jewellery {{ $i }}" />
+        </div>
+        @endfor
+
+        {{-- Large image at bottom-right --}}
+        <div class="md:col-start-3 md:row-start-3 md:col-span-2 md:row-span-2">
+            <img class="w-full h-full object-cover rounded-lg"
+                src="{{ asset('assets/jewelry-products/webp/12.webp') }}"
+                alt="Diamond Collection" />
+        </div>
+    </div>
+</div>
+
+{{-- Gemstone Jewellery Carousel --}}
+<h1 class="text-2xl font-bold text-blue-900 text-center mb-2 mt-6">Gemstone Jewellery</h1>
+<p class="text-center text-base mb-3">
+    Capturing timeless grace in each precious stone
+</p>
+<div class="container mx-auto pb-3">
+    <div class="relative overflow-hidden" id="gemstone-carousel-container">
+        <div id="gemstone-carousel" class="flex transition-transform duration-500 ease-in-out">
+            @php
+            $gemstoneImages = [
+                'https://static.malabargoldanddiamonds.com/media/wysiwyg/offer_page/2024/04_april/homepage/Gemstone-ring.jpg',
+                'https://static.malabargoldanddiamonds.com/media/wysiwyg/offer_page/2024/04_april/homepage/gemstone-earring.jpg',
+                'https://static.malabargoldanddiamonds.com/media/wysiwyg/offer_page/2024/04_april/homepage/Gemstone-pendant.jpg',
+                'https://static.malabargoldanddiamonds.com/media/wysiwyg/offer_page/2024/04_april/homepage/Gemstone-bangle.jpg',
+            ];
+            @endphp
+            
+            @foreach(array_merge($gemstoneImages, $gemstoneImages, $gemstoneImages) as $image)
+            <div class="carousel-item p-2">
+                <img src="{{ $image }}" alt="Gemstone Jewellery" class="w-full h-auto rounded-lg">
+            </div>
+            @endforeach
+        </div>
+        <button id="gemstone-prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 text-white px-4 py-2 rounded-full"></button>
+        <button id="gemstone-next" class="absolute right-0 top-1/2 transform -translate-y-1/2 text-white px-4 py-2 rounded-full"></button>
     </div>
 </div>
 
@@ -271,6 +285,25 @@
     animation-play-state: paused;
 }
 
+/* Diamond Grid Hover Effect */
+.grid div img {
+    transition: transform 0.3s ease;
+}
+
+.grid div:hover img {
+    transform: scale(1.015);
+}
+
+/* Gemstone Carousel */
+.carousel-item {
+    flex: 0 0 auto;
+    width: 25%;
+}
+
+#gemstone-carousel {
+    display: flex;
+}
+
 /* Popup Animation */
 @keyframes pulse {
     0% { transform: scale(0.95); }
@@ -296,8 +329,8 @@
         width: 56px !important;
     }
     
-    .carousel-slide-container {
-        margin: 0 auto;
+    .carousel-item {
+        width: 50%;
     }
 }
 
@@ -311,7 +344,7 @@
 
 @push('scripts')
 <script>
-// Carousel functionality
+// Main Hero Carousel
 document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.carousel-slide');
     const prevButton = document.querySelector('[data-carousel-prev]');
@@ -364,6 +397,43 @@ document.addEventListener('DOMContentLoaded', function() {
     if (carousel) {
         carousel.addEventListener('mouseenter', pauseCarousel);
         carousel.addEventListener('mouseleave', startCarousel);
+    }
+
+    // Gemstone Carousel
+    const gemstoneCarousel = document.getElementById('gemstone-carousel');
+    const gemstoneContainer = document.getElementById('gemstone-carousel-container');
+    const prevBtn = document.getElementById('gemstone-prev');
+    const nextBtn = document.getElementById('gemstone-next');
+    
+    if (gemstoneCarousel && prevBtn && nextBtn) {
+        let currentIndex = 0;
+        const itemsToShow = window.innerWidth < 768 ? 2 : 4;
+        const totalItems = gemstoneCarousel.children.length;
+
+        function updateCarousel() {
+            const itemWidth = gemstoneCarousel.children[0].offsetWidth;
+            gemstoneCarousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < totalItems - itemsToShow) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        // Auto-scroll
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % (totalItems - itemsToShow + 1);
+            updateCarousel();
+        }, 3000);
     }
 });
 
