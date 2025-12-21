@@ -190,59 +190,61 @@ class AuthController extends Controller
     {
         $user = Auth::user();
 
-        switch ($request->action) {
-            case 'update_contact':
+        // Handle different update sections
+        $section = $request->input('section');
+
+        switch ($section) {
+            case 'personal':
+                $validated = $request->validate([
+                    'fullname' => 'required|string|min:3|max:50|regex:/^[A-Za-z ]+$/',
+                ]);
+                
+                $user->fullname = $validated['fullname'];
+                $user->save();
+                
+                return back()->with('success', 'Personal information updated successfully.');
+
+            case 'address':
+                $validated = $request->validate([
+                    'address1' => 'required|string|max:255',
+                    'address2' => 'nullable|string|max:255',
+                    'city' => 'required|string|max:100',
+                    'state' => 'required|string|max:100',
+                    'pincode' => 'required|digits:6',
+                    'landmark' => 'nullable|string|max:255',
+                ]);
+
+                $user->update($validated);
+                return back()->with('success', 'Address information updated successfully.');
+
+            case 'dates':
+                $validated = $request->validate([
+                    'dob' => 'nullable|date|before:today',
+                    'anniversary' => 'nullable|date|before:today',
+                ]);
+
+                $user->update($validated);
+                return back()->with('success', 'Special dates updated successfully.');
+
+            case 'password':
                 $request->validate([
-                    'fullname' => 'required|string',
-                    'email' => 'required|email|unique:users,email,' . $user->id,
-                    'phone' => 'required|digits:10|unique:users,phone,' . $user->id,
-                ]);
-
-                $user->update([
-                    'fullname' => $request->fullname,
-                    'email' => $request->email,
-                    'phone' => $request->phone,
-                ]);
-
-                return back()->with('msg', '📞 Contact information updated successfully.');
-
-            case 'update_address':
-                $request->validate([
-                    'address1' => 'required|string',
-                    'city' => 'required|string',
-                    'state' => 'required|string',
-                    'pincode' => 'required|string',
-                ]);
-
-                $user->update([
-                    'address1' => $request->address1,
-                    'address2' => $request->address2,
-                    'city' => $request->city,
-                    'state' => $request->state,
-                    'pincode' => $request->pincode,
-                    'landmark' => $request->landmark,
-                ]);
-
-                return back()->with('msg', '📦 Address updated successfully.');
-
-            case 'change_password':
-                $request->validate([
-                    'old_password' => 'required',
+                    'current_password' => 'required',
                     'new_password' => 'required|digits:4',
-                    'confirm_password' => 'required|same:new_password',
+                    'new_password_confirmation' => 'required|same:new_password',
                 ]);
 
-                if ($user->password !== $request->old_password) {
-                    return back()->with('msg', '❌ Incorrect current password.');
+                // Check if current password matches (simple comparison as per requirement)
+                if ($user->password !== $request->current_password) {
+                    return back()->with('error', 'Current password is incorrect.');
                 }
 
                 $user->password = $request->new_password;
                 $user->save();
 
-                return back()->with('msg', '✅ Password updated successfully.');
+                return back()->with('success', 'Password updated successfully.');
 
             default:
-                return back()->with('msg', '❌ Invalid action.');
+                return back()->with('error', 'Invalid update request.');
         }
     }
 }
