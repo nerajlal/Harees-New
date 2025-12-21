@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    @stack('head_scripts')
     
     <style>
         /* Carousel Styles */
@@ -310,7 +311,6 @@
                 display: inline !important;
             }
         }
-
-        @stack('styles')
     </style>
+    @stack('styles')
 </head>

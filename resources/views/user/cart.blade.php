@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@push('scripts')
+@push('head_scripts')
 <script>
     tailwind.config = {
         theme: {

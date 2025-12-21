@@ -54,7 +54,7 @@
             ];
             @endphp
             
-            @foreach($categories as $category)
+            @foreach(array_merge($categories, $categories, $categories, $categories) as $category)
             <a href="{{ route('product-all', ['type' => $category['type']]) }}" class="story-item">
                 <div class="flex flex-col items-center justify-center">
                     <img class="w-[122px] object-cover rounded-full border-4 border-yellow-300 border-double"
