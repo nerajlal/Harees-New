@@ -73,7 +73,7 @@ class ProductController extends Controller
         // Calculate prices for all products
         foreach ($products as $product) {
             $priceData = $this->priceCalculator->calculatePrice($product->product_code, $tableName);
-            $product->calculated_price = ceil($priceData[0]);
+            $product->calculated_price = ceil($priceData['total_price']);
             $product->table_name = $tableName; // Pass table name for links
         }
 
@@ -113,11 +113,11 @@ class ProductController extends Controller
             'product' => $product,
             'tableName' => $tableName,
             'priceData' => $priceData,
-            'finalPrice' => ceil($priceData[0]),
-            'metalCost' => ceil($priceData[1]),
-            'makingCharges' => ceil($priceData[2]),
-            'gst' => ceil($priceData[3]),
-            'metalType' => $priceData[4]
+            'finalPrice' => ceil($priceData['total_price']),
+            'metalCost' => ceil($priceData['metal_cost']),
+            'makingCharges' => ceil($priceData['making_charges']),
+            'gst' => ceil($priceData['gst']),
+            'metalType' => $priceData['metal_type']
         ];
 
         // Similar Products
@@ -129,7 +129,7 @@ class ProductController extends Controller
             
         foreach ($similarProducts as $sim) {
             $simPrice = $this->priceCalculator->calculatePrice($sim->product_code, $tableName);
-            $sim->calculated_price = ceil($simPrice[0]);
+            $sim->calculated_price = ceil($simPrice['total_price']);
             $sim->table_name = $tableName;
         }
         
@@ -172,7 +172,7 @@ class ProductController extends Controller
                 foreach ($products as $product) {
                     $product->table_name = $tableName; // Standardize for view
                     $priceData = $this->priceCalculator->calculatePrice($product->product_code, $tableName);
-                    $product->calculated_price = ceil($priceData[0]);
+                    $product->calculated_price = ceil($priceData['total_price']);
                     $allItems->push($product);
                 }
             }
@@ -321,7 +321,7 @@ class ProductController extends Controller
 
             foreach ($rows as $row) {
                 $priceData = $this->priceCalculator->calculatePrice($row->product_code, $table);
-                $price = ceil($priceData[0]);
+                $price = ceil($priceData['total_price']);
                 
                 // Price Filter
                 if ($priceFilterApplied) {

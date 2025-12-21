@@ -64,7 +64,7 @@
                         <div class="divide-y divide-gray-200">
                             @foreach($products as $product)
                                 @php
-                                    $imageUrl = asset('ims/internal/' . ($product->img2 ?? 'placeholder.jpg'));
+                                    $imageUrl = asset('ims/internal/' . ($product->img2 ?? '.jpg'));
                                 @endphp
                                 <div class="p-4 md:p-6">
                                     <div class="flex flex-col md:flex-row gap-4">
@@ -82,6 +82,8 @@
                                             </h3>
                                             <p class="text-sm text-gray-500 mb-2">Code: {{ $product->product_code }}</p>
                                             
+
+
                                             <div class="text-lg font-bold text-gray-900 mb-2">
                                                 ₹ {{ number_format($product->calculated_price) }}
                                             </div>
@@ -159,10 +161,20 @@
                                 Delivery expected by {{ date('D, M j', strtotime('+5 days')) }}
                             </div>
                             
-                            <button class="w-full mt-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-blue-900 font-bold py-3 px-4 rounded-xl hover:from-amber-400 hover:to-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            <a href="{{ route('checkout') }}" class="block w-full text-center mt-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-blue-900 font-bold py-3 px-4 rounded-xl hover:from-amber-400 hover:to-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg">
                                 PLACE ORDER
-                            </button>
+                            </a>
                             
+                            <div class="border-t border-yellow-400 pt-4 text-sm">
+                                <p class="font-medium text-white mb-2">Payment Options:</p>
+                                <div class="flex flex-wrap gap-2 text-white/90">
+                                    <span class="bg-white/10 px-2 py-1 rounded text-sm">Credit Card</span>
+                                    <span class="bg-white/10 px-2 py-1 rounded text-sm">Debit Card</span>
+                                    <span class="bg-white/10 px-2 py-1 rounded text-sm">Net Banking</span>
+                                    <span class="bg-white/10 px-2 py-1 rounded text-sm">UPI</span>
+                                </div>
+                            </div>
+
                              <div class="border-t border-yellow-400 pt-4 mt-4 text-sm text-white/80">
                                 <p class="mb-2">Any Questions?</p>
                                 <p>Call <span class="font-semibold text-white">{{ config('shop.stores.paravur.phone1') }}</span> or 

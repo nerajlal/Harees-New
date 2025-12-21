@@ -39,7 +39,7 @@ class WishlistController extends Controller
             if ($product) {
                 $product->table_name = $tableName;
                 $priceData = $this->priceCalculator->calculatePrice($product->product_code, $tableName);
-                $product->calculated_price = ceil($priceData[0]);
+                $product->calculated_price = ceil($priceData['total_price']);
                 $products->push($product);
             }
         }

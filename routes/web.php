@@ -7,6 +7,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
 
 /*
 |--------------------------------------------------------------------------

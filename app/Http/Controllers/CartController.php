@@ -38,8 +38,8 @@ class CartController extends Controller
                     
                     // Price Calc
                     $priceData = $this->priceCalculator->calculatePrice($product->product_code, $tableName);
-                    $product->calculated_price = ceil($priceData[0]);
-                    $product->metal_type = $priceData[4] ?? '';
+                    $product->calculated_price = ceil($priceData['total_price']);
+                    $product->metal_type = $priceData['metal_type'] ?? '';
                     
                     $cartTotal += $product->calculated_price * $product->quantity;
                     $products->push($product);
@@ -52,9 +52,9 @@ class CartController extends Controller
         // It says "Upto 10% off on Making Charges" in view, but code does flat 10% on TOTAL.
         // I will replicate the code logic: flat 10% on total.
         $discountAmount = 0;
-        if ($cartTotal > 150000) {
-            $discountAmount = $cartTotal * 0.10;
-        }
+        // if ($cartTotal > 150000) {
+        //     $discountAmount = $cartTotal * 0.10;
+        // }
         $finalTotal = $cartTotal - $discountAmount;
 
         return view('user.cart', [

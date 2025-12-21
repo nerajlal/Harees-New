@@ -19,7 +19,13 @@ class PriceCalculator
             $product = DB::table($tableName)->where('product_code', $productCode)->first();
 
             if (!$product) {
-                return [999, 0, 0, 0, 'Unknown']; // Fallback
+                return [
+                    'total_price' => 999, 
+                    'metal_cost' => 0, 
+                    'making_charges' => 0, 
+                    'gst' => 0, 
+                    'metal_type' => 'Unknown'
+                ]; 
             }
 
             $metalPurityId = $product->metalpurity_id;
@@ -27,15 +33,18 @@ class PriceCalculator
 
             switch ($metalPurityId) {
                 case 1: // Silver
-                    $metalRate = $this->getRate('metals_rates', '925_silver'); // Using 925_silver as per legacy code function get_normal_silver_rate queries 925_silver from metals_rates
-                    // Wait, legacy code: get_normal_silver_rate -> SELECT 925_silver FROM metals_rates.
-                    // But maybe there is a normal_silver column? legacy code line 30 says 925_silver.
-                    // I will stick to 925_silver.
+                    $metalRate = $this->getRate('metals_rates', '925_silver');
                     $silverCost = $netWeight * $metalRate;
                     $gstPercent = $this->getGst();
                     $gstAmount = $silverCost * $gstPercent / 100;
                     $finalRate = $silverCost + $gstAmount;
-                    return [$finalRate, $silverCost, 0, $gstAmount, 'Silver'];
+                    return [
+                        'total_price' => $finalRate,
+                        'metal_cost' => $silverCost,
+                        'making_charges' => 0,
+                        'gst' => $gstAmount,
+                        'metal_type' => 'Silver'
+                    ];
 
                 case 2: // 925 Silver
                     $metalRate = $this->getRate('metals_rates', '925_silver');
@@ -43,7 +52,13 @@ class PriceCalculator
                     $gstPercent = 3;
                     $gstAmount = $cost * $gstPercent / 100;
                     $finalRate = $cost + $gstAmount;
-                    return [$finalRate, $cost, 0, $gstAmount, '925 Silver'];
+                    return [
+                        'total_price' => $finalRate,
+                        'metal_cost' => $cost,
+                        'making_charges' => 0,
+                        'gst' => $gstAmount,
+                        'metal_type' => '925 Silver'
+                    ];
 
                 case 3: // Rose Gold Silver
                     $metalRate = $this->getRate('metals_rates', 'rosegold_silver');
@@ -51,48 +66,79 @@ class PriceCalculator
                     $gstPercent = 3;
                     $gstAmount = $cost * $gstPercent / 100;
                     $finalRate = $cost + $gstAmount;
-                    return [$finalRate, $cost, 0, $gstAmount, 'Rose Gold Silver'];
+                    return [
+                        'total_price' => $finalRate,
+                        'metal_cost' => $cost,
+                        'making_charges' => 0,
+                        'gst' => $gstAmount,
+                        'metal_type' => 'Rose Gold Silver'
+                    ];
 
                 case 4: // 18K Gold
                     $metalRate = $this->getRate('goldrate', '18k_1gm');
                     $goldCost = $netWeight * $metalRate;
-                    $makingChargePercent = 35; // Hardcoded in legacy
+                    $makingChargePercent = 35;
                     $makingCharges = $goldCost * $makingChargePercent / 100;
                     $subTotal = $goldCost + $makingCharges;
                     $gstPercent = 3;
                     $gstAmount = $subTotal * $gstPercent / 100;
                     $finalRate = $subTotal + $gstAmount;
-                    return [$finalRate, $goldCost, $makingCharges, $gstAmount, 'Gold'];
+                    return [
+                        'total_price' => $finalRate,
+                        'metal_cost' => $goldCost,
+                        'making_charges' => $makingCharges,
+                        'gst' => $gstAmount,
+                        'metal_type' => 'Gold'
+                    ];
 
                 case 5: // 22K Gold
                     $metalRate = $this->getRate('goldrate', '22k_1gm');
                     $goldCost = $netWeight * $metalRate;
-                    $makingChargePercent = 35; // Hardcoded in legacy
+                    $makingChargePercent = 35;
                     $makingCharges = $goldCost * $makingChargePercent / 100;
                     $subTotal = $goldCost + $makingCharges;
                     $gstPercent = 3;
                     $gstAmount = $subTotal * $gstPercent / 100;
                     $finalRate = $subTotal + $gstAmount;
-                    return [$finalRate, $goldCost, $makingCharges, $gstAmount, 'Gold'];
+                    return [
+                        'total_price' => $finalRate,
+                        'metal_cost' => $goldCost,
+                        'making_charges' => $makingCharges,
+                        'gst' => $gstAmount,
+                        'metal_type' => 'Gold'
+                    ];
 
                 case 6: // Diamond (18K)
-                     // Legacy case 6: $final_rate = $MetalRate+$DiamondRate; where MetalRate is 18k.
-                     // It ignores weight? Legacy line 201: $final_rate = $MetalRate+$DiamondRate;
-                     // MetalRate = get18krate() which returns 1gm rate.
-                     // usage of MetalRate as cost seems suspicious if it's just rate per gram.
-                     // But strictly copying legacy logic:
                     $metalRate = $this->getRate('goldrate', '18k_1gm');
                     $diamondRate = $this->getRate('metals_rates', 'diamond_rate');
                     $finalRate = $metalRate + $diamondRate;
-                    return [$finalRate, 0, 0, 0, 'Gold'];
+                    return [
+                        'total_price' => $finalRate,
+                        'metal_cost' => 0,
+                        'making_charges' => 0,
+                        'gst' => 0,
+                        'metal_type' => 'Gold'
+                    ];
 
                 default:
-                    return [999, 0, 0, 0, 'Unknown'];
+                    return [
+                        'total_price' => 999,
+                        'metal_cost' => 0,
+                        'making_charges' => 0,
+                        'gst' => 0,
+                        'metal_type' => 'Unknown'
+                    ];
             }
 
         } catch (\Exception $e) {
             // Log error
-            return [999, 0, 0, 0, 'Error'];
+            return [
+                'total_price' => 999,
+                'metal_cost' => 0,
+                'making_charges' => 0,
+                'gst' => 0,
+                'metal_type' => 'Error'
+            ];
         }
     }
 
