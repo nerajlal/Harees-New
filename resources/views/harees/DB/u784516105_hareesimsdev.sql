@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 17, 2025 at 03:34 PM
--- Server version: 9.1.0
--- PHP Version: 8.3.14
+-- Generation Time: Dec 21, 2025 at 05:01 PM
+-- Server version: 11.8.3-MariaDB-log
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hjimsdb_devenv`
+-- Database: `u784516105_hareesimsdev`
 --
 
 -- --------------------------------------------------------
@@ -27,70 +27,67 @@ SET time_zone = "+00:00";
 -- Table structure for table `18kdgold_product_anklets`
 --
 
-DROP TABLE IF EXISTS `18kdgold_product_anklets`;
-CREATE TABLE IF NOT EXISTS `18kdgold_product_anklets` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kdgold_product_anklets` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -98,70 +95,67 @@ CREATE TABLE IF NOT EXISTS `18kdgold_product_anklets` (
 -- Table structure for table `18kdgold_product_bangles`
 --
 
-DROP TABLE IF EXISTS `18kdgold_product_bangles`;
-CREATE TABLE IF NOT EXISTS `18kdgold_product_bangles` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kdgold_product_bangles` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -169,70 +163,67 @@ CREATE TABLE IF NOT EXISTS `18kdgold_product_bangles` (
 -- Table structure for table `18kdgold_product_bracelets`
 --
 
-DROP TABLE IF EXISTS `18kdgold_product_bracelets`;
-CREATE TABLE IF NOT EXISTS `18kdgold_product_bracelets` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kdgold_product_bracelets` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -240,70 +231,67 @@ CREATE TABLE IF NOT EXISTS `18kdgold_product_bracelets` (
 -- Table structure for table `18kdgold_product_chains`
 --
 
-DROP TABLE IF EXISTS `18kdgold_product_chains`;
-CREATE TABLE IF NOT EXISTS `18kdgold_product_chains` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kdgold_product_chains` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -311,70 +299,67 @@ CREATE TABLE IF NOT EXISTS `18kdgold_product_chains` (
 -- Table structure for table `18kdgold_product_earrings`
 --
 
-DROP TABLE IF EXISTS `18kdgold_product_earrings`;
-CREATE TABLE IF NOT EXISTS `18kdgold_product_earrings` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kdgold_product_earrings` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -382,70 +367,67 @@ CREATE TABLE IF NOT EXISTS `18kdgold_product_earrings` (
 -- Table structure for table `18kdgold_product_fancychains`
 --
 
-DROP TABLE IF EXISTS `18kdgold_product_fancychains`;
-CREATE TABLE IF NOT EXISTS `18kdgold_product_fancychains` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kdgold_product_fancychains` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -453,70 +435,67 @@ CREATE TABLE IF NOT EXISTS `18kdgold_product_fancychains` (
 -- Table structure for table `18kdgold_product_necklaces`
 --
 
-DROP TABLE IF EXISTS `18kdgold_product_necklaces`;
-CREATE TABLE IF NOT EXISTS `18kdgold_product_necklaces` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kdgold_product_necklaces` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `18kdgold_product_necklaces`
@@ -535,70 +514,67 @@ INSERT INTO `18kdgold_product_necklaces` (`id`, `product_code`, `is_featured`, `
 -- Table structure for table `18kdgold_product_nosepins`
 --
 
-DROP TABLE IF EXISTS `18kdgold_product_nosepins`;
-CREATE TABLE IF NOT EXISTS `18kdgold_product_nosepins` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kdgold_product_nosepins` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -606,70 +582,67 @@ CREATE TABLE IF NOT EXISTS `18kdgold_product_nosepins` (
 -- Table structure for table `18kdgold_product_pendants`
 --
 
-DROP TABLE IF EXISTS `18kdgold_product_pendants`;
-CREATE TABLE IF NOT EXISTS `18kdgold_product_pendants` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kdgold_product_pendants` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -677,70 +650,67 @@ CREATE TABLE IF NOT EXISTS `18kdgold_product_pendants` (
 -- Table structure for table `18kdgold_product_rings`
 --
 
-DROP TABLE IF EXISTS `18kdgold_product_rings`;
-CREATE TABLE IF NOT EXISTS `18kdgold_product_rings` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kdgold_product_rings` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `18kdgold_product_rings`
@@ -764,70 +734,67 @@ INSERT INTO `18kdgold_product_rings` (`id`, `product_code`, `is_featured`, `stoc
 -- Table structure for table `18kdgold_product_secondstuds`
 --
 
-DROP TABLE IF EXISTS `18kdgold_product_secondstuds`;
-CREATE TABLE IF NOT EXISTS `18kdgold_product_secondstuds` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kdgold_product_secondstuds` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -835,70 +802,67 @@ CREATE TABLE IF NOT EXISTS `18kdgold_product_secondstuds` (
 -- Table structure for table `18kdgold_product_studs`
 --
 
-DROP TABLE IF EXISTS `18kdgold_product_studs`;
-CREATE TABLE IF NOT EXISTS `18kdgold_product_studs` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kdgold_product_studs` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -906,70 +870,67 @@ CREATE TABLE IF NOT EXISTS `18kdgold_product_studs` (
 -- Table structure for table `18kgold_product_anklets`
 --
 
-DROP TABLE IF EXISTS `18kgold_product_anklets`;
-CREATE TABLE IF NOT EXISTS `18kgold_product_anklets` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kgold_product_anklets` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `18kgold_product_anklets`
@@ -993,78 +954,75 @@ INSERT INTO `18kgold_product_anklets` (`id`, `product_code`, `is_featured`, `sto
 -- Table structure for table `18kgold_product_bangles`
 --
 
-DROP TABLE IF EXISTS `18kgold_product_bangles`;
-CREATE TABLE IF NOT EXISTS `18kgold_product_bangles` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kgold_product_bangles` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `18kgold_product_bangles`
 --
 
 INSERT INTO `18kgold_product_bangles` (`id`, `product_code`, `is_featured`, `stock_quantity`, `name`, `description`, `metal_id`, `metalpurity_id`, `cat_id`, `sub_cat_id`, `gender`, `size`, `net_weight`, `gross_weight`, `product_model`, `stone_available`, `stone_desc`, `stone_color`, `stone_shape`, `stone_count`, `stone_weight`, `stone_cost`, `diamond_available`, `dia_desc`, `dia_cent`, `dia_count`, `dia_cut`, `dia_color`, `dia_clarity`, `dia_shape`, `beads_available`, `beads_desc`, `beads_color`, `beads_count`, `beads_weight`, `beads_cost`, `pearls_available`, `pearls_desc`, `pearls_color`, `pearls_count`, `pearls_weight`, `pearls_cost`, `img1_webp`, `img2`, `img3`, `img4`, `img5`, `search_keywords`, `created_at`, `updated_at`, `verified`, `verified_by`, `verified_on`, `model_id`, `delist`, `supplier_id`, `manufacture_time`, `tag`, `t_display_name`) VALUES
-(5, 'HJGG18KBG000002', 0, 20, 'Bangle', 'Bangle collections', 1, 4, 6, NULL, 'Female', 'Adult Size', 6.27000, 6.63000, NULL, 0, NULL, '', '', NULL, NULL, NULL, 0, '', 0.00000, 0, '', '', '', '', 0, '', '', 0, 0.00000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'product_images/webp/gold/18k_gold/18kgold_product_bangles/HJGG18KBG000002.webp', 'product_images/gold/18k_gold/18kgold_product_bangles/HJGG18KBG000002.jpg', NULL, '', '', '', '2025-06-09 10:18:44', '2025-06-09 10:18:44', NULL, NULL, '2025-06-15 19:17:00', 1, 0, NULL, NULL, NULL, NULL),
 (4, 'HJGG18KBG000001', 1, 70, 'Bangle', 'Bangle', 1, 4, 6, NULL, 'Female', '', 5.60000, 6.20000, NULL, 0, NULL, '', '', NULL, NULL, NULL, 0, '', 0.00000, 0, '', '', '', '', 0, '', '', 0, 0.00000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'product_images/webp/gold/18k_gold/18kgold_product_bangles/HJGG18KBG000001.webp', 'product_images/gold/18k_gold/18kgold_product_bangles/HJGG18KBG000001.jpg', NULL, '', '', '', '2025-06-09 10:14:38', '2025-06-09 10:14:38', NULL, NULL, '2025-06-15 19:17:00', 1, 0, NULL, NULL, NULL, NULL),
+(5, 'HJGG18KBG000002', 0, 20, 'Bangle', 'Bangle collections', 1, 4, 6, NULL, 'Female', 'Adult Size', 6.27000, 6.63000, NULL, 0, NULL, '', '', NULL, NULL, NULL, 0, '', 0.00000, 0, '', '', '', '', 0, '', '', 0, 0.00000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'product_images/webp/gold/18k_gold/18kgold_product_bangles/HJGG18KBG000002.webp', 'product_images/gold/18k_gold/18kgold_product_bangles/HJGG18KBG000002.jpg', NULL, '', '', '', '2025-06-09 10:18:44', '2025-06-09 10:18:44', NULL, NULL, '2025-06-15 19:17:00', 1, 0, NULL, NULL, NULL, NULL),
 (6, 'HJGG18KBG000003', 0, 1, '18K Gold Bangles', '', 1, 4, 6, NULL, 'Female', 'Adult Size', 9.52500, 9.57900, NULL, 0, NULL, '', '', NULL, NULL, NULL, 0, '', 0.00000, 0, '', '', '', '', 0, '', '', 0, 0.00000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'product_images/webp/gold/18k_gold/18kgold_product_bangles/HJGG18KBG000003.webp', 'product_images/gold/18k_gold/18kgold_product_bangles/HJGG18KBG000003.jpeg', NULL, '', '', '', '2025-06-11 19:31:41', '2025-06-11 19:31:41', NULL, NULL, '2025-06-15 19:17:00', 1, 0, NULL, NULL, NULL, NULL),
 (7, 'HJGG18KBG000004', 0, 1, '18K Gold Bangles', '', 1, 4, 6, NULL, 'Female', 'Adult Size', 8.37000, 9.03000, NULL, 0, NULL, '', '', NULL, NULL, NULL, 0, '', 0.00000, 0, '', '', '', '', 0, '', '', 0, 0.00000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'product_images/webp/gold/18k_gold/18kgold_product_bangles/HJGG18KBG000004.webp', 'product_images/gold/18k_gold/18kgold_product_bangles/HJGG18KBG000004.jpeg', NULL, '', '', '', '2025-06-11 19:35:27', '2025-06-11 19:35:27', NULL, NULL, '2025-06-15 19:17:00', 1, 0, NULL, NULL, NULL, NULL),
 (8, 'HJGG18KBG000005', 0, 0, '', NULL, 1, 4, 6, NULL, 'Unisex', NULL, NULL, 0.00000, NULL, 0, NULL, '', '', NULL, NULL, NULL, 0, '', 0.00000, 0, '', '', '', '', 0, '', '', 0, 0.00000, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '2025-06-11 19:45:58', '2025-06-11 19:45:58', NULL, NULL, '2025-06-15 19:17:00', 1, 0, NULL, NULL, NULL, NULL),
@@ -1084,70 +1042,67 @@ INSERT INTO `18kgold_product_bangles` (`id`, `product_code`, `is_featured`, `sto
 -- Table structure for table `18kgold_product_bracelets`
 --
 
-DROP TABLE IF EXISTS `18kgold_product_bracelets`;
-CREATE TABLE IF NOT EXISTS `18kgold_product_bracelets` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kgold_product_bracelets` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `18kgold_product_bracelets`
@@ -1172,70 +1127,67 @@ INSERT INTO `18kgold_product_bracelets` (`id`, `product_code`, `is_featured`, `s
 -- Table structure for table `18kgold_product_chains`
 --
 
-DROP TABLE IF EXISTS `18kgold_product_chains`;
-CREATE TABLE IF NOT EXISTS `18kgold_product_chains` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kgold_product_chains` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `18kgold_product_chains`
@@ -1251,70 +1203,67 @@ INSERT INTO `18kgold_product_chains` (`id`, `product_code`, `is_featured`, `stoc
 -- Table structure for table `18kgold_product_earrings`
 --
 
-DROP TABLE IF EXISTS `18kgold_product_earrings`;
-CREATE TABLE IF NOT EXISTS `18kgold_product_earrings` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kgold_product_earrings` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `18kgold_product_earrings`
@@ -1339,70 +1288,67 @@ INSERT INTO `18kgold_product_earrings` (`id`, `product_code`, `is_featured`, `st
 -- Table structure for table `18kgold_product_fancychains`
 --
 
-DROP TABLE IF EXISTS `18kgold_product_fancychains`;
-CREATE TABLE IF NOT EXISTS `18kgold_product_fancychains` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kgold_product_fancychains` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1410,70 +1356,67 @@ CREATE TABLE IF NOT EXISTS `18kgold_product_fancychains` (
 -- Table structure for table `18kgold_product_necklaces`
 --
 
-DROP TABLE IF EXISTS `18kgold_product_necklaces`;
-CREATE TABLE IF NOT EXISTS `18kgold_product_necklaces` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kgold_product_necklaces` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `18kgold_product_necklaces`
@@ -1490,70 +1433,67 @@ INSERT INTO `18kgold_product_necklaces` (`id`, `product_code`, `is_featured`, `s
 -- Table structure for table `18kgold_product_nosepins`
 --
 
-DROP TABLE IF EXISTS `18kgold_product_nosepins`;
-CREATE TABLE IF NOT EXISTS `18kgold_product_nosepins` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kgold_product_nosepins` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1561,70 +1501,67 @@ CREATE TABLE IF NOT EXISTS `18kgold_product_nosepins` (
 -- Table structure for table `18kgold_product_pendants`
 --
 
-DROP TABLE IF EXISTS `18kgold_product_pendants`;
-CREATE TABLE IF NOT EXISTS `18kgold_product_pendants` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kgold_product_pendants` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `18kgold_product_pendants`
@@ -1644,78 +1581,75 @@ INSERT INTO `18kgold_product_pendants` (`id`, `product_code`, `is_featured`, `st
 -- Table structure for table `18kgold_product_rings`
 --
 
-DROP TABLE IF EXISTS `18kgold_product_rings`;
-CREATE TABLE IF NOT EXISTS `18kgold_product_rings` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kgold_product_rings` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `18kgold_product_rings`
 --
 
 INSERT INTO `18kgold_product_rings` (`id`, `product_code`, `is_featured`, `stock_quantity`, `name`, `description`, `metal_id`, `cat_id`, `metalpurity_id`, `sub_cat_id`, `gender`, `size`, `net_weight`, `gross_weight`, `product_model`, `stone_available`, `stone_desc`, `stone_color`, `stone_shape`, `stone_count`, `stone_weight`, `stone_cost`, `diamond_available`, `dia_desc`, `dia_cent`, `dia_count`, `dia_cut`, `dia_color`, `dia_clarity`, `dia_shape`, `beads_available`, `beads_desc`, `beads_color`, `beads_count`, `beads_weight`, `beads_cost`, `pearls_available`, `pearls_desc`, `pearls_color`, `pearls_count`, `pearls_weight`, `pearls_cost`, `img1_webp`, `img2`, `img3`, `img4`, `img5`, `search_keywords`, `created_at`, `updated_at`, `verified`, `verified_by`, `verified_on`, `model_id`, `delist`, `supplier_id`, `manufacture_time`, `tag`, `t_display_name`) VALUES
-(4, 'HJGG18KRG000003', 0, 10, '18k Ring', '18k Ring', 1, 7, 4, NULL, 'Unisex', 'Kids Size', 3.03200, 3.09400, NULL, 0, NULL, '', '', NULL, NULL, NULL, 0, '', 0.00000, 0, '', '', '', '', 0, '', '', 0, 0.00000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'product_images/webp/gold/18k_gold/18kgold_product_rings/HJGG18KRG000003.webp', 'product_images/gold/18k_gold/18kgold_product_rings/HJGG18KRG000003.jpg', NULL, '', '', '', '2025-06-09 16:53:46', '2025-06-09 16:53:46', NULL, NULL, '2025-06-15 19:17:00', 1, 0, NULL, NULL, NULL, NULL),
 (3, 'HJGG18KRG000002', 0, 20, '18k Ring', '18k Ring', 1, 7, 4, NULL, 'Female', 'Adult Size', 3.37200, 3.44800, NULL, 0, NULL, '', '', NULL, NULL, NULL, 0, '', 0.00000, 0, '', '', '', '', 0, '', '', 0, 0.00000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'product_images/webp/gold/18k_gold/18kgold_product_rings/HJGG18KRG000002.webp', 'product_images/gold/18k_gold/18kgold_product_rings/HJGG18KRG000002.jpg', NULL, '', '', '', '2025-06-09 16:51:35', '2025-06-09 16:51:35', NULL, NULL, '2025-06-15 19:17:00', 1, 0, NULL, NULL, NULL, NULL),
+(4, 'HJGG18KRG000003', 0, 10, '18k Ring', '18k Ring', 1, 7, 4, NULL, 'Unisex', 'Kids Size', 3.03200, 3.09400, NULL, 0, NULL, '', '', NULL, NULL, NULL, 0, '', 0.00000, 0, '', '', '', '', 0, '', '', 0, 0.00000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'product_images/webp/gold/18k_gold/18kgold_product_rings/HJGG18KRG000003.webp', 'product_images/gold/18k_gold/18kgold_product_rings/HJGG18KRG000003.jpg', NULL, '', '', '', '2025-06-09 16:53:46', '2025-06-09 16:53:46', NULL, NULL, '2025-06-15 19:17:00', 1, 0, NULL, NULL, NULL, NULL),
 (5, 'HJGG18KRG000004', 0, 1, '18K Gold Rings', '', 1, 7, 4, NULL, 'Female', 'Adult Size', 2.08000, 2.08000, NULL, 0, NULL, '', '', NULL, NULL, NULL, 0, '', 0.00000, 0, '', '', '', '', 0, '', '', 0, 0.00000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'product_images/webp/gold/18k_gold/18kgold_product_rings/HJGG18KRG000004.webp', 'product_images/gold/18k_gold/18kgold_product_rings/HJGG18KRG000004.jpg', NULL, '', '', '', '2025-06-12 05:34:43', '2025-06-12 05:34:43', NULL, NULL, '2025-06-15 19:17:00', 1, 0, NULL, NULL, NULL, NULL),
 (6, 'HJGG18KRG000005', 0, 1, '18K Gold Rings', '', 1, 7, 4, NULL, 'Female', 'Adult Size', 2.52500, 2.61700, NULL, 0, NULL, '', '', NULL, NULL, NULL, 0, '', 0.00000, 0, '', '', '', '', 0, '', '', 0, 0.00000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'product_images/webp/gold/18k_gold/18kgold_product_rings/HJGG18KRG000005.webp', 'product_images/gold/18k_gold/18kgold_product_rings/HJGG18KRG000005.jpg', NULL, '', '', '', '2025-06-12 05:38:23', '2025-06-12 05:38:23', NULL, NULL, '2025-06-15 19:17:00', 1, 0, NULL, NULL, NULL, NULL),
 (7, 'HJGG18KRG000006', 0, 1, '18K Gold Rings', '', 1, 7, 4, NULL, 'Female', 'Adult Size', 2.19300, 2.26500, NULL, 0, NULL, '', '', NULL, NULL, NULL, 0, '', 0.00000, 0, '', '', '', '', 0, '', '', 0, 0.00000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'product_images/webp/gold/18k_gold/18kgold_product_rings/HJGG18KRG000006.webp', 'product_images/gold/18k_gold/18kgold_product_rings/HJGG18KRG000006.jpg', NULL, '', '', '', '2025-06-12 05:40:38', '2025-06-12 05:40:38', NULL, NULL, '2025-06-15 19:17:00', 1, 0, NULL, NULL, NULL, NULL),
@@ -1727,70 +1661,67 @@ INSERT INTO `18kgold_product_rings` (`id`, `product_code`, `is_featured`, `stock
 -- Table structure for table `18kgold_product_secondstuds`
 --
 
-DROP TABLE IF EXISTS `18kgold_product_secondstuds`;
-CREATE TABLE IF NOT EXISTS `18kgold_product_secondstuds` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kgold_product_secondstuds` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1798,70 +1729,67 @@ CREATE TABLE IF NOT EXISTS `18kgold_product_secondstuds` (
 -- Table structure for table `18kgold_product_studs`
 --
 
-DROP TABLE IF EXISTS `18kgold_product_studs`;
-CREATE TABLE IF NOT EXISTS `18kgold_product_studs` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `18kgold_product_studs` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `18kgold_product_studs`
@@ -1885,70 +1813,67 @@ INSERT INTO `18kgold_product_studs` (`id`, `product_code`, `is_featured`, `stock
 -- Table structure for table `22kgold_product_anklets`
 --
 
-DROP TABLE IF EXISTS `22kgold_product_anklets`;
-CREATE TABLE IF NOT EXISTS `22kgold_product_anklets` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `22kgold_product_anklets` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `22kgold_product_anklets`
@@ -1967,70 +1892,67 @@ INSERT INTO `22kgold_product_anklets` (`id`, `product_code`, `is_featured`, `sto
 -- Table structure for table `22kgold_product_bangles`
 --
 
-DROP TABLE IF EXISTS `22kgold_product_bangles`;
-CREATE TABLE IF NOT EXISTS `22kgold_product_bangles` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `22kgold_product_bangles` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `22kgold_product_bangles`
@@ -2077,70 +1999,67 @@ INSERT INTO `22kgold_product_bangles` (`id`, `product_code`, `is_featured`, `sto
 -- Table structure for table `22kgold_product_bracelets`
 --
 
-DROP TABLE IF EXISTS `22kgold_product_bracelets`;
-CREATE TABLE IF NOT EXISTS `22kgold_product_bracelets` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `22kgold_product_bracelets` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `22kgold_product_bracelets`
@@ -2177,70 +2096,67 @@ INSERT INTO `22kgold_product_bracelets` (`id`, `product_code`, `is_featured`, `s
 -- Table structure for table `22kgold_product_chains`
 --
 
-DROP TABLE IF EXISTS `22kgold_product_chains`;
-CREATE TABLE IF NOT EXISTS `22kgold_product_chains` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `22kgold_product_chains` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `22kgold_product_chains`
@@ -2265,70 +2181,67 @@ INSERT INTO `22kgold_product_chains` (`id`, `product_code`, `is_featured`, `stoc
 -- Table structure for table `22kgold_product_earrings`
 --
 
-DROP TABLE IF EXISTS `22kgold_product_earrings`;
-CREATE TABLE IF NOT EXISTS `22kgold_product_earrings` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `22kgold_product_earrings` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `22kgold_product_earrings`
@@ -2426,70 +2339,67 @@ INSERT INTO `22kgold_product_earrings` (`id`, `product_code`, `is_featured`, `st
 -- Table structure for table `22kgold_product_fancychains`
 --
 
-DROP TABLE IF EXISTS `22kgold_product_fancychains`;
-CREATE TABLE IF NOT EXISTS `22kgold_product_fancychains` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `22kgold_product_fancychains` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=159 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `22kgold_product_fancychains`
@@ -2661,70 +2571,67 @@ INSERT INTO `22kgold_product_fancychains` (`id`, `product_code`, `is_featured`, 
 -- Table structure for table `22kgold_product_kadas`
 --
 
-DROP TABLE IF EXISTS `22kgold_product_kadas`;
-CREATE TABLE IF NOT EXISTS `22kgold_product_kadas` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `22kgold_product_kadas` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2732,70 +2639,67 @@ CREATE TABLE IF NOT EXISTS `22kgold_product_kadas` (
 -- Table structure for table `22kgold_product_necklaces`
 --
 
-DROP TABLE IF EXISTS `22kgold_product_necklaces`;
-CREATE TABLE IF NOT EXISTS `22kgold_product_necklaces` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `22kgold_product_necklaces` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `22kgold_product_necklaces`
@@ -2860,70 +2764,67 @@ INSERT INTO `22kgold_product_necklaces` (`id`, `product_code`, `is_featured`, `s
 -- Table structure for table `22kgold_product_nosepins`
 --
 
-DROP TABLE IF EXISTS `22kgold_product_nosepins`;
-CREATE TABLE IF NOT EXISTS `22kgold_product_nosepins` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `22kgold_product_nosepins` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2931,70 +2832,67 @@ CREATE TABLE IF NOT EXISTS `22kgold_product_nosepins` (
 -- Table structure for table `22kgold_product_pendants`
 --
 
-DROP TABLE IF EXISTS `22kgold_product_pendants`;
-CREATE TABLE IF NOT EXISTS `22kgold_product_pendants` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `22kgold_product_pendants` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `22kgold_product_pendants`
@@ -3017,70 +2915,67 @@ INSERT INTO `22kgold_product_pendants` (`id`, `product_code`, `is_featured`, `st
 -- Table structure for table `22kgold_product_rings`
 --
 
-DROP TABLE IF EXISTS `22kgold_product_rings`;
-CREATE TABLE IF NOT EXISTS `22kgold_product_rings` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `22kgold_product_rings` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `22kgold_product_rings`
@@ -3151,70 +3046,67 @@ INSERT INTO `22kgold_product_rings` (`id`, `product_code`, `is_featured`, `stock
 -- Table structure for table `22kgold_product_secondstuds`
 --
 
-DROP TABLE IF EXISTS `22kgold_product_secondstuds`;
-CREATE TABLE IF NOT EXISTS `22kgold_product_secondstuds` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `22kgold_product_secondstuds` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `22kgold_product_secondstuds`
@@ -3244,70 +3136,67 @@ INSERT INTO `22kgold_product_secondstuds` (`id`, `product_code`, `is_featured`, 
 -- Table structure for table `22kgold_product_studs`
 --
 
-DROP TABLE IF EXISTS `22kgold_product_studs`;
-CREATE TABLE IF NOT EXISTS `22kgold_product_studs` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `22kgold_product_studs` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `22kgold_product_studs`
@@ -3327,18 +3216,14 @@ INSERT INTO `22kgold_product_studs` (`id`, `product_code`, `is_featured`, `stock
 -- Table structure for table `cart`
 --
 
-DROP TABLE IF EXISTS `cart`;
-CREATE TABLE IF NOT EXISTS `cart` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `userid` int NOT NULL,
-  `productid` int NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `table_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `userid` (`userid`),
-  KEY `productid` (`productid`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `productid` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `product_code` varchar(100) NOT NULL,
+  `table_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cart`
@@ -3346,8 +3231,8 @@ CREATE TABLE IF NOT EXISTS `cart` (
 
 INSERT INTO `cart` (`id`, `userid`, `productid`, `created_at`, `product_code`, `table_name`) VALUES
 (3, 1, 2, '2025-06-10 16:29:00', 'HJSR925ER000003', 'rosegold_product_earrings'),
-(6, 1, 4, '2025-06-11 12:51:37', 'HJGG18KSD000004', '18kgold_product_studs'),
 (5, 1, 1, '2025-06-10 16:37:39', 'HJSR925ER000002', 'rosegold_product_earrings'),
+(6, 1, 4, '2025-06-11 12:51:37', 'HJGG18KSD000004', '18kgold_product_studs'),
 (7, 3, 3, '2025-06-11 13:43:17', 'HJSS850RG000002', 'silver_product_rings'),
 (11, 4, 10, '2025-06-18 22:10:08', 'HJGG22KNK000010', '22kgold_product_necklaces'),
 (12, 4, 4, '2025-06-18 22:28:46', 'HJGG22KNK000004', '22kgold_product_necklaces');
@@ -3358,16 +3243,12 @@ INSERT INTO `cart` (`id`, `userid`, `productid`, `created_at`, `product_code`, `
 -- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
-CREATE TABLE IF NOT EXISTS `categories` (
-  `cat_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `code` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  PRIMARY KEY (`cat_id`),
-  UNIQUE KEY `cat_id` (`cat_id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `categories` (
+  `cat_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `code` varchar(20) NOT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `categories`
@@ -3395,16 +3276,12 @@ INSERT INTO `categories` (`cat_id`, `name`, `code`, `description`) VALUES
 -- Table structure for table `categories_subs`
 --
 
-DROP TABLE IF EXISTS `categories_subs`;
-CREATE TABLE IF NOT EXISTS `categories_subs` (
-  `sub_cat_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `cat_id` int NOT NULL,
-  `name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  PRIMARY KEY (`sub_cat_id`),
-  UNIQUE KEY `sil_sub_cat_id` (`sub_cat_id`),
-  KEY `sil_cat_id` (`cat_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `categories_subs` (
+  `sub_cat_id` bigint(20) UNSIGNED NOT NULL,
+  `cat_id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `categories_subs`
@@ -3458,10 +3335,10 @@ INSERT INTO `categories_subs` (`sub_cat_id`, `cat_id`, `name`, `description`) VA
 (45, 10, 'Lip Rings', NULL),
 (46, 1, 'General', NULL),
 (47, 2, 'General', NULL),
-(55, 6, 'General', NULL),
-(54, 5, 'General', NULL),
-(53, 4, 'General', NULL),
 (52, 3, 'General', NULL),
+(53, 4, 'General', NULL),
+(54, 5, 'General', NULL),
+(55, 6, 'General', NULL),
 (56, 7, 'General', NULL),
 (57, 8, 'General', NULL),
 (58, 9, 'General', NULL),
@@ -3473,21 +3350,19 @@ INSERT INTO `categories_subs` (`sub_cat_id`, `cat_id`, `name`, `description`) VA
 -- Table structure for table `goldrate`
 --
 
-DROP TABLE IF EXISTS `goldrate`;
-CREATE TABLE IF NOT EXISTS `goldrate` (
-  `id` int NOT NULL,
-  `18k_1gm` int NOT NULL,
-  `22k_1gm` int NOT NULL,
-  `updated_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE `goldrate` (
+  `id` int(11) NOT NULL,
+  `18k_1gm` int(11) NOT NULL,
+  `22k_1gm` int(11) NOT NULL,
+  `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `goldrate`
 --
 
 INSERT INTO `goldrate` (`id`, `18k_1gm`, `22k_1gm`, `updated_on`) VALUES
-(1, 7500, 9100, '2025-07-16 09:29:45');
+(1, 9565, 11575, '2025-11-11 23:56:13');
 
 -- --------------------------------------------------------
 
@@ -3495,15 +3370,13 @@ INSERT INTO `goldrate` (`id`, `18k_1gm`, `22k_1gm`, `updated_on`) VALUES
 -- Table structure for table `goldrate_history`
 --
 
-DROP TABLE IF EXISTS `goldrate_history`;
-CREATE TABLE IF NOT EXISTS `goldrate_history` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `18k_1gm` int NOT NULL,
-  `22k_1gm` int NOT NULL,
-  `updated_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_by` varchar(110) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=144 DEFAULT CHARSET=latin1;
+CREATE TABLE `goldrate_history` (
+  `id` int(11) NOT NULL,
+  `18k_1gm` int(11) NOT NULL,
+  `22k_1gm` int(11) NOT NULL,
+  `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_by` varchar(110) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `goldrate_history`
@@ -3651,7 +3524,50 @@ INSERT INTO `goldrate_history` (`id`, `18k_1gm`, `22k_1gm`, `updated_on`, `updat
 (140, 7530, 9140, '2025-07-12 09:36:04', 'Vrinda'),
 (141, 7540, 9155, '2025-07-14 09:36:30', 'Vrinda'),
 (142, 7535, 9145, '2025-07-15 09:34:11', 'Vrinda'),
-(143, 7500, 9100, '2025-07-16 09:29:45', 'Vrinda');
+(143, 7500, 9100, '2025-07-16 09:29:45', 'Vrinda'),
+(144, 7360, 9100, '2025-07-19 02:59:38', 'gokul'),
+(145, 7360, 9100, '2025-07-19 03:01:16', 'gokul'),
+(146, 7360, 9100, '2025-07-19 03:02:10', 'gokul'),
+(147, 7360, 9100, '2025-07-19 03:08:43', 'gokul'),
+(148, 7360, 9100, '2025-09-27 15:32:32', 'gokul'),
+(149, 8708, 10599, '2025-09-27 19:48:45', 'gokul'),
+(150, 8708, 10580, '2025-09-27 19:49:14', 'gokul'),
+(151, 9485, 11465, '2025-10-12 12:18:19', 'gokul'),
+(152, 9485, 11465, '2025-10-12 12:18:30', 'gokul'),
+(153, 9565, 11575, '2025-11-11 23:54:34', 'gokul'),
+(154, 9565, 11575, '2025-11-11 23:56:13', 'gokul');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gold_schemes`
+--
+
+CREATE TABLE `gold_schemes` (
+  `id` int(11) NOT NULL,
+  `scheme_code` varchar(10) NOT NULL COMMENT 'A, B, C, etc.',
+  `scheme_name` varchar(50) NOT NULL COMMENT 'Basic, Premium, etc.',
+  `monthly_installment` decimal(10,2) NOT NULL,
+  `term_months` int(11) NOT NULL,
+  `bonus_amount` decimal(10,2) NOT NULL,
+  `final_value` decimal(10,2) NOT NULL,
+  `description` text DEFAULT NULL,
+  `status` enum('active','inactive','archived') NOT NULL DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `gold_schemes`
+--
+
+INSERT INTO `gold_schemes` (`id`, `scheme_code`, `scheme_name`, `monthly_installment`, `term_months`, `bonus_amount`, `final_value`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'A', 'Basic', 500.00, 11, 600.00, 6100.00, 'Perfect for starting your gold savings', 'active', '2025-07-16 18:22:34', '2025-07-16 18:22:34'),
+(2, 'B', 'Premium', 1000.00, 11, 1200.00, 12200.00, 'Best value for regular savings', 'active', '2025-07-16 18:22:34', '2025-07-16 18:22:34'),
+(3, 'C', 'Elite', 2000.00, 11, 2400.00, 24400.00, 'Maximum benefits for serious investors', 'active', '2025-07-16 18:22:34', '2025-07-16 18:22:34'),
+(4, 'D', 'Royal', 2500.00, 11, 3000.00, 30500.00, 'Premium plan with higher benefits', 'active', '2025-07-16 18:22:34', '2025-07-16 18:22:34'),
+(5, 'E', 'Imperial', 5000.00, 11, 6000.00, 61000.00, 'For high-value gold investors', 'active', '2025-07-16 18:22:34', '2025-07-16 18:22:34'),
+(6, 'F', 'Dynasty', 10000.00, 11, 12000.00, 122000.00, 'Ultimate gold investment plan', 'active', '2025-07-16 18:22:34', '2025-07-16 18:22:34');
 
 -- --------------------------------------------------------
 
@@ -3659,14 +3575,12 @@ INSERT INTO `goldrate_history` (`id`, `18k_1gm`, `22k_1gm`, `updated_on`, `updat
 -- Table structure for table `gst`
 --
 
-DROP TABLE IF EXISTS `gst`;
-CREATE TABLE IF NOT EXISTS `gst` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `tax_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+CREATE TABLE `gst` (
+  `id` int(11) NOT NULL,
+  `tax_name` varchar(100) NOT NULL,
   `tax_percent` decimal(5,3) NOT NULL,
-  `updated_on` timestamp NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `updated_on` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gst`
@@ -3681,23 +3595,21 @@ INSERT INTO `gst` (`id`, `tax_name`, `tax_percent`, `updated_on`) VALUES
 -- Table structure for table `job_positions`
 --
 
-DROP TABLE IF EXISTS `job_positions`;
-CREATE TABLE IF NOT EXISTS `job_positions` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `position_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `no_of_vacancy` int NOT NULL,
+CREATE TABLE `job_positions` (
+  `id` int(11) NOT NULL,
+  `position_name` varchar(100) NOT NULL,
+  `description` text DEFAULT NULL,
+  `no_of_vacancy` int(11) NOT NULL,
   `date_posted` datetime NOT NULL,
-  `status` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'Active',
-  `location` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `department` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `experience_required` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `qualification` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `created_by` int DEFAULT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `status` varchar(20) NOT NULL DEFAULT 'Active',
+  `location` varchar(100) DEFAULT NULL,
+  `department` varchar(50) DEFAULT NULL,
+  `experience_required` varchar(50) DEFAULT NULL,
+  `qualification` text DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `job_positions`
@@ -3717,15 +3629,13 @@ INSERT INTO `job_positions` (`id`, `position_name`, `description`, `no_of_vacanc
 -- Table structure for table `login`
 --
 
-DROP TABLE IF EXISTS `login`;
-CREATE TABLE IF NOT EXISTS `login` (
+CREATE TABLE `login` (
   `username` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   `name` varchar(255) NOT NULL,
   `account_type` varchar(50) NOT NULL,
-  `account_status` varchar(50) NOT NULL,
-  PRIMARY KEY (`username`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `account_status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `login`
@@ -3742,14 +3652,12 @@ INSERT INTO `login` (`username`, `password`, `name`, `account_type`, `account_st
 -- Table structure for table `log_table`
 --
 
-DROP TABLE IF EXISTS `log_table`;
-CREATE TABLE IF NOT EXISTS `log_table` (
-  `log_id` int NOT NULL AUTO_INCREMENT,
-  `action` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `action_by` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `log_table` (
+  `log_id` int(11) NOT NULL,
+  `action` varchar(256) NOT NULL,
+  `action_by` varchar(120) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -3757,12 +3665,10 @@ CREATE TABLE IF NOT EXISTS `log_table` (
 -- Table structure for table `maintances`
 --
 
-DROP TABLE IF EXISTS `maintances`;
-CREATE TABLE IF NOT EXISTS `maintances` (
-  `mid` int NOT NULL AUTO_INCREMENT,
-  `details` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `status` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`mid`)
+CREATE TABLE `maintances` (
+  `mid` int(11) NOT NULL,
+  `details` text NOT NULL,
+  `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -3771,20 +3677,18 @@ CREATE TABLE IF NOT EXISTS `maintances` (
 -- Table structure for table `making_charges`
 --
 
-DROP TABLE IF EXISTS `making_charges`;
-CREATE TABLE IF NOT EXISTS `making_charges` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `metalpurity_id` int NOT NULL,
-  `model_id` int NOT NULL,
-  `model_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cat_id` int NOT NULL,
+CREATE TABLE `making_charges` (
+  `id` int(11) NOT NULL,
+  `metalpurity_id` int(11) NOT NULL,
+  `model_id` int(11) NOT NULL,
+  `model_name` varchar(50) NOT NULL,
+  `cat_id` int(11) NOT NULL,
   `normal_mc` decimal(5,3) NOT NULL,
   `discount_mc` decimal(5,3) NOT NULL,
   `excp_normal_mc` decimal(5,3) NOT NULL,
   `excp_discount_mc` decimal(5,3) NOT NULL,
-  `last_updated` timestamp NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `last_updated` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `making_charges`
@@ -3796,9 +3700,9 @@ INSERT INTO `making_charges` (`id`, `metalpurity_id`, `model_id`, `model_name`, 
 (3, 4, 1, 'standard', 2, 35.000, 25.000, 30.000, 30.000, '2025-06-04 21:11:32'),
 (4, 4, 1, 'standard', 3, 35.000, 25.000, 30.000, 30.000, '2025-06-04 21:11:32'),
 (5, 4, 1, 'standard', 4, 35.000, 25.000, 30.000, 30.000, '2025-06-04 21:11:32'),
-(8, 4, 1, 'standard', 5, 35.000, 25.000, 30.000, 30.000, '2025-06-04 21:11:32'),
-(7, 4, 1, 'standard', 6, 35.000, 25.000, 30.000, 30.000, '2025-06-04 21:11:32'),
 (6, 4, 1, 'standard', 5, 35.000, 25.000, 30.000, 30.000, '2025-06-04 21:12:46'),
+(7, 4, 1, 'standard', 6, 35.000, 25.000, 30.000, 30.000, '2025-06-04 21:11:32'),
+(8, 4, 1, 'standard', 5, 35.000, 25.000, 30.000, 30.000, '2025-06-04 21:11:32'),
 (9, 4, 1, 'standard', 8, 35.000, 25.000, 30.000, 30.000, '2025-06-04 21:12:46'),
 (10, 4, 1, 'standard', 9, 35.000, 25.000, 30.000, 30.000, '2025-06-04 21:12:46'),
 (11, 4, 1, 'standard', 10, 35.000, 25.000, 30.000, 30.000, '2025-06-04 21:12:46'),
@@ -3826,14 +3730,11 @@ INSERT INTO `making_charges` (`id`, `metalpurity_id`, `model_id`, `model_name`, 
 -- Table structure for table `metals`
 --
 
-DROP TABLE IF EXISTS `metals`;
-CREATE TABLE IF NOT EXISTS `metals` (
-  `metal_id` int NOT NULL AUTO_INCREMENT,
-  `code` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`metal_id`),
-  UNIQUE KEY `code` (`code`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `metals` (
+  `metal_id` int(11) NOT NULL,
+  `code` char(1) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `metals`
@@ -3849,15 +3750,13 @@ INSERT INTO `metals` (`metal_id`, `code`, `name`) VALUES
 -- Table structure for table `metals_purity`
 --
 
-DROP TABLE IF EXISTS `metals_purity`;
-CREATE TABLE IF NOT EXISTS `metals_purity` (
-  `metalpurity_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `metal_id` int NOT NULL,
-  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `code` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  PRIMARY KEY (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `metals_purity` (
+  `metalpurity_id` bigint(20) UNSIGNED NOT NULL,
+  `metal_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `metals_purity`
@@ -3877,19 +3776,17 @@ INSERT INTO `metals_purity` (`metalpurity_id`, `metal_id`, `name`, `code`, `desc
 -- Table structure for table `metals_rates`
 --
 
-DROP TABLE IF EXISTS `metals_rates`;
-CREATE TABLE IF NOT EXISTS `metals_rates` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `18kgold` int NOT NULL,
-  `22kgold` int NOT NULL,
-  `normal_silver` int NOT NULL,
-  `925_silver` int NOT NULL,
-  `rosegold_silver` int NOT NULL,
+CREATE TABLE `metals_rates` (
+  `id` int(11) NOT NULL,
+  `18kgold` int(11) NOT NULL,
+  `22kgold` int(11) NOT NULL,
+  `normal_silver` int(11) NOT NULL,
+  `925_silver` int(11) NOT NULL,
+  `rosegold_silver` int(11) NOT NULL,
   `diamond_rate` decimal(10,2) NOT NULL,
-  `updated_on` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `updated_on` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_by` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `metals_rates`
@@ -3904,17 +3801,15 @@ INSERT INTO `metals_rates` (`id`, `18kgold`, `22kgold`, `normal_silver`, `925_si
 -- Table structure for table `metals_rates_history`
 --
 
-DROP TABLE IF EXISTS `metals_rates_history`;
-CREATE TABLE IF NOT EXISTS `metals_rates_history` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `metals_rates_history` (
+  `id` int(11) NOT NULL,
   `normal_silver` decimal(10,2) NOT NULL,
   `925_silver` decimal(10,2) NOT NULL,
   `rosegold_silver` decimal(10,2) NOT NULL,
-  `diamondrate` int NOT NULL,
-  `updated_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `updated_on` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `diamondrate` int(11) NOT NULL,
+  `updated_by` varchar(50) NOT NULL,
+  `updated_on` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `metals_rates_history`
@@ -3930,13 +3825,11 @@ INSERT INTO `metals_rates_history` (`id`, `normal_silver`, `925_silver`, `rosego
 -- Table structure for table `models`
 --
 
-DROP TABLE IF EXISTS `models`;
-CREATE TABLE IF NOT EXISTS `models` (
-  `model_id` int NOT NULL AUTO_INCREMENT,
-  `model_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`model_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `models` (
+  `model_id` int(11) NOT NULL,
+  `model_name` varchar(255) NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `models`
@@ -3955,19 +3848,15 @@ INSERT INTO `models` (`model_id`, `model_name`, `created_at`) VALUES
 -- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
-CREATE TABLE IF NOT EXISTS `orders` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `userid` int NOT NULL,
-  `productid` int NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `table_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `status` int NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `userid` (`userid`),
-  KEY `productid` (`productid`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `productid` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `product_code` varchar(100) NOT NULL,
+  `table_name` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
@@ -3975,8 +3864,8 @@ CREATE TABLE IF NOT EXISTS `orders` (
 
 INSERT INTO `orders` (`id`, `userid`, `productid`, `created_at`, `product_code`, `table_name`, `status`) VALUES
 (3, 1, 2, '2025-06-10 10:59:00', 'HJSR925ER000003', 'rosegold_product_earrings', 0),
-(6, 4, 4, '2025-06-11 07:21:37', 'HJGG18KSD000004', '18kgold_product_studs', 1),
 (5, 1, 1, '2025-06-10 11:07:39', 'HJSR925ER000002', 'rosegold_product_earrings', 2),
+(6, 4, 4, '2025-06-11 07:21:37', 'HJGG18KSD000004', '18kgold_product_studs', 1),
 (7, 3, 3, '2025-06-11 08:13:17', 'HJSS850RG000002', 'silver_product_rings', 1),
 (11, 1, 10, '2025-06-18 16:40:08', 'HJGG22KNK000010', '22kgold_product_necklaces', 2),
 (12, 4, 4, '2025-06-18 16:58:46', 'HJGG22KNK000004', '22kgold_product_necklaces', 0);
@@ -3987,21 +3876,19 @@ INSERT INTO `orders` (`id`, `userid`, `productid`, `created_at`, `product_code`,
 -- Table structure for table `product_activity_log`
 --
 
-DROP TABLE IF EXISTS `product_activity_log`;
-CREATE TABLE IF NOT EXISTS `product_activity_log` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+CREATE TABLE `product_activity_log` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `activity_date` date NOT NULL,
   `activity_time` time NOT NULL,
-  `product_code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `table_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `activity_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'ADD',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `v_status` int NOT NULL,
-  `v_by` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `v_on` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `product_code` varchar(50) NOT NULL,
+  `table_name` varchar(100) NOT NULL,
+  `activity_type` varchar(20) NOT NULL DEFAULT 'ADD',
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `v_status` int(11) NOT NULL,
+  `v_by` varchar(20) NOT NULL,
+  `v_on` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product_activity_log`
@@ -4016,20 +3903,17 @@ INSERT INTO `product_activity_log` (`id`, `username`, `activity_date`, `activity
 -- Table structure for table `product_codes`
 --
 
-DROP TABLE IF EXISTS `product_codes`;
-CREATE TABLE IF NOT EXISTS `product_codes` (
-  `product_code_id` int NOT NULL AUTO_INCREMENT,
-  `p1_brand` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `p2_metal` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `p3_purity` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `p4_cat` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `p5_uniquecode` int NOT NULL,
-  `full_code` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `table_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`product_code_id`),
-  UNIQUE KEY `full_code` (`full_code`)
-) ENGINE=MyISAM AUTO_INCREMENT=842 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `product_codes` (
+  `product_code_id` int(11) NOT NULL,
+  `p1_brand` varchar(10) NOT NULL,
+  `p2_metal` char(10) NOT NULL,
+  `p3_purity` varchar(10) NOT NULL,
+  `p4_cat` varchar(10) NOT NULL,
+  `p5_uniquecode` int(11) NOT NULL,
+  `full_code` varchar(30) NOT NULL,
+  `table_name` varchar(255) NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product_codes`
@@ -4039,8 +3923,8 @@ INSERT INTO `product_codes` (`product_code_id`, `p1_brand`, `p2_metal`, `p3_puri
 (1, 'HJ', 'G', 'G18K', 'SD', 1, 'HJGG18KSD000001', '18kgold_product_studs', '2025-05-25 19:25:51'),
 (2, 'HJ', 'G', 'G22K', 'RG', 1, 'HJGG22KRG000001', '22gold_product_rings', '2025-05-25 20:35:46'),
 (3, 'HJ', 'G', 'G22K', 'RG', 2, 'HJGG22KRG000002', '22kgold_product_rings', '2025-05-25 20:43:43'),
-(7, 'HJ', 'G', 'G18D', 'RG', 2, 'HJGG18DRG000002', '18kdgold_product_rings', '2025-05-25 20:52:59'),
 (6, 'HJ', 'G', 'G18D', 'RG', 1, 'HJGG18DRG000001', '18kdgold_product_rings', '2025-05-25 20:51:36'),
+(7, 'HJ', 'G', 'G18D', 'RG', 2, 'HJGG18DRG000002', '18kdgold_product_rings', '2025-05-25 20:52:59'),
 (8, 'HJ', 'G', 'G18D', 'RG', 3, 'HJGG18DRG000003', '18kdgold_product_rings', '2025-05-25 20:58:33'),
 (9, 'HJ', 'G', 'G18D', 'RG', 4, 'HJGG18DRG000004', '18kdgold_product_rings', '2025-05-25 20:58:36'),
 (10, 'HJ', 'G', 'G18D', 'RG', 5, 'HJGG18DRG000005', '18kdgold_product_rings', '2025-05-25 21:00:03'),
@@ -4066,8 +3950,8 @@ INSERT INTO `product_codes` (`product_code_id`, `p1_brand`, `p2_metal`, `p3_puri
 (30, 'HJ', 'G', 'G18K', 'SD', 10, 'HJGG18KSD000010', '18kgold_product_studs', '2025-05-26 01:37:05'),
 (31, 'HJ', 'G', 'G18K', 'SD', 11, 'HJGG18KSD000011', '18kgold_product_studs', '2025-05-26 01:44:45'),
 (32, 'HJ', 'S', 'R925', 'NK', 1, 'HJSR925NK000001', 'rosegold_product_necklaces', '2025-06-04 14:30:52'),
-(36, 'HJ', 'G', 'G18K', 'BG', 2, 'HJGG18KBG000002', '18kgold_product_bangles', '2025-06-09 10:18:44'),
 (35, 'HJ', 'G', 'G18K', 'BG', 1, 'HJGG18KBG000001', '18kgold_product_bangles', '2025-06-09 10:14:38'),
+(36, 'HJ', 'G', 'G18K', 'BG', 2, 'HJGG18KBG000002', '18kgold_product_bangles', '2025-06-09 10:18:44'),
 (37, 'HJ', 'G', 'G22K', 'BG', 1, 'HJGG22KBG000001', '22kgold_product_bangles', '2025-06-09 10:22:33'),
 (38, 'HJ', 'G', 'G22K', 'BG', 2, 'HJGG22KBG000002', '22kgold_product_bangles', '2025-06-09 10:25:48'),
 (39, 'HJ', 'S', 'S850', 'BG', 1, 'HJSS850BG000001', 'silver_product_bangles', '2025-06-09 12:43:33'),
@@ -4881,14 +4765,11 @@ INSERT INTO `product_codes` (`product_code_id`, `p1_brand`, `p2_metal`, `p3_puri
 -- Table structure for table `product_code_prefix`
 --
 
-DROP TABLE IF EXISTS `product_code_prefix`;
-CREATE TABLE IF NOT EXISTS `product_code_prefix` (
-  `pc_prefix_id` int NOT NULL AUTO_INCREMENT,
-  `code` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  PRIMARY KEY (`pc_prefix_id`),
-  UNIQUE KEY `code` (`code`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `product_code_prefix` (
+  `pc_prefix_id` int(11) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `name` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product_code_prefix`
@@ -4904,70 +4785,67 @@ INSERT INTO `product_code_prefix` (`pc_prefix_id`, `code`, `name`) VALUES
 -- Table structure for table `rosegold_product_anklets`
 --
 
-DROP TABLE IF EXISTS `rosegold_product_anklets`;
-CREATE TABLE IF NOT EXISTS `rosegold_product_anklets` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `rosegold_product_anklets` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -4975,70 +4853,67 @@ CREATE TABLE IF NOT EXISTS `rosegold_product_anklets` (
 -- Table structure for table `rosegold_product_bangles`
 --
 
-DROP TABLE IF EXISTS `rosegold_product_bangles`;
-CREATE TABLE IF NOT EXISTS `rosegold_product_bangles` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `rosegold_product_bangles` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rosegold_product_bangles`
@@ -5068,70 +4943,67 @@ INSERT INTO `rosegold_product_bangles` (`id`, `product_code`, `is_featured`, `st
 -- Table structure for table `rosegold_product_bracelets`
 --
 
-DROP TABLE IF EXISTS `rosegold_product_bracelets`;
-CREATE TABLE IF NOT EXISTS `rosegold_product_bracelets` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `rosegold_product_bracelets` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rosegold_product_bracelets`
@@ -5186,70 +5058,67 @@ INSERT INTO `rosegold_product_bracelets` (`id`, `product_code`, `is_featured`, `
 -- Table structure for table `rosegold_product_chains`
 --
 
-DROP TABLE IF EXISTS `rosegold_product_chains`;
-CREATE TABLE IF NOT EXISTS `rosegold_product_chains` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `rosegold_product_chains` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rosegold_product_chains`
@@ -5269,70 +5138,67 @@ INSERT INTO `rosegold_product_chains` (`id`, `product_code`, `is_featured`, `sto
 -- Table structure for table `rosegold_product_earrings`
 --
 
-DROP TABLE IF EXISTS `rosegold_product_earrings`;
-CREATE TABLE IF NOT EXISTS `rosegold_product_earrings` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `rosegold_product_earrings` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rosegold_product_earrings`
@@ -5358,70 +5224,67 @@ INSERT INTO `rosegold_product_earrings` (`id`, `product_code`, `is_featured`, `s
 -- Table structure for table `rosegold_product_fancychains`
 --
 
-DROP TABLE IF EXISTS `rosegold_product_fancychains`;
-CREATE TABLE IF NOT EXISTS `rosegold_product_fancychains` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `rosegold_product_fancychains` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5429,70 +5292,67 @@ CREATE TABLE IF NOT EXISTS `rosegold_product_fancychains` (
 -- Table structure for table `rosegold_product_necklaces`
 --
 
-DROP TABLE IF EXISTS `rosegold_product_necklaces`;
-CREATE TABLE IF NOT EXISTS `rosegold_product_necklaces` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `rosegold_product_necklaces` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rosegold_product_necklaces`
@@ -5536,70 +5396,67 @@ INSERT INTO `rosegold_product_necklaces` (`id`, `product_code`, `is_featured`, `
 -- Table structure for table `rosegold_product_nosepins`
 --
 
-DROP TABLE IF EXISTS `rosegold_product_nosepins`;
-CREATE TABLE IF NOT EXISTS `rosegold_product_nosepins` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `rosegold_product_nosepins` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5607,70 +5464,67 @@ CREATE TABLE IF NOT EXISTS `rosegold_product_nosepins` (
 -- Table structure for table `rosegold_product_pendants`
 --
 
-DROP TABLE IF EXISTS `rosegold_product_pendants`;
-CREATE TABLE IF NOT EXISTS `rosegold_product_pendants` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `rosegold_product_pendants` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5678,70 +5532,67 @@ CREATE TABLE IF NOT EXISTS `rosegold_product_pendants` (
 -- Table structure for table `rosegold_product_rings`
 --
 
-DROP TABLE IF EXISTS `rosegold_product_rings`;
-CREATE TABLE IF NOT EXISTS `rosegold_product_rings` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `rosegold_product_rings` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rosegold_product_rings`
@@ -5790,70 +5641,67 @@ INSERT INTO `rosegold_product_rings` (`id`, `product_code`, `is_featured`, `stoc
 -- Table structure for table `rosegold_product_secondstuds`
 --
 
-DROP TABLE IF EXISTS `rosegold_product_secondstuds`;
-CREATE TABLE IF NOT EXISTS `rosegold_product_secondstuds` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `rosegold_product_secondstuds` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5861,70 +5709,67 @@ CREATE TABLE IF NOT EXISTS `rosegold_product_secondstuds` (
 -- Table structure for table `rosegold_product_studs`
 --
 
-DROP TABLE IF EXISTS `rosegold_product_studs`;
-CREATE TABLE IF NOT EXISTS `rosegold_product_studs` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `rosegold_product_studs` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5932,21 +5777,17 @@ CREATE TABLE IF NOT EXISTS `rosegold_product_studs` (
 -- Table structure for table `scheme_payments`
 --
 
-DROP TABLE IF EXISTS `scheme_payments`;
-CREATE TABLE IF NOT EXISTS `scheme_payments` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `scheme_id` int NOT NULL,
+CREATE TABLE `scheme_payments` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `scheme_id` int(11) NOT NULL,
   `amount` decimal(10,2) NOT NULL,
   `payment_date` date NOT NULL,
-  `receipt_no` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `payment_method` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `transaction_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `scheme_id` (`scheme_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `receipt_no` varchar(20) NOT NULL,
+  `payment_method` varchar(20) DEFAULT NULL,
+  `transaction_id` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `scheme_payments`
@@ -5972,70 +5813,67 @@ INSERT INTO `scheme_payments` (`id`, `user_id`, `scheme_id`, `amount`, `payment_
 -- Table structure for table `silver_product_anklets`
 --
 
-DROP TABLE IF EXISTS `silver_product_anklets`;
-CREATE TABLE IF NOT EXISTS `silver_product_anklets` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `silver_product_anklets` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -6043,70 +5881,67 @@ CREATE TABLE IF NOT EXISTS `silver_product_anklets` (
 -- Table structure for table `silver_product_bangles`
 --
 
-DROP TABLE IF EXISTS `silver_product_bangles`;
-CREATE TABLE IF NOT EXISTS `silver_product_bangles` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `silver_product_bangles` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `silver_product_bangles`
@@ -6132,70 +5967,67 @@ INSERT INTO `silver_product_bangles` (`id`, `product_code`, `is_featured`, `stoc
 -- Table structure for table `silver_product_bracelets`
 --
 
-DROP TABLE IF EXISTS `silver_product_bracelets`;
-CREATE TABLE IF NOT EXISTS `silver_product_bracelets` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `silver_product_bracelets` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `silver_product_bracelets`
@@ -6220,64 +6052,61 @@ INSERT INTO `silver_product_bracelets` (`id`, `product_code`, `is_featured`, `st
 -- Table structure for table `silver_product_chains`
 --
 
-DROP TABLE IF EXISTS `silver_product_chains`;
-CREATE TABLE IF NOT EXISTS `silver_product_chains` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `silver_product_chains` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `beads_cost` int(11) NOT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `silver_product_chains`
@@ -6307,64 +6136,61 @@ INSERT INTO `silver_product_chains` (`id`, `product_code`, `is_featured`, `stock
 -- Table structure for table `silver_product_earrings`
 --
 
-DROP TABLE IF EXISTS `silver_product_earrings`;
-CREATE TABLE IF NOT EXISTS `silver_product_earrings` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `silver_product_earrings` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `beads_cost` int(11) NOT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `silver_product_earrings`
@@ -6396,70 +6222,67 @@ INSERT INTO `silver_product_earrings` (`id`, `product_code`, `is_featured`, `sto
 -- Table structure for table `silver_product_fancychains`
 --
 
-DROP TABLE IF EXISTS `silver_product_fancychains`;
-CREATE TABLE IF NOT EXISTS `silver_product_fancychains` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `silver_product_fancychains` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -6467,64 +6290,61 @@ CREATE TABLE IF NOT EXISTS `silver_product_fancychains` (
 -- Table structure for table `silver_product_kadas`
 --
 
-DROP TABLE IF EXISTS `silver_product_kadas`;
-CREATE TABLE IF NOT EXISTS `silver_product_kadas` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `silver_product_kadas` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `beads_cost` int(11) NOT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `silver_product_kadas`
@@ -6544,64 +6364,61 @@ INSERT INTO `silver_product_kadas` (`id`, `product_code`, `is_featured`, `stock_
 -- Table structure for table `silver_product_necklaces`
 --
 
-DROP TABLE IF EXISTS `silver_product_necklaces`;
-CREATE TABLE IF NOT EXISTS `silver_product_necklaces` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `silver_product_necklaces` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `beads_cost` int(11) NOT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -6609,64 +6426,61 @@ CREATE TABLE IF NOT EXISTS `silver_product_necklaces` (
 -- Table structure for table `silver_product_nosepins`
 --
 
-DROP TABLE IF EXISTS `silver_product_nosepins`;
-CREATE TABLE IF NOT EXISTS `silver_product_nosepins` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `silver_product_nosepins` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `beads_cost` int(11) NOT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -6674,64 +6488,61 @@ CREATE TABLE IF NOT EXISTS `silver_product_nosepins` (
 -- Table structure for table `silver_product_pendants`
 --
 
-DROP TABLE IF EXISTS `silver_product_pendants`;
-CREATE TABLE IF NOT EXISTS `silver_product_pendants` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `silver_product_pendants` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `beads_cost` int(11) NOT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `silver_product_pendants`
@@ -6764,64 +6575,61 @@ INSERT INTO `silver_product_pendants` (`id`, `product_code`, `is_featured`, `sto
 -- Table structure for table `silver_product_rings`
 --
 
-DROP TABLE IF EXISTS `silver_product_rings`;
-CREATE TABLE IF NOT EXISTS `silver_product_rings` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `silver_product_rings` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `beads_cost` int(11) NOT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `silver_product_rings`
@@ -6896,70 +6704,67 @@ INSERT INTO `silver_product_rings` (`id`, `product_code`, `is_featured`, `stock_
 -- Table structure for table `silver_product_secondstuds`
 --
 
-DROP TABLE IF EXISTS `silver_product_secondstuds`;
-CREATE TABLE IF NOT EXISTS `silver_product_secondstuds` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `silver_product_secondstuds` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -6967,70 +6772,67 @@ CREATE TABLE IF NOT EXISTS `silver_product_secondstuds` (
 -- Table structure for table `silver_product_studs`
 --
 
-DROP TABLE IF EXISTS `silver_product_studs`;
-CREATE TABLE IF NOT EXISTS `silver_product_studs` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `product_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `is_featured` int DEFAULT '0',
-  `stock_quantity` int DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `metal_id` int DEFAULT NULL,
-  `metalpurity_id` int DEFAULT NULL,
-  `cat_id` int DEFAULT NULL,
-  `sub_cat_id` int DEFAULT NULL,
-  `gender` enum('Male','Female','Unisex') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Unisex',
-  `size` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+CREATE TABLE `silver_product_studs` (
+  `id` int(11) NOT NULL,
+  `product_code` varchar(100) NOT NULL,
+  `is_featured` int(11) DEFAULT 0,
+  `stock_quantity` int(11) DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `metal_id` int(11) DEFAULT NULL,
+  `metalpurity_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  `sub_cat_id` int(11) DEFAULT NULL,
+  `gender` enum('Male','Female','Unisex') DEFAULT 'Unisex',
+  `size` text DEFAULT NULL,
   `net_weight` decimal(10,5) DEFAULT NULL,
   `gross_weight` decimal(10,5) NOT NULL,
-  `product_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_available` int DEFAULT '0',
-  `stone_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stone_color` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stone_count` int DEFAULT NULL,
+  `product_model` varchar(100) DEFAULT NULL,
+  `stone_available` int(11) DEFAULT 0,
+  `stone_desc` varchar(100) DEFAULT NULL,
+  `stone_color` varchar(100) NOT NULL,
+  `stone_shape` text NOT NULL,
+  `stone_count` int(11) DEFAULT NULL,
   `stone_weight` decimal(10,5) DEFAULT NULL,
-  `stone_cost` int DEFAULT NULL,
-  `diamond_available` int NOT NULL,
-  `dia_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stone_cost` int(11) DEFAULT NULL,
+  `diamond_available` int(11) NOT NULL,
+  `dia_desc` text NOT NULL,
   `dia_cent` decimal(10,5) NOT NULL,
-  `dia_count` int NOT NULL,
-  `dia_cut` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_clarity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_shape` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_available` int NOT NULL,
-  `beads_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `beads_count` int NOT NULL,
+  `dia_count` int(11) NOT NULL,
+  `dia_cut` text NOT NULL,
+  `dia_color` text NOT NULL,
+  `dia_clarity` text NOT NULL,
+  `dia_shape` text NOT NULL,
+  `beads_available` int(11) NOT NULL,
+  `beads_desc` text NOT NULL,
+  `beads_color` text NOT NULL,
+  `beads_count` int(11) NOT NULL,
   `beads_weight` decimal(10,5) NOT NULL,
-  `beads_cost` int NOT NULL,
-  `pearls_available` int DEFAULT NULL,
-  `pearls_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `pearls_count` int DEFAULT NULL,
+  `beads_cost` int(11) NOT NULL,
+  `pearls_available` int(11) DEFAULT NULL,
+  `pearls_desc` text DEFAULT NULL,
+  `pearls_color` text DEFAULT NULL,
+  `pearls_count` int(11) DEFAULT NULL,
   `pearls_weight` decimal(10,5) DEFAULT NULL,
-  `pearls_cost` int DEFAULT NULL,
-  `img1_webp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `img4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `img5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `search_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `verified` int DEFAULT NULL,
-  `verified_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `verified_on` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `model_id` int DEFAULT NULL,
-  `delist` int DEFAULT '0',
-  `supplier_id` int DEFAULT NULL,
-  `manufacture_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `t_display_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_metalpurity` (`metalpurity_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pearls_cost` int(11) DEFAULT NULL,
+  `img1_webp` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text NOT NULL,
+  `img5` text NOT NULL,
+  `search_keywords` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `verified` int(11) DEFAULT NULL,
+  `verified_by` varchar(100) DEFAULT NULL,
+  `verified_on` text DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  `delist` int(11) DEFAULT 0,
+  `supplier_id` int(11) DEFAULT NULL,
+  `manufacture_time` text DEFAULT NULL,
+  `tag` text DEFAULT NULL,
+  `t_display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -7038,22 +6840,20 @@ CREATE TABLE IF NOT EXISTS `silver_product_studs` (
 -- Table structure for table `suppliers`
 --
 
-DROP TABLE IF EXISTS `suppliers`;
-CREATE TABLE IF NOT EXISTS `suppliers` (
-  `supplier_id` int NOT NULL AUTO_INCREMENT,
-  `supplier_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `contact_person` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `city` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `state` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `zip_code` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `country` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`supplier_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `suppliers` (
+  `supplier_id` int(11) NOT NULL,
+  `supplier_name` varchar(255) NOT NULL,
+  `contact_person` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `zip_code` varchar(10) DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `suppliers`
@@ -7071,29 +6871,25 @@ INSERT INTO `suppliers` (`supplier_id`, `supplier_name`, `contact_person`, `addr
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `fullname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `phone` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `security_question` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `security_answer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `address1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `address2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `city` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `state` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `pincode` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `security_question` varchar(255) NOT NULL,
+  `security_answer` varchar(255) NOT NULL,
+  `address1` varchar(255) NOT NULL,
+  `address2` varchar(255) DEFAULT NULL,
+  `city` varchar(50) NOT NULL,
+  `state` varchar(50) NOT NULL,
+  `pincode` varchar(10) NOT NULL,
   `dob` date NOT NULL DEFAULT '1970-01-01',
   `anniversary` date DEFAULT NULL,
-  `landmark` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `landmark` varchar(100) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `phone` (`phone`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -7103,7 +6899,7 @@ INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `password`, `security_q
 (1, 'Neraj Lal S', 'neraj@gmail.com', '8547470675', '8547', 'What city were you born in?', 'Kollam', 'Lal Bhavan Mukkoodu P.O Mulavana', 'Lal Bhavan Mukkoodu P.O Mulavana, Kollam', 'Kollam', 'Kerala', '691503', '2013-06-17', '2025-06-06', 'Hebron school', '2025-05-23 07:59:59', NULL),
 (2, 'Neraj Lal S', 'gokul@gmail.com', '8547479651', '2222', 'What city were you born in?', 'Alappuzha', 'Lal Bhavan Mukkoodu P.O Mulavana', 'Lal Bhavan Mukkoodu P.O Mulavana', 'Kollam', 'Kerala', '691504', '1970-01-01', NULL, 'Hebron', '2025-05-23 08:30:45', NULL),
 (3, 'Vaishna Sajeev', 'vaishnasreekutty@gmail.com', '7907493414', '2001', 'What was the name of your first school?', 'DIET ATTINGAL', 'parimahal', 'Paivelikkonam  Vettiyara P. O Navaikulam', 'Thiruvananthapuram', 'KERALA', '695603', '1970-01-01', NULL, 'Paivelikkonam Rationkada', '2025-06-11 13:40:26', NULL),
-(4, 'Gokul Jayakumar', 'higokul99@gmail.com', '8547349691', '0000', 'What is your favorite book?', 'You can win', 'Kollam', '', 'Kollam', 'Kerala', '691012', '1970-01-05', '2025-06-01', 'Temple', '2025-06-17 11:22:40', NULL);
+(4, 'Gokul Jayakumar', 'higokul99@gmail.com', '8547349691', '0000', 'What is your favorite book?', 'You can win', 'Kollam', '', 'Kollam', 'Kerala', '691012', '1999-10-12', '2025-06-01', 'Temple', '2025-06-17 11:22:40', NULL);
 
 -- --------------------------------------------------------
 
@@ -7111,22 +6907,19 @@ INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `password`, `security_q
 -- Table structure for table `user_schemes`
 --
 
-DROP TABLE IF EXISTS `user_schemes`;
-CREATE TABLE IF NOT EXISTS `user_schemes` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `scheme_type` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `scheme_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+CREATE TABLE `user_schemes` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `scheme_type` varchar(1) NOT NULL,
+  `scheme_name` varchar(50) NOT NULL,
   `monthly_amount` decimal(10,2) NOT NULL,
   `start_date` date NOT NULL,
-  `months_completed` int DEFAULT '0',
-  `status` enum('active','completed','cancelled') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'active',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `code` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `months_completed` int(11) DEFAULT 0,
+  `status` enum('active','completed','cancelled') DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `code` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_schemes`
@@ -7143,28 +6936,1157 @@ INSERT INTO `user_schemes` (`id`, `user_id`, `scheme_type`, `scheme_name`, `mont
 -- Table structure for table `user_wishlist`
 --
 
-DROP TABLE IF EXISTS `user_wishlist`;
-CREATE TABLE IF NOT EXISTS `user_wishlist` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `product_id` int NOT NULL,
+CREATE TABLE `user_wishlist` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `table_name` varchar(100) NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `unique_wishlist_item` (`user_id`,`product_id`,`table_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `created_at` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_wishlist`
 --
 
 INSERT INTO `user_wishlist` (`id`, `user_id`, `product_id`, `table_name`, `created_at`) VALUES
-(20, 1, 10, '18kgold_product_studs', '2025-06-27 09:35:24'),
-(18, 1, 8, '18kgold_product_rings', '2025-06-26 02:01:03'),
 (8, 1, 5, '18kgold_product_studs', '2025-06-19 03:00:28'),
+(18, 1, 8, '18kgold_product_rings', '2025-06-26 02:01:03'),
 (19, 1, 3, '18kgold_product_studs', '2025-06-27 09:35:17'),
+(20, 1, 10, '18kgold_product_studs', '2025-06-27 09:35:24'),
 (21, 4, 2, '22kgold_product_anklets', '2025-06-27 10:02:55'),
 (22, 4, 35, '22kgold_product_necklaces', '2025-07-01 08:09:01');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `18kdgold_product_anklets`
+--
+ALTER TABLE `18kdgold_product_anklets`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kdgold_product_bangles`
+--
+ALTER TABLE `18kdgold_product_bangles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kdgold_product_bracelets`
+--
+ALTER TABLE `18kdgold_product_bracelets`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kdgold_product_chains`
+--
+ALTER TABLE `18kdgold_product_chains`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kdgold_product_earrings`
+--
+ALTER TABLE `18kdgold_product_earrings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kdgold_product_fancychains`
+--
+ALTER TABLE `18kdgold_product_fancychains`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kdgold_product_necklaces`
+--
+ALTER TABLE `18kdgold_product_necklaces`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kdgold_product_nosepins`
+--
+ALTER TABLE `18kdgold_product_nosepins`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kdgold_product_pendants`
+--
+ALTER TABLE `18kdgold_product_pendants`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kdgold_product_rings`
+--
+ALTER TABLE `18kdgold_product_rings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kdgold_product_secondstuds`
+--
+ALTER TABLE `18kdgold_product_secondstuds`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kdgold_product_studs`
+--
+ALTER TABLE `18kdgold_product_studs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kgold_product_anklets`
+--
+ALTER TABLE `18kgold_product_anklets`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kgold_product_bangles`
+--
+ALTER TABLE `18kgold_product_bangles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kgold_product_bracelets`
+--
+ALTER TABLE `18kgold_product_bracelets`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kgold_product_chains`
+--
+ALTER TABLE `18kgold_product_chains`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kgold_product_earrings`
+--
+ALTER TABLE `18kgold_product_earrings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kgold_product_fancychains`
+--
+ALTER TABLE `18kgold_product_fancychains`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kgold_product_necklaces`
+--
+ALTER TABLE `18kgold_product_necklaces`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kgold_product_nosepins`
+--
+ALTER TABLE `18kgold_product_nosepins`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kgold_product_pendants`
+--
+ALTER TABLE `18kgold_product_pendants`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kgold_product_rings`
+--
+ALTER TABLE `18kgold_product_rings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kgold_product_secondstuds`
+--
+ALTER TABLE `18kgold_product_secondstuds`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `18kgold_product_studs`
+--
+ALTER TABLE `18kgold_product_studs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `22kgold_product_anklets`
+--
+ALTER TABLE `22kgold_product_anklets`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `22kgold_product_bangles`
+--
+ALTER TABLE `22kgold_product_bangles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `22kgold_product_bracelets`
+--
+ALTER TABLE `22kgold_product_bracelets`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `22kgold_product_chains`
+--
+ALTER TABLE `22kgold_product_chains`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `22kgold_product_earrings`
+--
+ALTER TABLE `22kgold_product_earrings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `22kgold_product_fancychains`
+--
+ALTER TABLE `22kgold_product_fancychains`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `22kgold_product_kadas`
+--
+ALTER TABLE `22kgold_product_kadas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `22kgold_product_necklaces`
+--
+ALTER TABLE `22kgold_product_necklaces`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `22kgold_product_nosepins`
+--
+ALTER TABLE `22kgold_product_nosepins`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `22kgold_product_pendants`
+--
+ALTER TABLE `22kgold_product_pendants`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `22kgold_product_rings`
+--
+ALTER TABLE `22kgold_product_rings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `22kgold_product_secondstuds`
+--
+ALTER TABLE `22kgold_product_secondstuds`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `22kgold_product_studs`
+--
+ALTER TABLE `22kgold_product_studs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userid` (`userid`),
+  ADD KEY `productid` (`productid`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`cat_id`),
+  ADD UNIQUE KEY `cat_id` (`cat_id`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Indexes for table `categories_subs`
+--
+ALTER TABLE `categories_subs`
+  ADD PRIMARY KEY (`sub_cat_id`),
+  ADD UNIQUE KEY `sil_sub_cat_id` (`sub_cat_id`),
+  ADD KEY `sil_cat_id` (`cat_id`);
+
+--
+-- Indexes for table `goldrate`
+--
+ALTER TABLE `goldrate`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `goldrate_history`
+--
+ALTER TABLE `goldrate_history`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gold_schemes`
+--
+ALTER TABLE `gold_schemes`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `scheme_code` (`scheme_code`);
+
+--
+-- Indexes for table `gst`
+--
+ALTER TABLE `gst`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `job_positions`
+--
+ALTER TABLE `job_positions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `log_table`
+--
+ALTER TABLE `log_table`
+  ADD PRIMARY KEY (`log_id`);
+
+--
+-- Indexes for table `maintances`
+--
+ALTER TABLE `maintances`
+  ADD PRIMARY KEY (`mid`);
+
+--
+-- Indexes for table `making_charges`
+--
+ALTER TABLE `making_charges`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `metals`
+--
+ALTER TABLE `metals`
+  ADD PRIMARY KEY (`metal_id`),
+  ADD UNIQUE KEY `code` (`code`);
+
+--
+-- Indexes for table `metals_purity`
+--
+ALTER TABLE `metals_purity`
+  ADD PRIMARY KEY (`metalpurity_id`);
+
+--
+-- Indexes for table `metals_rates`
+--
+ALTER TABLE `metals_rates`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `metals_rates_history`
+--
+ALTER TABLE `metals_rates_history`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `models`
+--
+ALTER TABLE `models`
+  ADD PRIMARY KEY (`model_id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userid` (`userid`),
+  ADD KEY `productid` (`productid`);
+
+--
+-- Indexes for table `product_activity_log`
+--
+ALTER TABLE `product_activity_log`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_codes`
+--
+ALTER TABLE `product_codes`
+  ADD PRIMARY KEY (`product_code_id`),
+  ADD UNIQUE KEY `full_code` (`full_code`);
+
+--
+-- Indexes for table `product_code_prefix`
+--
+ALTER TABLE `product_code_prefix`
+  ADD PRIMARY KEY (`pc_prefix_id`),
+  ADD UNIQUE KEY `code` (`code`);
+
+--
+-- Indexes for table `rosegold_product_anklets`
+--
+ALTER TABLE `rosegold_product_anklets`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `rosegold_product_bangles`
+--
+ALTER TABLE `rosegold_product_bangles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `rosegold_product_bracelets`
+--
+ALTER TABLE `rosegold_product_bracelets`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `rosegold_product_chains`
+--
+ALTER TABLE `rosegold_product_chains`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `rosegold_product_earrings`
+--
+ALTER TABLE `rosegold_product_earrings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `rosegold_product_fancychains`
+--
+ALTER TABLE `rosegold_product_fancychains`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `rosegold_product_necklaces`
+--
+ALTER TABLE `rosegold_product_necklaces`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `rosegold_product_nosepins`
+--
+ALTER TABLE `rosegold_product_nosepins`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `rosegold_product_pendants`
+--
+ALTER TABLE `rosegold_product_pendants`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `rosegold_product_rings`
+--
+ALTER TABLE `rosegold_product_rings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `rosegold_product_secondstuds`
+--
+ALTER TABLE `rosegold_product_secondstuds`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `rosegold_product_studs`
+--
+ALTER TABLE `rosegold_product_studs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `scheme_payments`
+--
+ALTER TABLE `scheme_payments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `scheme_id` (`scheme_id`);
+
+--
+-- Indexes for table `silver_product_anklets`
+--
+ALTER TABLE `silver_product_anklets`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `silver_product_bangles`
+--
+ALTER TABLE `silver_product_bangles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `silver_product_bracelets`
+--
+ALTER TABLE `silver_product_bracelets`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `silver_product_chains`
+--
+ALTER TABLE `silver_product_chains`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `silver_product_earrings`
+--
+ALTER TABLE `silver_product_earrings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `silver_product_fancychains`
+--
+ALTER TABLE `silver_product_fancychains`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `silver_product_kadas`
+--
+ALTER TABLE `silver_product_kadas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `silver_product_necklaces`
+--
+ALTER TABLE `silver_product_necklaces`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `silver_product_nosepins`
+--
+ALTER TABLE `silver_product_nosepins`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `silver_product_pendants`
+--
+ALTER TABLE `silver_product_pendants`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `silver_product_rings`
+--
+ALTER TABLE `silver_product_rings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `silver_product_secondstuds`
+--
+ALTER TABLE `silver_product_secondstuds`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `silver_product_studs`
+--
+ALTER TABLE `silver_product_studs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_metalpurity` (`metalpurity_id`);
+
+--
+-- Indexes for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  ADD PRIMARY KEY (`supplier_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `phone` (`phone`);
+
+--
+-- Indexes for table `user_schemes`
+--
+ALTER TABLE `user_schemes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `user_wishlist`
+--
+ALTER TABLE `user_wishlist`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_wishlist_item` (`user_id`,`product_id`,`table_name`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `18kdgold_product_anklets`
+--
+ALTER TABLE `18kdgold_product_anklets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `18kdgold_product_bangles`
+--
+ALTER TABLE `18kdgold_product_bangles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `18kdgold_product_bracelets`
+--
+ALTER TABLE `18kdgold_product_bracelets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `18kdgold_product_chains`
+--
+ALTER TABLE `18kdgold_product_chains`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `18kdgold_product_earrings`
+--
+ALTER TABLE `18kdgold_product_earrings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `18kdgold_product_fancychains`
+--
+ALTER TABLE `18kdgold_product_fancychains`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `18kdgold_product_necklaces`
+--
+ALTER TABLE `18kdgold_product_necklaces`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `18kdgold_product_nosepins`
+--
+ALTER TABLE `18kdgold_product_nosepins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `18kdgold_product_pendants`
+--
+ALTER TABLE `18kdgold_product_pendants`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `18kdgold_product_rings`
+--
+ALTER TABLE `18kdgold_product_rings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `18kdgold_product_secondstuds`
+--
+ALTER TABLE `18kdgold_product_secondstuds`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `18kdgold_product_studs`
+--
+ALTER TABLE `18kdgold_product_studs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `18kgold_product_anklets`
+--
+ALTER TABLE `18kgold_product_anklets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `18kgold_product_bangles`
+--
+ALTER TABLE `18kgold_product_bangles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `18kgold_product_bracelets`
+--
+ALTER TABLE `18kgold_product_bracelets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `18kgold_product_chains`
+--
+ALTER TABLE `18kgold_product_chains`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `18kgold_product_earrings`
+--
+ALTER TABLE `18kgold_product_earrings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `18kgold_product_fancychains`
+--
+ALTER TABLE `18kgold_product_fancychains`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `18kgold_product_necklaces`
+--
+ALTER TABLE `18kgold_product_necklaces`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `18kgold_product_nosepins`
+--
+ALTER TABLE `18kgold_product_nosepins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `18kgold_product_pendants`
+--
+ALTER TABLE `18kgold_product_pendants`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `18kgold_product_rings`
+--
+ALTER TABLE `18kgold_product_rings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `18kgold_product_secondstuds`
+--
+ALTER TABLE `18kgold_product_secondstuds`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `18kgold_product_studs`
+--
+ALTER TABLE `18kgold_product_studs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `22kgold_product_anklets`
+--
+ALTER TABLE `22kgold_product_anklets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `22kgold_product_bangles`
+--
+ALTER TABLE `22kgold_product_bangles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT for table `22kgold_product_bracelets`
+--
+ALTER TABLE `22kgold_product_bracelets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `22kgold_product_chains`
+--
+ALTER TABLE `22kgold_product_chains`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `22kgold_product_earrings`
+--
+ALTER TABLE `22kgold_product_earrings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+
+--
+-- AUTO_INCREMENT for table `22kgold_product_fancychains`
+--
+ALTER TABLE `22kgold_product_fancychains`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+
+--
+-- AUTO_INCREMENT for table `22kgold_product_kadas`
+--
+ALTER TABLE `22kgold_product_kadas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `22kgold_product_necklaces`
+--
+ALTER TABLE `22kgold_product_necklaces`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `22kgold_product_nosepins`
+--
+ALTER TABLE `22kgold_product_nosepins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `22kgold_product_pendants`
+--
+ALTER TABLE `22kgold_product_pendants`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `22kgold_product_rings`
+--
+ALTER TABLE `22kgold_product_rings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT for table `22kgold_product_secondstuds`
+--
+ALTER TABLE `22kgold_product_secondstuds`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `22kgold_product_studs`
+--
+ALTER TABLE `22kgold_product_studs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `cat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `categories_subs`
+--
+ALTER TABLE `categories_subs`
+  MODIFY `sub_cat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+
+--
+-- AUTO_INCREMENT for table `goldrate_history`
+--
+ALTER TABLE `goldrate_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+
+--
+-- AUTO_INCREMENT for table `gold_schemes`
+--
+ALTER TABLE `gold_schemes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `gst`
+--
+ALTER TABLE `gst`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `job_positions`
+--
+ALTER TABLE `job_positions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `log_table`
+--
+ALTER TABLE `log_table`
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `maintances`
+--
+ALTER TABLE `maintances`
+  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `making_charges`
+--
+ALTER TABLE `making_charges`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `metals`
+--
+ALTER TABLE `metals`
+  MODIFY `metal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `metals_purity`
+--
+ALTER TABLE `metals_purity`
+  MODIFY `metalpurity_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `metals_rates`
+--
+ALTER TABLE `metals_rates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `metals_rates_history`
+--
+ALTER TABLE `metals_rates_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `models`
+--
+ALTER TABLE `models`
+  MODIFY `model_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `product_activity_log`
+--
+ALTER TABLE `product_activity_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `product_codes`
+--
+ALTER TABLE `product_codes`
+  MODIFY `product_code_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=842;
+
+--
+-- AUTO_INCREMENT for table `product_code_prefix`
+--
+ALTER TABLE `product_code_prefix`
+  MODIFY `pc_prefix_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `rosegold_product_anklets`
+--
+ALTER TABLE `rosegold_product_anklets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `rosegold_product_bangles`
+--
+ALTER TABLE `rosegold_product_bangles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `rosegold_product_bracelets`
+--
+ALTER TABLE `rosegold_product_bracelets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT for table `rosegold_product_chains`
+--
+ALTER TABLE `rosegold_product_chains`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `rosegold_product_earrings`
+--
+ALTER TABLE `rosegold_product_earrings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `rosegold_product_fancychains`
+--
+ALTER TABLE `rosegold_product_fancychains`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `rosegold_product_necklaces`
+--
+ALTER TABLE `rosegold_product_necklaces`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `rosegold_product_nosepins`
+--
+ALTER TABLE `rosegold_product_nosepins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `rosegold_product_pendants`
+--
+ALTER TABLE `rosegold_product_pendants`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `rosegold_product_rings`
+--
+ALTER TABLE `rosegold_product_rings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT for table `rosegold_product_secondstuds`
+--
+ALTER TABLE `rosegold_product_secondstuds`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `rosegold_product_studs`
+--
+ALTER TABLE `rosegold_product_studs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `scheme_payments`
+--
+ALTER TABLE `scheme_payments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `silver_product_anklets`
+--
+ALTER TABLE `silver_product_anklets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `silver_product_bangles`
+--
+ALTER TABLE `silver_product_bangles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `silver_product_bracelets`
+--
+ALTER TABLE `silver_product_bracelets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `silver_product_chains`
+--
+ALTER TABLE `silver_product_chains`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `silver_product_earrings`
+--
+ALTER TABLE `silver_product_earrings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `silver_product_fancychains`
+--
+ALTER TABLE `silver_product_fancychains`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `silver_product_kadas`
+--
+ALTER TABLE `silver_product_kadas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `silver_product_necklaces`
+--
+ALTER TABLE `silver_product_necklaces`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `silver_product_nosepins`
+--
+ALTER TABLE `silver_product_nosepins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `silver_product_pendants`
+--
+ALTER TABLE `silver_product_pendants`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `silver_product_rings`
+--
+ALTER TABLE `silver_product_rings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
+--
+-- AUTO_INCREMENT for table `silver_product_secondstuds`
+--
+ALTER TABLE `silver_product_secondstuds`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `silver_product_studs`
+--
+ALTER TABLE `silver_product_studs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `user_schemes`
+--
+ALTER TABLE `user_schemes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `user_wishlist`
+--
+ALTER TABLE `user_wishlist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
