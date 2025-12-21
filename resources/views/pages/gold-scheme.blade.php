@@ -1,114 +1,257 @@
 @extends('layouts.app')
 
+@push('styles')
+<style>
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+    0% { transform: translateY(10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+.animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+}
+</style>
+@endpush
+
 @section('content')
-<div class="max-w-6xl mx-auto px-4 py-12">
-    <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-blue-900 mb-4">Gold Scheme Booking</h1>
-        <p class="text-xl text-gray-600">Save systematically for your dream jewelry</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-12 mb-12">
-        <div>
-            <h2 class="text-2xl font-semibold text-blue-900 mb-6">Scheme Benefits</h2>
-            <ul class="space-y-4">
-                <li class="flex items-start">
-                    <span class="text-yellow-500 text-2xl mr-3">✓</span>
-                    <div>
-                        <h3 class="font-semibold text-gray-800">Monthly Savings</h3>
-                        <p class="text-gray-600">Save a fixed amount every month</p>
-                    </div>
-                </li>
-                <li class="flex items-start">
-                    <span class="text-yellow-500 text-2xl mr-3">✓</span>
-                    <div>
-                        <h3 class="font-semibold text-gray-800">Bonus Amount</h3>
-                        <p class="text-gray-600">Get bonus on completion</p>
-                    </div>
-                </li>
-                <li class="flex items-start">
-                    <span class="text-yellow-500 text-2xl mr-3">✓</span>
-                    <div>
-                        <h3 class="font-semibold text-gray-800">Flexible Plans</h3>
-                        <p class="text-gray-600">Choose 11 or 12 month plans</p>
-                    </div>
-                </li>
-                <li class="flex items-start">
-                    <span class="text-yellow-500 text-2xl mr-3">✓</span>
-                    <div>
-                        <h3 class="font-semibold text-gray-800">No Making Charges</h3>
-                        <p class="text-gray-600">Waiver on making charges</p>
-                    </div>
-                </li>
-            </ul>
+<main class="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Page Header -->
+        <div class="text-center mb-12 animate-fade-in">
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-900 to-slate-900 bg-clip-text text-transparent mb-4">
+                Gold Saving Scheme
+            </h1>
+            <p class="text-gray-600 text-lg">Invest smartly and fulfill your golden dreams with our exclusive scheme</p>
         </div>
 
-        <div class="bg-white rounded-lg shadow-lg p-8">
-            <h2 class="text-2xl font-semibold text-blue-900 mb-6">Enroll Now</h2>
-            <form class="space-y-4">
-                @csrf
-                <div>
-                    <label class="block text-gray-700 text-sm font-medium mb-1">Full Name</label>
-                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-                </div>
-                <div>
-                    <label class="block text-gray-700 text-sm font-medium mb-1">Phone</label>
-                    <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-                </div>
-                <div>
-                    <label class="block text-gray-700 text-sm font-medium mb-1">Email</label>
-                    <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-                </div>
-                <div>
-                    <label class="block text-gray-700 text-sm font-medium mb-1">Scheme Duration</label>
-                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-                        <option value="">Select duration</option>
-                        <option>11 Months</option>
-                        <option>12 Months</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-gray-700 text-sm font-medium mb-1">Monthly Amount (₹)</label>
-                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-                        <option value="">Select amount</option>
-                        <option>₹5,000</option>
-                        <option>₹10,000</option>
-                        <option>₹15,000</option>
-                        <option>₹20,000</option>
-                        <option>₹25,000</option>
-                        <option>₹50,000</option>
-                    </select>
-                </div>
-                <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200">
-                    Enroll in Scheme
-                </button>
-            </form>
-        </div>
-    </div>
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Scheme Overview Card -->
+                <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-yellow-400/20 animate-fade-in">
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-coins text-blue-900 text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-slate-900">About Our Gold Scheme</h2>
+                        </div>
 
-    <div class="bg-yellow-50 rounded-lg p-8">
-        <h2 class="text-2xl font-semibold text-blue-900 mb-4 text-center">How It Works</h2>
-        <div class="grid md:grid-cols-4 gap-6 mt-8">
-            <div class="text-center">
-                <div class="bg-yellow-400 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mx-auto mb-3">1</div>
-                <h3 class="font-semibold text-gray-800 mb-2">Choose Plan</h3>
-                <p class="text-sm text-gray-600">Select monthly amount and duration</p>
+                        <div class="space-y-6 text-gray-700">
+                            <p><strong>Harees Jewellery</strong> introduces a customer-friendly <strong class="text-yellow-400">Gold Saving Scheme</strong> to help you invest smartly and fulfill your future jewellery aspirations with ease. Our monthly installment-based plan is tailored to make gold purchases more affordable and rewarding for you.</p>
+
+                            <div class="bg-gradient-to-r from-yellow-400/10 to-amber-100/20 p-6 rounded-xl border border-yellow-400/20">
+                                <h3 class="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    Why Join Our Gold Scheme?
+                                </h3>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check-circle text-yellow-400 mt-1"></i>
+                                        <span>Easy monthly contributions starting from a minimal amount</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check-circle text-yellow-400 mt-1"></i>
+                                        <span>Flexible tenure options (e.g., 11-month schemes)</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check-circle text-yellow-400 mt-1"></i>
+                                        <span>Exclusive discounts or bonus installment on maturity</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check-circle text-yellow-400 mt-1"></i>
+                                        <span>Secure and transparent process with regular updates</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check-circle text-yellow-400 mt-1"></i>
+                                        <span>Redemption available for wide range of jewellery collections</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How It Works Card -->
+                <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-yellow-400/20 animate-fade-in">
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-900 to-slate-900 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-cogs text-yellow-400 text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-slate-900">How It Works</h2>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <!-- Step 1 -->
+                                <div class="bg-gradient-to-br from-gray-50 to-blue-50/30 p-6 rounded-xl border border-yellow-400/20 group hover:shadow-md transition-all duration-300">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center text-blue-900 text-xl font-bold mb-4">
+                                        1
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Choose Your Plan</h3>
+                                    <p class="text-gray-600 text-sm">Select your preferred monthly amount and scheme duration</p>
+                                </div>
+                                
+                                <!-- Step 2 -->
+                                <div class="bg-gradient-to-br from-gray-50 to-blue-50/30 p-6 rounded-xl border border-yellow-400/20 group hover:shadow-md transition-all duration-300">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center text-blue-900 text-xl font-bold mb-4">
+                                        2
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Monthly Payments</h3>
+                                    <p class="text-gray-600 text-sm">Make regular contributions as per your selected plan</p>
+                                </div>
+                                
+                                <!-- Step 3 -->
+                                <div class="bg-gradient-to-br from-gray-50 to-blue-50/30 p-6 rounded-xl border border-yellow-400/20 group hover:shadow-md transition-all duration-300">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center text-blue-900 text-xl font-bold mb-4">
+                                        3
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Redeem & Enjoy</h3>
+                                    <p class="text-gray-600 text-sm">Purchase beautiful jewellery with your accumulated amount</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-gradient-to-r from-yellow-400/10 to-amber-100/20 p-6 rounded-xl border border-yellow-400/20">
+                                <p class="text-gray-700">
+                                    You choose a comfortable monthly installment amount. Contribute the same amount each month for a fixed period. Upon completion of the scheme, the accumulated amount (plus benefits, if applicable) can be used to purchase gold jewellery of your choice.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Schemes Card -->
+                <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-yellow-400/20 animate-fade-in">
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-calendar-alt text-blue-900 text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-slate-900">Available Schemes</h2>
+                        </div>
+
+                        <h2>VIEW ALL SCHEMES - <a href="/ugoldscheme" style="color:blue">Click here</a></h2>
+                    </div>
+                </div>
             </div>
-            <div class="text-center">
-                <div class="bg-yellow-400 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mx-auto mb-3">2</div>
-                <h3 class="font-semibold text-gray-800 mb-2">Pay Monthly</h3>
-                <p class="text-sm text-gray-600">Make regular monthly payments</p>
-            </div>
-            <div class="text-center">
-                <div class="bg-yellow-400 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mx-auto mb-3">3</div>
-                <h3 class="font-semibold text-gray-800 mb-2">Get Bonus</h3>
-                <p class="text-sm text-gray-600">Receive bonus on completion</p>
-            </div>
-            <div class="text-center">
-                <div class="bg-yellow-400 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mx-auto mb-3">4</div>
-                <h3 class="font-semibold text-gray-800 mb-2">Buy Jewelry</h3>
-                <p class="text-sm text-gray-600">Purchase your dream jewelry</p>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-8 space-y-6">
+                    <!-- Enquiry Card -->
+                    <div class="bg-gradient-to-br from-blue-900 via-slate-900 to-slate-900 rounded-2xl shadow-2xl p-6 text-white animate-slide-up border border-yellow-400/20">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-xl font-bold text-yellow-400 flex items-center gap-2">
+                                <i class="fas fa-headset"></i>
+                                CONTACT TO ENROLL
+                            </h3>
+                        </div>
+
+                        <div class="space-y-4 mb-6">
+                            <p class="text-white/90">
+                                Interested in joining our Gold Saving Scheme? Contact us to get full details, documentation, and assistance with enrollment.
+                            </p>
+
+                            <a href="/ugoldscheme" class="block w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-bold py-4 px-6 rounded-xl hover:from-yellow-600 hover:to-yellow-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-book text-white text-xl group-hover:scale-110 transition-transform"></i>
+                                    <span>VIEW ALL SCHEMES</span>
+                                </div>
+                                <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                            </a>
+                            
+                            <a href="https://wa.me/{{ str_replace(['+', ' '], '', config('shop.contact.phone')) }}" target="_blank" class="block w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-4 px-6 rounded-xl hover:from-green-600 hover:to-green-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <i class="fab fa-whatsapp text-white text-xl group-hover:scale-110 transition-transform"></i>
+                                    <span>WHATSAPP US</span>
+                                </div>
+                                <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                            </a>
+                            
+                            <a href="tel:{{ str_replace(['+', ' '], '', config('shop.contact.phone')) }}" class="block w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-4 px-6 rounded-xl hover:from-blue-600 hover:to-blue-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-phone-alt text-white text-xl group-hover:scale-110 transition-transform"></i>
+                                    <span>CALL US</span>
+                                </div>
+                                <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                            </a>
+                        </div>
+
+                        <div class="text-center text-white/90 text-sm">
+                            <p class="mb-2">Our team will collect necessary KYC information and scheme preferences before initiating your membership.</p>
+                            <p>We are happy to guide you through every step.</p>
+                        </div>
+                    </div>
+
+                    <!-- Benefits Card -->
+                    <div class="bg-gradient-to-br from-yellow-400 via-amber-500 to-yellow-600 rounded-2xl shadow-2xl p-6 text-blue-900 animate-slide-up border border-yellow-400/20">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-xl font-bold text-blue-900 flex items-center gap-2">
+                                <i class="fas fa-medal"></i>
+                                SCHEME BENEFITS
+                            </h3>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-white/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-lock text-blue-900 text-sm"></i>
+                                </div>
+                                <p class="text-blue-900 font-medium">Secure investment with transparent tracking</p>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-white/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-percentage text-blue-900 text-sm"></i>
+                                </div>
+                                <p class="text-blue-900 font-medium">Bonus amounts on scheme completion</p>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-white/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-gem text-blue-900 text-sm"></i>
+                                </div>
+                                <p class="text-blue-900 font-medium">Exclusive access to premium collections</p>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-white/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-tag text-blue-900 text-sm"></i>
+                                </div>
+                                <p class="text-blue-900 font-medium">Special discounts for scheme members</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Policies Card -->
+                    <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-yellow-400/20 animate-slide-up">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                            <i class="fas fa-file-contract text-yellow-400"></i>
+                            IMPORTANT POLICIES
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <a href="{{ route('refund-policy') }}" class="block w-full bg-gradient-to-r from-gray-50 to-blue-50/30 text-blue-900 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-gray-100 hover:to-blue-100/30 transition-all duration-300 flex items-center justify-between group">
+                                <span>Refund Policy</span>
+                                <i class="fas fa-chevron-right text-yellow-400 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                            
+                            <a href="{{ route('return-exchange') }}" class="block w-full bg-gradient-to-r from-gray-50 to-blue-50/30 text-blue-900 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-gray-100 hover:to-blue-100/30 transition-all duration-300 flex items-center justify-between group">
+                                <span>Return & Exchange Policy</span>
+                                <i class="fas fa-chevron-right text-yellow-400 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</main>
 @endsection

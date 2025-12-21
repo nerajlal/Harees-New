@@ -47,4 +47,41 @@ return [
         '24k' => env('GOLD_RATE_24K', 9100),
     ],
 
+    'stores' => [
+        'paravur' => [
+            'name' => 'Harees Jewellery – Paravur, Kollam',
+            'address_line1' => 'Harees Jewellery',
+            'address_line2' => 'Thekkumbhagam Road, Paravur',
+            'city' => 'Kollam',
+            'state' => 'Kerala',
+            'phone1' => '0474 251 3485',
+            'phone2' => '+91 98474 73431',
+            'whatsapp' => '+91 89213 87392',
+            'map_url' => 'https://maps.app.goo.gl/Stf7o19wp6fP2Ly7A',
+        ],
+        'chinnakada' => [
+            'name' => 'Harees Gold & Diamonds – Chinnakada, Kollam',
+            'address_line1' => 'Harees Gold & Diamonds',
+            'address_line2' => 'Vadayattukota Road, Chinnakada',
+            'city' => 'Kollam',
+            'state' => 'Kerala',
+            'pincode' => '691010',
+            'phone1' => '+91 80865 94491',
+            'phone2' => '+91 89213 87392',
+            'whatsapp' => '+91 89213 87392',
+            'map_url' => 'https://maps.app.goo.gl/x5osJoQdeurrpnS3A',
+        ],
+        'koottikkada' => [
+            'name' => 'Harees Jewellery – Koottikkada, Kollam',
+            'address_line1' => 'Harees Jewellery',
+            'address_line2' => 'Koottikkada Road, Koottikkada',
+            'city' => 'Kollam',
+            'state' => 'Kerala',
+            'phone1' => '0474 272 9767',
+            'phone2' => '+91 94469 09960',
+            'whatsapp' => '+91 89213 87392',
+            'map_url' => 'https://maps.app.goo.gl/XQRF4VqnKn4RbNB2A',
+        ],
+    ],
+
 ];
