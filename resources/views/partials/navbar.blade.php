@@ -16,8 +16,9 @@
 
         <!-- Rest of your mega menu sections remain the same -->
         <!-- First Mega Menu Section -->
+        <div id="mega-menu-icons" class="items-center justify-center hidden w-full md:flex md:w-auto md:order-1 flex-col md:flex-row">
         <div id="mega-menu-icons-1"
-                class="items-center justify-center hidden w-full mx-10 md:flex md:w-auto md:order-1">
+                class="items-center justify-center w-full mx-2 border-b md:border-0 border-yellow-500 md:mx-10 flex md:w-auto">
             <ul class="flex flex-col items-center justify-center mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
                 <li>
                     <button id="mega-menu-icons-dropdown-button-1" data-dropdown-toggle="mega-menu-icons-dropdown-1"
@@ -272,7 +273,7 @@
 
             <!-- Second Mega Menu Section -->
             <div id="mega-menu-icons-2"
-                class="items-center justify-between hidden w-full mx-10 md:flex md:w-auto md:order-1">
+                class="items-center justify-between w-full mx-2 border-b md:border-0 border-yellow-500 md:mx-10 flex md:w-auto">
                 <ul class="flex flex-col items-center justify-center mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
                     <li>
                         <button id="mega-menu-icons-dropdown-button-2" data-dropdown-toggle="mega-menu-icons-dropdown-2"
@@ -527,7 +528,7 @@
 
             <!-- third menu link -->
             <div id="mega-menu-icons-3"
-                class="items-center justify-between hidden w-full mx-10 md:flex md:w-auto md:order-1">
+                class="items-center justify-between w-full mx-2 border-b md:border-0 border-yellow-500 md:mx-10 flex md:w-auto">
                 <ul class="flex flex-col items-center justify-center mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
                     <li>
                         <button id="mega-menu-icons-dropdown-button-3" data-dropdown-toggle="mega-menu-icons-dropdown-3"
@@ -782,7 +783,7 @@
 
             <!-- forth menu link -->
             <div id="mega-menu-icons-4"
-                class="items-center justify-between hidden w-full mx-10 md:flex md:w-auto md:order-1">
+                class="items-center justify-between w-full mx-2 border-b md:border-0 border-yellow-500 md:mx-10 flex md:w-auto">
                 <ul class="flex flex-col items-center justify-center mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
                     <li>
                         <button id="mega-menu-icons-dropdown-button-4" data-dropdown-toggle="mega-menu-icons-dropdown-4"
@@ -1039,7 +1040,7 @@
 
             <!-- 6th menu link -->
             <div id="mega-menu-icons-5"
-                class="items-center justify-between hidden w-full mx-10 md:flex md:w-auto md:order-1">
+                class="items-center justify-between w-full mx-2 border-b md:border-0 border-yellow-500 md:mx-10 flex md:w-auto">
                 <ul class="flex flex-col items-center justify-center mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
                     <li>
                         <button id="mega-menu-icons-dropdown-button-5" data-dropdown-toggle="mega-menu-icons-dropdown-5"
@@ -1292,6 +1293,7 @@
                 </ul>
             </div>
 
+        </div>
         </div>
     </nav>
 

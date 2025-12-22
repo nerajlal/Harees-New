@@ -190,6 +190,8 @@
     </div>
     
     <div class="overlay fixed inset-0 bg-black/50 z-30 hidden" id="filterOverlay"></div>
+    <div class="overlay fixed inset-0 bg-black/50 z-30 hidden" id="filterOverlay"></div>
+    <div id="wishlistMessage" class="fixed top-24 right-5 bg-blue-500 text-white px-4 py-2 rounded shadow-lg transition-opacity duration-300 opacity-0 z-50 pointer-events-none"></div>
 </div>
 @endsection
 
@@ -263,13 +265,65 @@ document.addEventListener("DOMContentLoaded", function () {
         applyFilters();
     });
     
-     document.querySelectorAll('.wishlist-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
+    document.querySelectorAll('.wishlist-btn').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
             e.preventDefault();
             e.stopPropagation();
-            alert('Wishlist functionality coming soon');
+
+            const productId = btn.dataset.productId;
+            const tableName = btn.dataset.tableName;
+            const icon = btn.querySelector('i');
+            const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+            if (!token) return;
+
+            try {
+                const response = await fetch("{{ route('wishlist.toggle') }}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': token
+                    },
+                    body: JSON.stringify({
+                        product_id: productId,
+                        table_name: tableName
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    if (data.action === 'added') {
+                        icon.classList.remove('far', 'text-gray-600');
+                        icon.classList.add('fas', 'text-red-500');
+                        btn.classList.add('active');
+                        btn.setAttribute('aria-label', 'Remove from wishlist');
+                        showToast('Added to Wishlist');
+                    } else {
+                        icon.classList.remove('fas', 'text-red-500');
+                        icon.classList.add('far', 'text-gray-600');
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-label', 'Add to wishlist');
+                        showToast('Removed from Wishlist');
+                    }
+                }
+            } catch (error) {
+                console.error('Wishlist request failed', error);
+                showToast('Error updating wishlist');
+            }
         });
     });
+
+    function showToast(message) {
+        const toast = document.getElementById('wishlistMessage');
+        if(toast) {
+            toast.textContent = message;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+               toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+    }
 });
 </script>
 @endpush

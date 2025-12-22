@@ -367,30 +367,73 @@ document.addEventListener("DOMContentLoaded", function () {
     // Note: User hasn't requested wishlist controller yet, so the button is visual or needs a placeholder.
     // I will add a simple functionality that hits the route if implementation plan says "Create WishlistController" later.
     // For now, let's just leave the visual toggle or error.
+    // Live Wishlist Logic
     document.querySelectorAll('.wishlist-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', async (e) => {
             e.preventDefault();
             e.stopPropagation();
-            // TODO: Implement AJAX call to WishlistController when available
-            // For now just toggle UI
+
+            const productId = btn.dataset.productId;
+            const tableName = btn.dataset.tableName;
             const icon = btn.querySelector('i');
-            if(icon.classList.contains('fa-heart')) {
-                // Remove
-                icon.classList.remove('fa-heart', 'text-red-500', 'fas');
-                icon.classList.add('fa-heart', 'text-gray-600', 'far'); // Wait, fa-heart is both. 'fas' vs 'far'.
-                // Active: fas fa-heart text-red-500
-                // Inactive: far fa-heart text-gray-600
-                // btn.classList.remove('active');
-                alert('Wishlist functionality coming soon');
-            } else {
-                // Add
-                // icon.classList.remove('far', 'text-gray-600');
-                // icon.classList.add('fas', 'text-red-500');
-                // btn.classList.add('active');
-                 alert('Wishlist functionality coming soon');
+            const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+            if (!token) {
+                console.error('CSRF token not found');
+                return;
+            }
+
+            try {
+                const response = await fetch("{{ route('wishlist.toggle') }}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': token
+                    },
+                    body: JSON.stringify({
+                        product_id: productId,
+                        table_name: tableName
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    if (data.action === 'added') {
+                        icon.classList.remove('far', 'text-gray-600');
+                        icon.classList.add('fas', 'text-red-500');
+                        btn.classList.add('active');
+                        btn.setAttribute('aria-label', 'Remove from wishlist');
+                        showToast('Added to Wishlist');
+                    } else {
+                        icon.classList.remove('fas', 'text-red-500');
+                        icon.classList.add('far', 'text-gray-600');
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-label', 'Add to wishlist');
+                        showToast('Removed from Wishlist');
+                    }
+                    
+                    // Optional: Update header count if we had a live count element accessible
+                } else {
+                    console.error('Wishlist error:', data.message);
+                }
+            } catch (error) {
+                console.error('Wishlist request failed', error);
+                showToast('Error updating wishlist');
             }
         });
     });
+
+    function showToast(message) {
+        const toast = document.getElementById('wishlistMessage');
+        if(toast) {
+            toast.textContent = message;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+               toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+    }
 
     function renderActiveChips() {
         const container = document.getElementById('activeFilters');
