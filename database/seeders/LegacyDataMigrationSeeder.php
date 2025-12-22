@@ -56,7 +56,7 @@ class LegacyDataMigrationSeeder extends Seeder
             foreach ($catMap as $suffix => $slug) {
                 $tableName = "{$prefix}_product_{$suffix}";
                 
-                if (Schema::hasTable($tableName)) {
+                if (Schema::connection('legacy')->hasTable($tableName)) {
                     $this->command->info("Migrating from {$tableName}...");
                     $this->migrateTable($tableName, $meta, $slug);
                 }
@@ -66,7 +66,7 @@ class LegacyDataMigrationSeeder extends Seeder
 
     private function migrateTable($tableName, $meta, $categorySlug)
     {
-        $rows = DB::table($tableName)->get();
+        $rows = DB::connection('legacy')->table($tableName)->get();
         
         $metal = Metal::where('name', $meta['metal'])->first();
         $purity = MetalPurity::where('name', $meta['purity'])->first();
