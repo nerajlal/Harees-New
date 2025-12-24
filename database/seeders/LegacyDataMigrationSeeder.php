@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\User;
 use App\Models\Metal;
 use App\Models\MetalPurity;
 use App\Models\ProductImage;
@@ -23,17 +24,12 @@ class LegacyDataMigrationSeeder extends Seeder
     {
         // Define all legacy tables and their mapping to Metal/Purity
         $legacyMap = [
-            // 22K Gold
             '22kgold' => ['metal' => 'Gold', 'purity' => '22K Gold'],
-            // 18K Gold
             '18kgold' => ['metal' => 'Gold', 'purity' => '18K Gold'],
-            // Silver
-            'silver' => ['metal' => 'Silver', 'purity' => '925 Silver'], // Assumption
-            // Rose Gold
+            'silver' => ['metal' => 'Silver', 'purity' => '925 Silver'],
             'rosegold' => ['metal' => 'Rose Gold', 'purity' => '18K Rose Gold'],
-            // 18K Diamond (18kdgold)
             '18kdgold' => ['metal' => 'Gold', 'purity' => '18K Gold', 'diamond' => true],
-            '18kd' => ['metal' => 'Gold', 'purity' => '18K Gold', 'diamond' => true], // Sometimes named 18kd_
+            '18kd' => ['metal' => 'Gold', 'purity' => '18K Gold', 'diamond' => true],
         ];
 
         // Categories Map (Legacy Suffix -> New Slug)
@@ -56,17 +52,52 @@ class LegacyDataMigrationSeeder extends Seeder
             foreach ($catMap as $suffix => $slug) {
                 $tableName = "{$prefix}_product_{$suffix}";
                 
-                if (Schema::connection('legacy')->hasTable($tableName)) {
+                if (Schema::hasTable($tableName)) {
                     $this->command->info("Migrating from {$tableName}...");
                     $this->migrateTable($tableName, $meta, $slug);
                 }
             }
         }
+        
+        $this->migrateUsers();
+    }
+
+    private function migrateUsers()
+    {
+        $legacyUsersTable = 'legacy_users';
+        if (Schema::hasTable($legacyUsersTable)) {
+            $this->command->info("Migrating Users from {$legacyUsersTable}...");
+            $legacyUsers = DB::table($legacyUsersTable)->get();
+            
+            foreach ($legacyUsers as $lUser) {
+                if (User::where('phone', $lUser->phone)->exists()) continue;
+                
+                User::create([
+                    'fullname' => $lUser->fullname ?? $lUser->name ?? 'User',
+                    'email' => $lUser->email,
+                    'phone' => $lUser->phone,
+                    'password' => $lUser->password, // Plain text
+                    'address1' => $lUser->address1 ?? '',
+                    'address2' => $lUser->address2 ?? '',
+                    'city' => $lUser->city ?? '',
+                    'state' => $lUser->state ?? '',
+                    'pincode' => $lUser->pincode ?? '',
+                    'dob' => $lUser->dob ?? null,
+                    'anniversary' => $lUser->anniversary ?? null,
+                    'security_question' => $lUser->security_question ?? '',
+                    'security_answer' => $lUser->security_answer ?? '',
+                    'landmark' => $lUser->landmark ?? '',
+                ]);
+            }
+        } else {
+             $this->command->warn("Legacy users table ($legacyUsersTable) not found.");
+        }
     }
 
     private function migrateTable($tableName, $meta, $categorySlug)
     {
-        $rows = DB::connection('legacy')->table($tableName)->get();
+        // Use default connection instead of legacy since we are in same DB now
+        $rows = DB::table($tableName)->get();
         
         $metal = Metal::where('name', $meta['metal'])->first();
         $purity = MetalPurity::where('name', $meta['purity'])->first();
@@ -82,7 +113,6 @@ class LegacyDataMigrationSeeder extends Seeder
             $product = Product::create([
                 'product_code' => $row->product_code,
                 'name' => $row->name ?? 'Unknown Product',
-                // Handle null slug or duplicate slug possibility
                 'slug' => Str::slug($row->name . '-' . $row->product_code),
                 'description' => $row->description,
                 
@@ -97,7 +127,7 @@ class LegacyDataMigrationSeeder extends Seeder
                 'gender' => $row->gender ?? 'Unisex',
                 'size' => $row->size,
                 'gross_weight' => $row->gross_weight ?? 0,
-                'net_weight' => $row->net_weight, // Nullable in new DB
+                'net_weight' => $row->net_weight, 
                 
                 // Specs
                 'stone_available' => $row->stone_available ?? 0,
@@ -111,10 +141,8 @@ class LegacyDataMigrationSeeder extends Seeder
             ]);
 
             // Migrate Images
-            // Legacy columns: img1_webp, img2 (main), img3, img4, img5
             $images = [];
             
-            // img2 is usually Main in legacy view logic (index 0 in loop $i=2)
             if (!empty($row->img2)) {
                 $images[] = ['path' => $row->img2, 'primary' => true, 'sort' => 0];
             }

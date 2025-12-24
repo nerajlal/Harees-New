@@ -6,25 +6,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use App\Services\PriceCalculator;
+use App\Models\Product;
+use App\Services\PricingService;
 
 class CheckoutController extends Controller
 {
-    protected $priceCalculator;
+    protected $pricingService;
 
-    public function __construct(PriceCalculator $priceCalculator)
+    public function __construct(PricingService $pricingService)
     {
-        $this->priceCalculator = $priceCalculator;
+        $this->pricingService = $pricingService;
     }
 
     public function index()
     {
         $user = Auth::user();
         
-        // Fetch cart items
-        $cartItems = DB::table('cart')
-            ->where('user_id', $user->id)
-            ->get();
+        $cartItems = DB::table('cart')->where('user_id', $user->id)->get();
 
         if ($cartItems->isEmpty()) {
             return redirect()->route('cart')->with('error', 'Your cart is empty');
@@ -33,43 +31,36 @@ class CheckoutController extends Controller
         $products = collect();
         $cartTotal = 0;
 
+        // Efficient Bulk Fetch
+        $productCodes = $cartItems->pluck('product_code')->unique();
+        $dbProducts = Product::with(['category', 'metalPurity'])
+                        ->whereIn('product_code', $productCodes)
+                        ->get()
+                        ->keyBy('product_code');
+
         foreach ($cartItems as $cartItem) {
-            $tableName = $cartItem->table_name;
-            // Validate table name to prevent SQL injection (basic check)
-             if (!Schema::hasTable($tableName)) {
-                continue;
-            }
+            if ($product = $dbProducts->get($cartItem->product_code)) {
+                $productDisp = clone $product;
 
-            $product = DB::table($tableName)
-                ->where('product_code', $cartItem->product_code)
-                ->first();
-
-            if ($product) {
-                // Calculate price using helper/service
-                $priceData = $this->priceCalculator->calculatePrice(
-                    $product->product_code,
-                    $tableName
-                );
+                // Calculate price using Service
+                $priceData = $this->pricingService->calculatePrice($productDisp);
                 
-                $product->calculated_price = ceil($priceData['total_price']);
-                $product->cart_id = $cartItem->id;
-                $product->table_name = $tableName;
-                $product->quantity = $cartItem->quantity;
+                $productDisp->calculated_price = $priceData['total_price'];
+                $productDisp->cart_id = $cartItem->id;
+                $productDisp->table_name = $cartItem->table_name;
+                $productDisp->quantity = $cartItem->quantity;
 
-                $products->push($product);
-                $cartTotal += $product->calculated_price * $product->quantity;
+                $products->push($productDisp);
+                $cartTotal += $productDisp->calculated_price * $productDisp->quantity;
             }
         }
 
-        // Discount Logic (Same as Cart)
         $discountAmount = 0;
-        // if ($cartTotal > 150000) {
-        //     $discountAmount = $cartTotal * 0.10;
-        // }
         $finalTotal = $cartTotal - $discountAmount;
 
         return view('user.checkout', compact('user', 'products', 'cartTotal', 'discountAmount', 'finalTotal'));
     }
+
     public function process(Request $request)
     {
         $request->validate([
@@ -77,8 +68,7 @@ class CheckoutController extends Controller
             'mobile' => 'required',
             'delivery' => 'required|in:home,pickup',
             'fullname' => 'required',
-            'pincode' => 'required', // Should be conditionally required in JS, but good to have
-            // 'address' => 'required_if:delivery,home', // Conditional validation
+            'pincode' => 'required',
         ]);
 
         $user = Auth::user();
@@ -88,23 +78,27 @@ class CheckoutController extends Controller
             return redirect()->route('cart')->with('error', 'Cart is empty');
         }
 
-        // 1. Calculate Totals
+        // 1. Calculate Totals & Prepare Items
         $cartTotal = 0;
         $orderItemsData = [];
+        
+        // Efficient Bulk Fetch
+        $productCodes = $cartItems->pluck('product_code')->unique();
+        $dbProducts = Product::with(['category', 'metalPurity'])
+                        ->whereIn('product_code', $productCodes)
+                        ->get()
+                        ->keyBy('product_code');
 
         foreach ($cartItems as $item) {
-             if (!Schema::hasTable($item->table_name)) continue;
-             
-             $product = DB::table($item->table_name)->where('product_code', $item->product_code)->first();
-             if ($product) {
-                 $priceData = $this->priceCalculator->calculatePrice($product->product_code, $item->table_name);
-                 $price = ceil($priceData['total_price']);
+             if ($product = $dbProducts->get($item->product_code)) {
+                 $priceData = $this->pricingService->calculatePrice($product);
+                 $price = $priceData['total_price'];
                  
                  $itemTotal = $price * $item->quantity;
                  $cartTotal += $itemTotal;
                  
                  $orderItemsData[] = [
-                     'product_id' => $product->id,
+                     'product_id' => $product->id, 
                      'product_code' => $product->product_code,
                      'table_name' => $item->table_name,
                      'quantity' => $item->quantity,
@@ -116,8 +110,12 @@ class CheckoutController extends Controller
                  ];
              }
         }
+        
+        if (empty($orderItemsData)) {
+            return redirect()->route('cart')->with('error', 'No valid products in cart');
+        }
 
-        $discountAmount = 0; // Disabled
+        $discountAmount = 0; 
         $finalTotal = $cartTotal - $discountAmount;
 
         // 2. Create Order
@@ -127,14 +125,14 @@ class CheckoutController extends Controller
         $order->email = $request->email;
         $order->phone = $request->mobile;
         $order->pincode = $request->pincode;
-        $order->address = $request->address ?? ''; // Default empty if pickup?
+        $order->address = $request->address ?? ''; 
         $order->city = $request->city;
         $order->state = $request->state;
         $order->delivery_type = $request->delivery;
         $order->total_amount = $cartTotal;
         $order->discount_amount = $discountAmount;
         $order->final_amount = $finalTotal;
-        $order->payment_method = 'COD'; // Placeholder or from request
+        $order->payment_method = 'COD';
         $order->status = 'pending';
         $order->save();
 
@@ -148,9 +146,6 @@ class CheckoutController extends Controller
         // 4. Clear Cart
         DB::table('cart')->where('user_id', $user->id)->delete();
 
-        // 5. Redirect (to validation/success page, or just back with success for now)
-        // Ideally: return redirect()->route('order.success', $order->id);
-        // For now:
         return redirect()->route('home')->with('success', 'Order placed successfully! Order #' . $order->id);
     }
 }

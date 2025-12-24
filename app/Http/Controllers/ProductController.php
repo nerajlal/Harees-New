@@ -75,11 +75,45 @@ class ProductController extends Controller
             return $product;
         });
 
+        // Legacy: Wishlist needs 'table_name'. Use category slug or 'products'.
+        $tableName = $category ? $category->slug : 'products';
+
         return view('product.index', [
             'products' => $products,
             'title' => $title,
-            'category' => $category ?? null
+            'category' => $category ?? null,
+            'tableName' => $tableName
         ]);
+    }
+
+    /**
+     * Legacy product-all.php route handler.
+     * Maps 'type' query param (bangles, 22k, etc.) to filtered index.
+     */
+    public function all(Request $request)
+    {
+        // Legacy: 'type' was used for both Category (bangles) and Metal (22kgold).
+        // We pass it as the categorySlug. If it's a category, index matches category.
+        // If not, index checks 'type' param for metal keywords.
+        return $this->index($request, $request->query('type'));
+    }
+
+    /**
+     * Search suggestions API (AJAX).
+     */
+    public function suggestions(Request $request)
+    {
+        $query = trim($request->query('query'));
+        if (empty($query) || strlen($query) < 2) {
+            return response()->json([]);
+        }
+
+        $suggestions = Product::where('name', 'LIKE', "%{$query}%")
+            ->orWhere('product_code', 'LIKE', "%{$query}%")
+            ->limit(5)
+            ->pluck('name');
+
+        return response()->json($suggestions);
     }
 
     /**

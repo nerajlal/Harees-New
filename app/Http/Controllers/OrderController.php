@@ -31,19 +31,32 @@ class OrderController extends Controller
         // Let's fetch items manually for each order to be safe or define relationship.
         // Defining relationship is better.
         
+        // Efficient Bulk Fetch for Products
+        $allProductCodes = collect();
         foreach ($orders as $order) {
             $items = \App\Models\CustomerOrderItem::where('order_id', $order->id)->get();
             $order->items = $items;
+            $allProductCodes = $allProductCodes->merge($items->pluck('product_code'));
+        }
 
-            foreach ($items as $item) {
-                if (\Illuminate\Support\Facades\Schema::hasTable($item->table_name)) {
-                    $product = DB::table($item->table_name)->where('product_code', $item->product_code)->first();
-                    $item->product_name = $product->name ?? 'Product';
-                    $item->product_image = $product->img1_webp ?? $product->img2 ?? 'placeholder.jpg';
-                    $item->color = $product->color ?? '';
+        $dbProducts = \App\Models\Product::with('images')
+                        ->whereIn('product_code', $allProductCodes->unique())
+                        ->get()
+                        ->keyBy('product_code');
+
+        foreach ($orders as $order) {
+            foreach ($order->items as $item) {
+                if ($product = $dbProducts->get($item->product_code)) {
+                    $item->product_name = $product->name;
+                    // Get primary image or first image
+                    $primaryImg = $product->images->where('is_primary', true)->first();
+                    $item->product_image = $primaryImg ? $primaryImg->image_path : 
+                                         ($product->images->first()->image_path ?? 'placeholder.jpg');
+                    
+                    $item->color = $product->metal_type ?? ''; // Add field if exists or derive
                     $item->size = $product->size ?? '';
                 } else {
-                    $item->product_name = 'Unknown Product';
+                    $item->product_name = 'Product (Discontinued)'; // Or fallback
                     $item->product_image = 'placeholder.jpg';
                 }
             }

@@ -193,7 +193,6 @@
                 <!-- Orders List -->
                 <div id="ordersGrid" class="space-y-5">
                     @foreach($orders as $order)
-                        @foreach($order->items as $item)
                         @php
                             $status = $order->status;
                             $statusClass = 'status-processing';
@@ -215,12 +214,10 @@
                                 $progressPercent = 100;
                                 $progressColor = 'bg-green-500';
                             } elseif ($status == 'cancelled') {
-                                $statusClass = 'status-cancelled'; // Need style
+                                $statusClass = 'status-cancelled';
                                 $statusText = 'Cancelled';
                                 $statusColor = 'text-red-600';
                             }
-
-                            $imageUrl = asset('ims/internal/' . $item->product_image);
                         @endphp
 
                         <div class="order-card" data-status="{{ strtolower($order->status) }}" data-year="{{ $order->created_at->format('Y') }}" data-date="{{ $order->created_at->format('Y-m-d') }}">
@@ -238,73 +235,85 @@
                             </div>
                             
                             <div class="p-5">
-                                <div class="flex items-start gap-5">
-                                    <!-- Product Image -->
-                                    <div class="flex-shrink-0 relative">
-                                        <div class="product-image w-24 h-24 overflow-hidden bg-gray-100">
-                                            <img src="{{ $imageUrl }}" 
-                                                alt="{{ $item->product_name }}" 
-                                                class="w-full h-full object-contain"
-                                                onerror="this.onerror=null; this.src='{{ asset('assets/harees-jewellery-logo.png') }}'">
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Product Details -->
-                                    <div class="flex-1 min-w-0">
-                                        <div class="flex justify-between items-start mb-2">
-                                            <div>
-                                                <h3 class="font-semibold text-dark mb-1">
-                                                    {{ $item->product_name }}
-                                                </h3>
-                                                <p class="text-sm text-slate-500">
-                                                    Qty: {{ $item->quantity }}
-                                                    @if($item->color) • {{ $item->color }} @endif
-                                                    @if($item->size) • {{ $item->size }} @endif
-                                                </p>
-                                            </div>
-                                            <span class="text-lg font-bold price-tag ml-4 whitespace-nowrap">
-                                                ₹{{ number_format($item->price) }}
-                                            </span>
-                                        </div>
-                                        
-                                        <!-- Progress Bar -->
-                                        <div class="mb-4">
-                                            <div class="relative pt-1">
-                                                <div class="flex mb-2 items-center justify-between">
-                                                    <div class="text-right">
-                                                        <span class="text-xs font-semibold inline-block {{ $statusColor }}">
-                                                            {{ $statusText }}
-                                                        </span>
+                                <div class="space-y-6">
+                                    @foreach($order->items as $item)
+                                        @php
+                                            $imageUrl = asset('ims/internal/' . $item->product_image);
+                                        @endphp
+                                        <div class="flex items-start gap-5 pb-6 border-b border-gray-100 last:pb-0 last:border-0">
+                                            <!-- Product Image -->
+                                            <div class="flex-shrink-0 relative">
+                                                <a href="{{ route('product.show', ['id' => $item->product_id, 'table' => $item->table_name, 'product_code' => $item->product_code]) }}" class="block">
+                                                    <div class="product-image w-20 h-20 overflow-hidden bg-gray-100 kn-rounded hover:opacity-90 transition-opacity rounded-md">
+                                                        <img src="{{ $imageUrl }}" 
+                                                            alt="{{ $item->product_name }}" 
+                                                            class="w-full h-full object-contain"
+                                                            onerror="this.onerror=null; this.src='{{ asset('assets/harees-jewellery-logo.png') }}'">
                                                     </div>
-                                                </div>
-                                                
-                                                <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-slate-100">
-                                                    <div style="width:{{ $progressPercent }}%" 
-                                                        class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center {{ $progressColor }}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="flex items-center justify-between pt-2 border-t border-slate-100">
-                                            <!-- Order Meta -->
-                                            <div class="flex space-x-4">
-                                                <!-- Additional meta can go here -->
+                                                </a>
                                             </div>
                                             
-                                            <!-- Action Buttons -->
-                                            <div class="flex space-x-3">
-                                                 <!-- Placeholder buttons -->
-                                                <button class="text-indigo-600 hover:text-indigo-800 font-medium text-sm flex items-center gap-1 transition-colors group">
-                                                Track Order
-                                                </button>
+                                            <!-- Product Details -->
+                                            <div class="flex-1 min-w-0">
+                                                <div class="flex justify-between items-start mb-1">
+                                                    <div>
+                                                        <h3 class="font-semibold text-dark mb-1 text-sm md:text-base">
+                                                            <a href="{{ route('product.show', ['id' => $item->product_id, 'table' => $item->table_name, 'product_code' => $item->product_code]) }}" class="hover:text-blue-700 transition-colors">
+                                                                {{ $item->product_name }}
+                                                            </a>
+                                                        </h3>
+                                                        <p class="text-sm text-slate-500">
+                                                            Qty: {{ $item->quantity }}
+                                                            @if($item->color) • {{ $item->color }} @endif
+                                                            @if($item->size) • {{ $item->size }} @endif
+                                                        </p>
+                                                    </div>
+                                                    <span class="text-base font-bold price-tag ml-4 whitespace-nowrap">
+                                                        ₹{{ number_format($item->price) }}
+                                                    </span>
+                                                </div>
                                             </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                
+                                <!-- Order Footer: Totals and Actions -->
+                                <div class="mt-4 pt-4 border-t border-slate-100">
+                                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                                        <div>
+                                            <p class="text-sm text-slate-500">Total Amount: <span class="font-bold text-slate-900">₹{{ number_format($order->final_amount) }}</span></p>
+                                        </div>
+                                        
+                                        <!-- Progress for Order (Visual) -->
+                                        <!-- Since multiple items in one order, status is for the whole order -->
+                                    </div>
+
+                                    <!-- Status Bar and Actions -->
+                                    <div class="mt-4">
+                                          <div class="relative pt-1">
+                                            <div class="flex mb-2 items-center justify-between">
+                                                <div class="text-right">
+                                                    <span class="text-xs font-semibold inline-block {{ $statusColor }}">
+                                                        {{ $statusText }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-slate-100">
+                                                <div style="width:{{ $progressPercent }}%" 
+                                                    class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center {{ $progressColor }}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex justify-end gap-3 mt-2">
+                                            <button class="text-indigo-600 hover:text-indigo-800 font-medium text-sm flex items-center gap-1 transition-colors group">
+                                                Track Order
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @endforeach
                     @endforeach
                 </div>
             @endif
