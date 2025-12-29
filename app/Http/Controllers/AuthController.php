@@ -37,7 +37,7 @@ class AuthController extends Controller
         if ($user && $password === $user->password) {
             // Login successful
             Auth::login($user, $request->has('remember'));
-            
+
             $request->session()->regenerate();
 
             return redirect()->intended('/');
@@ -198,10 +198,10 @@ class AuthController extends Controller
                 $validated = $request->validate([
                     'fullname' => 'required|string|min:3|max:50|regex:/^[A-Za-z ]+$/',
                 ]);
-                
+
                 $user->fullname = $validated['fullname'];
                 $user->save();
-                
+
                 return back()->with('success', 'Personal information updated successfully.');
 
             case 'address':
@@ -217,10 +217,26 @@ class AuthController extends Controller
                 $user->update($validated);
                 return back()->with('success', 'Address information updated successfully.');
 
+            case 'birthday':
+                $validated = $request->validate([
+                    'dob' => 'nullable|date|before_or_equal:today',
+                ]);
+
+                $user->update($validated);
+                return back()->with('success', 'Birthday updated successfully.');
+
+            case 'anniversary':
+                $validated = $request->validate([
+                    'anniversary' => 'nullable|date|before_or_equal:today',
+                ]);
+
+                $user->update($validated);
+                return back()->with('success', 'Anniversary updated successfully.');
+
             case 'dates':
                 $validated = $request->validate([
-                    'dob' => 'nullable|date|before:today',
-                    'anniversary' => 'nullable|date|before:today',
+                    'dob' => 'nullable|date|before_or_equal:today',
+                    'anniversary' => 'nullable|date|before_or_equal:today',
                 ]);
 
                 $user->update($validated);

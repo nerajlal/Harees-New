@@ -2,7 +2,7 @@
 
 <body>
     <div class="container-fluid position-relative d-flex p-0">
-        
+
         <?php include_once('includes/sidebar.php'); ?>
         <div class="content">
             <?php include_once('includes/topbar.php'); ?>
@@ -61,7 +61,7 @@
                                 }
 
                                 // Duplicate Check (Phone/Email)
-                                $check_duplicate = $conn->prepare("SELECT supplier_id FROM suppliers WHERE phone = ? OR email = ?");
+                                $check_duplicate = $conn->prepare("SELECT id FROM suppliers WHERE phone = ? OR email = ?");
                                 $check_duplicate->bind_param("ss", $phone, $email);
                                 $check_duplicate->execute();
                                 $check_duplicate_result = $check_duplicate->get_result();
@@ -156,6 +156,7 @@
             background-color: #343a40 !important;
             color: #f8f9fa !important;
         }
+
         /* ... (rest of the SweetAlert dark theme CSS) ... */
     </style>
 
