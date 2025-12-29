@@ -5,7 +5,7 @@
 } else {
     include('includes/head.php');
     include('includes/header.php');
-    include('includes/navbar.php');
+    include('includes/navbar.php'); 
 }
 ?>
 
