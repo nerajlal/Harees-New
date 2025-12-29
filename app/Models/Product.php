@@ -46,10 +46,12 @@ class Product extends Model
 
     /**
      * Get the purity associated with the product.
+     * products table uses metal_purity_id as foreign key
+     * metals_purity table uses metalpurity_id as primary key
      */
     public function metalPurity()
     {
-        return $this->belongsTo(MetalPurity::class);
+        return $this->belongsTo(MetalPurity::class, 'metal_purity_id', 'metalpurity_id');
     }
 
     public function getPrimaryImageAttribute()
