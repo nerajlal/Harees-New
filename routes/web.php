@@ -10,6 +10,19 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SchemeController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PhonePeController;
+
+// PhonePe Payment Gateway Routes
+Route::prefix('phonepe')->group(function () {
+    Route::post('/initiate', [PhonePeController::class, 'initiatePayment'])->name('phonepe.initiate');
+    Route::post('/callback', [PhonePeController::class, 'handleCallback'])->name('phonepe.callback');
+    Route::get('/status/{merchantOrderId}', [PhonePeController::class, 'checkStatus'])->name('phonepe.status');
+    Route::post('/refund', [PhonePeController::class, 'initiateRefund'])->name('phonepe.refund')->middleware('auth');
+    Route::get('/refund-status/{merchantRefundId}', [PhonePeController::class, 'checkRefundStatus'])->name('phonepe.refund.status')->middleware('auth');
+});
+
+// Payment status redirect page
+Route::get('/payment/status', [PhonePeController::class, 'handleRedirect'])->name('payment.status');
 
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
@@ -28,11 +41,11 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::get('/sign-in', [AuthController::class, 'showLogin'])->name('sign-in'); // Alias
     Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-    
+
     Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
     Route::get('/sign-up', [AuthController::class, 'showRegister'])->name('sign-up'); // Alias
     Route::post('/register', [AuthController::class, 'register'])->name('register.post');
-    
+
     Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->name('password.request');
     Route::get('/sign-forget', [AuthController::class, 'showForgotPassword'])->name('sign-forget'); // Alias
     Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
@@ -51,7 +64,7 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 Route::get('/search/suggestions', [ProductController::class, 'suggestions'])->name('search.suggestions');
 
 // Cart Action Placeholder (To be moved to CartController)
-Route::post('/uadd_to_cart', function() {
+Route::post('/uadd_to_cart', function () {
     return redirect()->back()->with('success', 'Item added to cart (Simulation)');
 })->name('uadd_to_cart');
 
@@ -84,32 +97,40 @@ Route::get('/support', [PageController::class, 'support'])->name('support');
 
 // Authenticated User Routes
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', function () { return view('user.profile'); })->name('profile');
-    Route::get('/uprofile', function () { return view('user.profile'); })->name('uprofile'); // Alias
+    Route::get('/profile', function () {
+        return view('user.profile');
+    })->name('profile');
+    Route::get('/uprofile', function () {
+        return view('user.profile');
+    })->name('uprofile'); // Alias
     Route::post('/profile/update', [AuthController::class, 'updateProfile'])->name('profile.update');
-    
+
     Route::get('/my-orders', [OrderController::class, 'index'])->name('orders');
     Route::get('/umyorders', [OrderController::class, 'index'])->name('umyorders'); // Alias
-    
+
     Route::get('/my-schemes', [SchemeController::class, 'index'])->name('schemes');
-Route::get('/umyschemes', [SchemeController::class, 'index'])->name('umyschemes'); // Alias
-Route::get('/my-schemes/history', [SchemeController::class, 'history'])->name('schemes.history');
-Route::get('/ugoldscheme', [SchemeController::class, 'enroll'])->name('schemes.enroll');
-Route::post('/enroll-scheme', [SchemeController::class, 'store'])->name('schemes.enroll.submit');
-Route::get('/scheme/{scheme_id}/payment', [SchemeController::class, 'payment'])->name('schemes.payment');
-Route::post('/scheme/{scheme_id}/payment-process', [SchemeController::class, 'processPayment'])->name('schemes.payment.process');
-Route::get('/scheme/{scheme_id}/passbook', [SchemeController::class, 'downloadPassbook'])->name('schemes.passbook');
-    
+    Route::get('/umyschemes', [SchemeController::class, 'index'])->name('umyschemes'); // Alias
+    Route::get('/my-schemes/history', [SchemeController::class, 'history'])->name('schemes.history');
+    Route::get('/ugoldscheme', [SchemeController::class, 'enroll'])->name('schemes.enroll');
+    Route::post('/enroll-scheme', [SchemeController::class, 'store'])->name('schemes.enroll.submit');
+    Route::get('/scheme/{scheme_id}/payment', [SchemeController::class, 'payment'])->name('schemes.payment');
+    Route::post('/scheme/{scheme_id}/payment-process', [SchemeController::class, 'processPayment'])->name('schemes.payment.process');
+    Route::get('/scheme/{scheme_id}/passbook', [SchemeController::class, 'downloadPassbook'])->name('schemes.passbook');
+
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/ucart', [CartController::class, 'index'])->name('ucart'); // Alias
     Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
     Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
     Route::post('/uadd_to_cart', [CartController::class, 'add'])->name('uadd_to_cart');
-    
+
     Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
     Route::post('/wishlist/toggle', [WishlistController::class, 'toggle'])->name('wishlist.toggle');
     Route::post('/wishlist/remove', [WishlistController::class, 'remove'])->name('wishlist.remove');
-    
-    Route::get('/home', function () { return view('user.home'); })->name('user.home');
-    Route::get('/uhome', function () { return view('user.home'); })->name('uhome'); // Alias
+
+    Route::get('/home', function () {
+        return view('user.home');
+    })->name('user.home');
+    Route::get('/uhome', function () {
+        return view('user.home');
+    })->name('uhome'); // Alias
 });

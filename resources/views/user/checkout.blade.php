@@ -47,14 +47,13 @@
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                     <i class="fas fa-envelope text-dark-blue group-focus-within:text-navy transition-colors"></i>
                                 </div>
-                                <input 
-                                    type="email" 
+                                <input
+                                    type="email"
                                     id="email"
                                     name="email"
                                     required
                                     class="w-full pl-12 pr-4 py-4 bg-white/70 border-2 border-golden/30 rounded-xl focus:border-dark-blue focus:ring-4 focus:ring-golden/20 transition-all duration-300 hover:shadow-md focus:outline-none"
-                                    value="{{ old('email', $user->email) }}"
-                                />
+                                    value="{{ old('email', $user->email) }}" />
                                 <label for="email" class="absolute -top-2 left-3 px-2 bg-white text-xs text-dark-blue font-medium">
                                     Email Address *
                                 </label>
@@ -65,15 +64,14 @@
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                     <i class="fas fa-mobile-alt text-dark-blue group-focus-within:text-navy transition-colors"></i>
                                 </div>
-                                <input 
-                                    type="tel" 
+                                <input
+                                    type="tel"
                                     id="mobile"
                                     name="mobile"
                                     required
                                     pattern="[0-9]{10}"
                                     class="w-full pl-12 pr-4 py-4 bg-white/70 border-2 border-golden/30 rounded-xl focus:border-dark-blue focus:ring-4 focus:ring-golden/20 transition-all duration-300 hover:shadow-md focus:outline-none"
-                                    value="{{ old('mobile', $user->phone) }}"
-                                />
+                                    value="{{ old('mobile', $user->phone) }}" />
                                 <label for="mobile" class="absolute -top-2 left-3 px-2 bg-white text-xs text-dark-blue font-medium">
                                     Mobile Number *
                                 </label>
@@ -85,7 +83,7 @@
                     <div class="mb-8">
                         <h2 class="text-2xl font-bold text-navy mb-2">Delivery Type</h2>
                         <p class="text-gray-600 mb-6">Please choose preferred type of delivery.</p>
-                        
+
                         <div class="space-y-4">
                             <!-- Home Delivery -->
                             <label class="block cursor-pointer group">
@@ -101,15 +99,14 @@
                                             <p class="text-sm text-gray-600">Get your order delivered to your doorstep</p>
                                         </div>
                                     </div>
-                                    <input 
-                                        type="radio" 
+                                    <input
+                                        type="radio"
                                         id="delivery-home"
-                                        name="delivery" 
+                                        name="delivery"
                                         value="home"
                                         checked
                                         required
-                                        class="w-5 h-5 text-dark-blue border-2 border-golden focus:ring-golden focus:ring-2"
-                                    />
+                                        class="w-5 h-5 text-dark-blue border-2 border-golden focus:ring-golden focus:ring-2" />
                                 </div>
                             </label>
 
@@ -127,14 +124,13 @@
                                             <p class="text-sm text-gray-600">Buy now, pick up from our store at your convenience.</p>
                                         </div>
                                     </div>
-                                    <input 
-                                        type="radio" 
+                                    <input
+                                        type="radio"
                                         id="delivery-pickup"
-                                        name="delivery" 
+                                        name="delivery"
                                         value="pickup"
                                         required
-                                        class="w-5 h-5 text-dark-blue border-2 border-golden focus:ring-golden focus:ring-2"
-                                    />
+                                        class="w-5 h-5 text-dark-blue border-2 border-golden focus:ring-golden focus:ring-2" />
                                 </div>
                             </label>
                         </div>
@@ -150,15 +146,14 @@
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                     <i class="fas fa-user text-dark-blue group-focus-within:text-navy transition-colors"></i>
                                 </div>
-                                <input 
-                                    type="text" 
+                                <input
+                                    type="text"
                                     id="fullname"
                                     name="fullname"
                                     required
                                     value="{{ old('fullname', $user->fullname) }}"
                                     class="w-full pl-12 pr-4 py-4 bg-white/70 border-2 border-golden/30 rounded-xl focus:border-dark-blue focus:ring-4 focus:ring-golden/20 transition-all duration-300 hover:shadow-md focus:outline-none capitalize"
-                                    placeholder="Enter your full name"
-                                />
+                                    placeholder="Enter your full name" />
                                 <label for="fullname" class="absolute -top-2 left-3 px-2 bg-white text-xs text-dark-blue font-medium">
                                     Full Name *
                                 </label>
@@ -168,16 +163,15 @@
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                     <i class="fas fa-map-pin text-dark-blue group-focus-within:text-navy transition-colors"></i>
                                 </div>
-                                <input 
-                                    type="text" 
+                                <input
+                                    type="text"
                                     id="pincode"
                                     name="pincode"
                                     required
                                     pattern="[0-9]{6}"
                                     value="{{ old('pincode', $user->pincode) }}"
                                     class="w-full pl-12 pr-4 py-4 bg-white/70 border-2 border-golden/30 rounded-xl focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 transition-all duration-300 hover:shadow-md focus:outline-none"
-                                    placeholder="Enter pincode"
-                                />
+                                    placeholder="Enter pincode" />
 
                                 <label for="pincode" class="absolute -top-2 left-3 px-2 bg-white text-xs text-dark-blue font-medium">
                                     Pincode *
@@ -189,14 +183,13 @@
                             <div class="absolute top-4 left-0 pl-4 pointer-events-none">
                                 <i class="fas fa-home text-dark-blue group-focus-within:text-navy transition-colors"></i>
                             </div>
-                            <textarea 
+                            <textarea
                                 id="address"
                                 name="address"
                                 required
                                 rows="3"
                                 class="w-full pl-12 pr-4 py-4 bg-white/70 border-2 border-golden/30 rounded-xl focus:border-dark-blue focus:ring-4 focus:ring-golden/20 transition-all duration-300 hover:shadow-md focus:outline-none resize-none capitalize"
-                                placeholder="Enter your complete address"
-                            >{{ old('address', $user->address1) }}</textarea>
+                                placeholder="Enter your complete address">{{ old('address', $user->address1) }}</textarea>
                             <label for="address" class="absolute -top-2 left-3 px-2 bg-white text-xs text-dark-blue font-medium">
                                 Complete Address *
                             </label>
@@ -207,15 +200,14 @@
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                     <i class="fas fa-city text-dark-blue group-focus-within:text-navy transition-colors"></i>
                                 </div>
-                                <input 
-                                    type="text" 
+                                <input
+                                    type="text"
                                     id="city"
                                     name="city"
                                     required
                                     value="{{ old('city', $user->city) }}"
                                     class="w-full pl-12 pr-4 py-4 bg-white/70 border-2 border-golden/30 rounded-xl focus:border-dark-blue focus:ring-4 focus:ring-golden/20 transition-all duration-300 hover:shadow-md focus:outline-none capitalize"
-                                    placeholder="Enter city"
-                                />
+                                    placeholder="Enter city" />
                                 <label for="city" class="absolute -top-2 left-3 px-2 bg-white text-xs text-dark-blue font-medium">
                                     City *
                                 </label>
@@ -225,19 +217,85 @@
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                     <i class="fas fa-map text-dark-blue group-focus-within:text-navy transition-colors"></i>
                                 </div>
-                                <input 
-                                    type="text" 
+                                <input
+                                    type="text"
                                     id="state"
                                     name="state"
                                     required
                                     value="{{ old('state', $user->state) }}"
                                     class="w-full pl-12 pr-4 py-4 bg-white/70 border-2 border-golden/30 rounded-xl focus:border-dark-blue focus:ring-4 focus:ring-golden/20 transition-all duration-300 hover:shadow-md focus:outline-none capitalize"
-                                    placeholder="Enter state"
-                                />
+                                    placeholder="Enter state" />
                                 <label for="state" class="absolute -top-2 left-3 px-2 bg-white text-xs text-dark-blue font-medium">
                                     State *
                                 </label>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method Selection -->
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-navy mb-2">Payment Method</h2>
+                        <p class="text-gray-600 mb-6">Choose your preferred payment method.</p>
+
+                        <div class="space-y-4">
+                            <!-- Cash on Delivery -->
+                            <label class="block cursor-pointer group">
+                                <div class="flex items-center justify-between p-6 bg-white/80 border-2 border-golden/30 rounded-xl hover:border-dark-blue hover:shadow-lg transition-all duration-300 group-hover:bg-white payment-option">
+                                    <div class="flex items-center gap-4">
+                                        <div class="p-3 bg-green-100 rounded-lg group-hover:bg-green-200 transition-colors">
+                                            <i class="fas fa-money-bill-wave text-green-600 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-semibold text-navy group-hover:text-dark-blue transition-colors">
+                                                Cash on Delivery (COD)
+                                            </h3>
+                                            <p class="text-sm text-gray-600">Pay when you receive your order</p>
+                                        </div>
+                                    </div>
+                                    <input
+                                        type="radio"
+                                        id="payment-cod"
+                                        name="payment_method"
+                                        value="cod"
+                                        checked
+                                        required
+                                        class="w-5 h-5 text-dark-blue border-2 border-golden focus:ring-golden focus:ring-2" />
+                                </div>
+                            </label>
+
+                            <!-- PhonePe Online Payment -->
+                            <label class="block cursor-pointer group">
+                                <div class="flex items-center justify-between p-6 bg-white/80 border-2 border-golden/30 rounded-xl hover:border-dark-blue hover:shadow-lg transition-all duration-300 group-hover:bg-white payment-option">
+                                    <div class="flex items-center gap-4">
+                                        <div class="p-3 bg-purple-100 rounded-lg group-hover:bg-purple-200 transition-colors">
+                                            <svg class="w-6 h-6 text-purple-600" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M21 7V6a3 3 0 00-3-3H6a3 3 0 00-3 3v1a3 3 0 003 3h12a3 3 0 003-3z" />
+                                                <path d="M3 11v7a3 3 0 003 3h12a3 3 0 003-3v-7H3zm15 3a1 1 0 11-2 0 1 1 0 012 0z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-semibold text-navy group-hover:text-dark-blue transition-colors flex items-center gap-2">
+                                                Pay Online with PhonePe
+                                                <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-normal">Secure</span>
+                                            </h3>
+                                            <p class="text-sm text-gray-600">UPI, Cards, NetBanking & More</p>
+                                            <div class="flex items-center gap-2 mt-1">
+                                                <i class="fab fa-cc-visa text-lg text-blue-600"></i>
+                                                <i class="fab fa-cc-mastercard text-lg text-red-600"></i>
+                                                <span class="text-xs text-purple-600 font-medium">UPI</span>
+                                                <span class="text-xs text-gray-500">All Payment Methods</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input
+                                        type="radio"
+                                        id="payment-phonepe"
+                                        name="payment_method"
+                                        value="phonepe"
+                                        required
+                                        class="w-5 h-5 text-dark-blue border-2 border-golden focus:ring-golden focus:ring-2" />
+                                </div>
+                            </label>
                         </div>
                     </div>
 
@@ -287,10 +345,10 @@
                         <div id="orderDetailsContent" class="hidden mt-4 transition-all duration-300 origin-top">
                             <ul class="space-y-1 text-sm text-gray-700 text-white !text-white">
                                 @foreach($products as $product)
-                                    <li class="flex justify-between border-b py-1">
-                                        <span>{{ $product->name ?? 'Unnamed Product' }} x {{ $product->quantity }}</span>
-                                        <span>&#8377; {{ number_format($product->calculated_price * $product->quantity) }}</span>
-                                    </li>
+                                <li class="flex justify-between border-b py-1">
+                                    <span>{{ $product->name ?? 'Unnamed Product' }} x {{ $product->quantity }}</span>
+                                    <span>&#8377; {{ number_format($product->calculated_price * $product->quantity) }}</span>
+                                </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -309,8 +367,8 @@
                         <!-- Contact Info -->
                         <div class="text-center text-white/90 text-sm">
                             <p class="mb-2">Any Questions?</p>
-                            <p>Please call us at <span class="font-semibold text-white-900">{{ config('shop.stores.paravur.phone1') }}</span> or 
-                                    <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', config('shop.stores.paravur.whatsapp')) }}" class="text-blue-600 hover:text-blue-700 font-medium">Chat with us on WhatsApp</a>
+                            <p>Please call us at <span class="font-semibold text-white-900">{{ config('shop.stores.paravur.phone1') }}</span> or
+                                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', config('shop.stores.paravur.whatsapp')) }}" class="text-blue-600 hover:text-blue-700 font-medium">Chat with us on WhatsApp</a>
                         </div>
 
                         <!-- Payment Methods -->
@@ -336,7 +394,7 @@
         const form = document.getElementById('checkoutForm');
         const addressSection = document.getElementById('address-section');
         const deliveryRadios = document.querySelectorAll('input[name="delivery"]');
-        
+
         // Toggle address section based on delivery type
         function toggleAddressSection() {
             const homeDelivery = document.getElementById('delivery-home').checked;
@@ -354,10 +412,10 @@
                 });
             }
         }
-        
+
         // Initial toggle
         toggleAddressSection();
-        
+
         // Listen for delivery type changes
         deliveryRadios.forEach(radio => {
             radio.addEventListener('change', toggleAddressSection);
@@ -370,7 +428,7 @@
                 document.querySelectorAll('.delivery-option').forEach(option => {
                     option.classList.remove('border-dark-blue', 'bg-golden/10', 'shadow-lg');
                 });
-                
+
                 // Add active state to selected option
                 if (this.checked) {
                     const container = this.closest('label').querySelector('.delivery-option');
@@ -386,6 +444,35 @@
             container.classList.add('border-dark-blue', 'bg-golden/10', 'shadow-lg');
         }
 
+        // Payment method interactions
+        const paymentRadios = document.querySelectorAll('input[name="payment_method"]');
+
+        paymentRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Remove active state from all payment options
+                document.querySelectorAll('.payment-option').forEach(option => {
+                    // Only target payment options, not delivery options
+                    const isPaymentOption = option.closest('label').querySelector('input[name="payment_method"]');
+                    if (isPaymentOption) {
+                        option.classList.remove('border-dark-blue', 'bg-purple-50', 'shadow-lg');
+                    }
+                });
+
+                // Add active state to selected payment option
+                if (this.checked) {
+                    const container = this.closest('label').querySelector('.payment-option');
+                    container.classList.add('border-dark-blue', 'bg-purple-50', 'shadow-lg');
+                }
+            });
+        });
+
+        // Set initial active state for payment method
+        const checkedPayment = document.querySelector('input[name="payment_method"]:checked');
+        if (checkedPayment) {
+            const container = checkedPayment.closest('label').querySelector('.payment-option');
+            container.classList.add('border-dark-blue', 'bg-purple-50', 'shadow-lg');
+        }
+
         // Form submission logic can be expanded here if needed
         form.addEventListener('submit', function(e) {
             // e.preventDefault(); 
@@ -395,7 +482,7 @@
 
         // Input validation on type (Email/Mobile/Pincode same as legacy)
         // ... (Referencing Legacy Code Logic)
-         document.getElementById('mobile').addEventListener('input', function() {
+        document.getElementById('mobile').addEventListener('input', function() {
             let value = this.value.replace(/[^\d+]/g, '');
             if (!value.startsWith('+')) {
                 // value = '+' + value; // Legacy added +? Let's check user inputs mostly without + in India
@@ -413,7 +500,7 @@
         const toggleBtn = document.getElementById('toggleDetailsBtn');
         const content = document.getElementById('orderDetailsContent');
         const icon = document.getElementById('toggleIcon');
-        
+
         toggleBtn.addEventListener('click', function() {
             content.classList.toggle('hidden');
             icon.classList.toggle('rotate-180');
