@@ -8,6 +8,9 @@ class CustomerOrder extends Model
 {
     protected $fillable = [
         'user_id',
+        'merchant_order_id',
+        'phonepe_order_id',
+        'phonepe_transaction_id',
         'fullname',
         'email',
         'phone',
@@ -23,4 +26,20 @@ class CustomerOrder extends Model
         'payment_status',
         'status'
     ];
+
+    /**
+     * Get the PhonePe order associated with this customer order.
+     */
+    public function phonePeOrder()
+    {
+        return $this->hasOne(PhonePeOrder::class, 'merchant_order_id', 'merchant_order_id');
+    }
+
+    /**
+     * Check if this order is paid via PhonePe.
+     */
+    public function isPaidViaPhonePe(): bool
+    {
+        return $this->payment_method === 'phonepe' && $this->payment_status === 'completed';
+    }
 }

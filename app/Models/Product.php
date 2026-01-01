@@ -51,7 +51,7 @@ class Product extends Model
      */
     public function metalPurity()
     {
-        return $this->belongsTo(MetalPurity::class, 'metal_purity_id', 'metalpurity_id');
+        return $this->belongsTo(MetalsPurity::class, 'metal_purity_id', 'metalpurity_id');
     }
 
     public function getPrimaryImageAttribute()

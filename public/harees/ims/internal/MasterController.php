@@ -8,12 +8,15 @@ if (!isset($_SESSION)) {
 
 
 
-if(!empty($_SESSION['username'])){
+if (!empty($_SESSION['username'])) {
     //------------------------------- UPDATE GOLD RATE ------------------------
-    if($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_POST['SaveGoldRate']))
-    {
-        $Rate_18K1GM =$_POST['18K1GM'];
-        $Rate_22K1GM =$_POST['22K1GM'];
+    if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['SaveGoldRate'])) {
+        if (!isset($_POST['csrf_token']) || !verify_csrf_token($_POST['csrf_token'])) {
+            echo "<script>alert('Invalid CSRF Token. Please refresh and try again.'); location.href='AddGoldRate.php';</script>";
+            exit();
+        }
+        $Rate_18K1GM = $_POST['18K1GM'];
+        $Rate_22K1GM = $_POST['22K1GM'];
 
         date_default_timezone_set('Asia/Kolkata');
         $currentDateTime = date('Y-m-d H:i:s');
@@ -26,10 +29,12 @@ if(!empty($_SESSION['username'])){
         $Query2 = "INSERT INTO goldrate_history(18k_1gm,22k_1gm,updated_on,updated_by) VALUES($Rate_18K1GM,$Rate_22K1GM,'$currentDateTime','$User')";
         //echo $Query2;
         $Result2 = mysqli_query($conn, $Query2);
-        
 
-        if($Result && $Result2){
-            $location ='AddGoldRate.php';
+        $Query3 = "UPDATE metals_rates SET 18kgold = $Rate_18K1GM, 22kgold = $Rate_22K1GM WHERE id=1";
+        $Result3 = mysqli_query($conn, $Query3);
+
+        if ($Result && $Result2 && $Result3) {
+            $location = 'AddGoldRate.php';
             //$message = $Status.'!'; 
             $message = "Updated Gold Rate!";
             echo "<script>alert('$message');</script>";
@@ -43,8 +48,8 @@ if(!empty($_SESSION['username'])){
             //         window.location.href = 'AddGoldRate.php';
             //     }, 2000);
             // </script>";
-        }else{
-            $location ='AddGoldRate.php';
+        } else {
+            $location = 'AddGoldRate.php';
             //$message = $Status.'!'; 
             $message = "Failed to Update Gold Rate! Contact Developer.";
             echo "<script>alert('$message');</script>";
@@ -58,20 +63,21 @@ if(!empty($_SESSION['username'])){
             //         window.location.href = 'AddGoldRate.php';
             //     }, 2000);
             // </script>";
-            
+
         }
     }
-    ?>
+?>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script>
-        function successAlert(shortMsg, longMsg) { 
+    <script>
+        function successAlert(shortMsg, longMsg) {
             swal({
                 title: shortMsg,
                 text: longMsg,
                 icon: "success"
             });
         }
-        function failedAlert(shortMsg, longMsg) { 
+
+        function failedAlert(shortMsg, longMsg) {
             swal({
                 title: shortMsg,
                 text: longMsg,
@@ -86,27 +92,27 @@ if(!empty($_SESSION['username'])){
 
     if (isset($_GET['Download'])) {
         $sql = "SELECT 18k_1gm,22k_1gm,updated_on FROM goldrate";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
 
-    $carat18_1gram = $row['18k_1gm'];
-    $carat18_8gram = $row['18k_8gm'];
-    $carat22_1gram = $row['22k_1gm'];
-    $carat22_8gram = $row['22k_8gm'];
-    $currentDate = $row['updated_on'];
-    // // Convert the string to a DateTime object
-    // $dateTime = new DateTime($dateTimeString);
+        $carat18_1gram = $row['18k_1gm'];
+        $carat18_8gram = $row['18k_8gm'];
+        $carat22_1gram = $row['22k_1gm'];
+        $carat22_8gram = $row['22k_8gm'];
+        $currentDate = $row['updated_on'];
+        // // Convert the string to a DateTime object
+        // $dateTime = new DateTime($dateTimeString);
 
-    // // Format the date part as "Month Day, Year"
-    // $formattedDate = $dateTime->format('F j, Y');
+        // // Format the date part as "Month Day, Year"
+        // $formattedDate = $dateTime->format('F j, Y');
 
-    // // Format the time part as "Time" with leading zeros for hours if needed (optional)
-    // $formattedTime = $dateTime->format('H:i');  // Adjust format if needed (e.g., g:i a for AM/PM)
+        // // Format the time part as "Time" with leading zeros for hours if needed (optional)
+        // $formattedTime = $dateTime->format('H:i');  // Adjust format if needed (e.g., g:i a for AM/PM)
 
-    // // Combine the formatted parts with a separator
-    // $formattedDateTime = $formattedDate;
-    // $currentDate = $formattedDateTime
-        
+        // // Combine the formatted parts with a separator
+        // $formattedDateTime = $formattedDate;
+        // $currentDate = $formattedDateTime
+
         // Format the date
         $dateObj = new DateTime($currentDate);
         $formattedDate = $dateObj->format('d-m-Y');
@@ -139,12 +145,11 @@ if(!empty($_SESSION['username'])){
 
 
     //------------------------------- UPDATE Silver RATE ------------------------
-    if(isset($_POST['SaveSilverRate']))
-    {
-        $Rate_NormalSilver =$_POST['NormalSilver'];
-        $Rate_Silver925 =$_POST['Silver925'];
-        $Rate_RoseGoldSilver =$_POST['RoseGoldSilver'];
-        $diamondrate =$_POST['diamondrate'];
+    if (isset($_POST['SaveSilverRate'])) {
+        $Rate_NormalSilver = $_POST['NormalSilver'];
+        $Rate_Silver925 = $_POST['Silver925'];
+        $Rate_RoseGoldSilver = $_POST['RoseGoldSilver'];
+        $diamondrate = $_POST['diamondrate'];
         date_default_timezone_set('Asia/Kolkata');
         $currentDateTime = date('Y-m-d H:i:s');
 
@@ -158,8 +163,8 @@ if(!empty($_SESSION['username'])){
         echo $Query2;
         $Result2 = mysqli_query($conn, $Query2);
 
-        if($Result && $Result2){
-            $location ='AddGoldRate.php';
+        if ($Result && $Result2) {
+            $location = 'AddGoldRate.php';
             //$message = $Status.'!'; 
             $message = "Updated Metals Rate!";
             echo "<script>alert('$message');</script>";
@@ -173,8 +178,8 @@ if(!empty($_SESSION['username'])){
             //         window.location.href = 'AddGoldRate.php';
             //     }, 2000);
             // </script>";
-        }else{
-            $location ='AddGoldRate.php';
+        } else {
+            $location = 'AddGoldRate.php';
             //$message = $Status.'!'; 
             $message = "Failed to Update Metals Rate! Contact Developer.";
             echo "<script>alert('$message');</script>";
@@ -188,10 +193,10 @@ if(!empty($_SESSION['username'])){
             //         window.location.href = 'AddGoldRate.php';
             //     }, 2000);
             // </script>";
-            
+
         }
     }
-}else{
+} else {
     echo "<script>alert('Unauthorised Access');</script>";
     echo "<script>location.href='../logout.php'</script>";
 }
@@ -202,22 +207,25 @@ if(!empty($_SESSION['username'])){
 //=============================================================================================================================
 if (isset($_POST['add_product_details'])) {
     $errors = [];
-?>
-<script>
-    console.log("---- Product Add Operation Started ----");
-</script>
-<?php
+    ?>
+    <script>
+        console.log("---- Product Add Operation Started ----");
+    </script>
+    <?php
     // Retrieve form data
+    if (!isset($_POST['csrf_token']) || !verify_csrf_token($_POST['csrf_token'])) {
+        $errors[] = "Invalid CSRF Token. Please refresh and try again.";
+    }
     $metal_id = trim($_POST['metal_type']);
     $silver_metal_id = trim($_POST['purity']);
     $sil_cat_id = trim($_POST['category']);
-?>
-<script>
-    console.log("Metal ID:", "<?php echo $metal_id; ?>");
-    console.log("Silver Metal ID:", "<?php echo $silver_metal_id; ?>");
-    console.log("Silver Category ID:", "<?php echo $sil_cat_id; ?>");
-</script>
-<?php
+    ?>
+    <script>
+        console.log("Metal ID:", "<?php echo $metal_id; ?>");
+        console.log("Silver Metal ID:", "<?php echo $silver_metal_id; ?>");
+        console.log("Silver Category ID:", "<?php echo $sil_cat_id; ?>");
+    </script>
+    <?php
     $name = trim($_POST['name']);
     $description = trim($_POST['description']);
     $weight = trim($_POST['weight']);
@@ -282,66 +290,61 @@ if (isset($_POST['add_product_details'])) {
 
         $file_location = "$baseUploadDir/$metalDir/$categoryDir/";
 
-        ?>
+    ?>
         <script>
             console.log("Upload Path:", "<?php echo $file_location; ?>");
         </script>
-        <?php
+<?php
 
         if (in_array('unknown_metal', [$metalDir]) || in_array('unknown_category', [$categoryDir])) {
             $errors[] = "Error: Could not determine valid file upload location.";
         }
 
-        // Upload Image
+        // Validated Upload
+        $allowedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
+        $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp'];
+
         if (!empty($file_location) && isset($_FILES['product_image']) && $_FILES['product_image']['error'] === UPLOAD_ERR_OK) {
             $fileTmpPath = $_FILES['product_image']['tmp_name'];
             $fileName = $_FILES['product_image']['name'];
-            $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
-            $newFileName = $product_code . '.' . $fileExtension;
-            $destPath = $file_location . $newFileName;
+            $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
-            ?>
-            <script>
-                console.log("Temp file:", "<?php echo $fileTmpPath; ?>");
-                console.log("Destination path:", "<?php echo $destPath; ?>");
-            </script>
-            <?php
+            // Verify Extension
+            if (!in_array($fileExtension, $allowedExtensions)) {
+                $errors[] = "Error: Invalid file extension. Only JPG, JPEG, PNG, and WEBP are allowed.";
+            }
+            // Verify MIME type
+            else {
+                $finfo = new finfo(FILEINFO_MIME_TYPE);
+                $fileMimeType = $finfo->file($fileTmpPath);
 
-            if (!is_dir($file_location)) {
-                if (!mkdir($file_location, 0755, true)) {
-                    $errors[] = "Error: Failed to create directory '$file_location'.";
-                    echo "<script>console.error('Failed to create directory');</script>";
+                if (!in_array($fileMimeType, $allowedMimeTypes)) {
+                    $errors[] = "Error: Invalid file type (MIME). Expected image.";
                 } else {
-                    echo "<script>console.log('Directory created:', '$file_location');</script>";
+                    $newFileName = $product_code . '.' . $fileExtension;
+                    $destPath = $file_location . $newFileName;
+
+                    // Directory creation logic...
+                    if (!is_dir($file_location)) {
+                        if (!mkdir($file_location, 0755, true)) {
+                            $errors[] = "Error: Failed to create directory '$file_location'.";
+                        }
+                    }
+
+                    if (empty($errors)) {
+                        if (!move_uploaded_file($fileTmpPath, $destPath)) {
+                            $errors[] = "Error: Failed to move uploaded file.";
+                        } else {
+                            // Success
+                        }
+                    }
                 }
             }
-
-            if (!is_writable($file_location)) {
-                $errors[] = "Error: Directory '$file_location' is not writable.";
-                echo "<script>console.error('Directory not writable');</script>";
-            }
-
-            if (empty($errors) && !move_uploaded_file($fileTmpPath, $destPath)) {
-                $errors[] = "Error: Failed to move uploaded file.";
-                echo "<script>console.error('Failed to move uploaded file');</script>";
-            } else {
-                echo "<script>console.log('File uploaded to:', '$destPath');</script>";
-            }
         } elseif (isset($_FILES['product_image']) && $_FILES['product_image']['error'] !== UPLOAD_ERR_NO_FILE) {
-            $uploadErrors = [
-                UPLOAD_ERR_INI_SIZE => "File too large.",
-                UPLOAD_ERR_FORM_SIZE => "File too large.",
-                UPLOAD_ERR_PARTIAL => "File only partially uploaded.",
-                UPLOAD_ERR_CANT_WRITE => "Cannot write file to disk.",
-                UPLOAD_ERR_EXTENSION => "Upload stopped by extension."
-            ];
-            $uploadErrorCode = $_FILES['product_image']['error'];
-            $uploadErrorMessage = $uploadErrors[$uploadErrorCode] ?? "Unknown upload error.";
-            $errors[] = "Error: $uploadErrorMessage";
-            echo "<script>console.error('Upload error:', '$uploadErrorMessage');</script>";
+            // ... error handling
+            $errors[] = "Upload Error Code: " . $_FILES['product_image']['error'];
         } else {
             $errors[] = "Product image is required.";
-            echo "<script>console.warn('No image uploaded');</script>";
         }
 
         // Final Insert

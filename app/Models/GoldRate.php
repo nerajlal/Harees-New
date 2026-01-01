@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GoldRate extends Model
+class Goldrate extends Model
 {
     use HasFactory;
 
@@ -39,7 +39,7 @@ class GoldRate extends Model
         }
 
         // Get the purity name to determine which column to use
-        $purity = \App\Models\MetalPurity::find($purityId);
+        $purity = \App\Models\MetalsPurity::find($purityId);
 
         if (!$purity) {
             return null;

@@ -111,7 +111,7 @@
                         const categorySelect = document.getElementById('category');
                         categorySelect.innerHTML = '<option value="">Select Category</option>';
                         data.forEach(item => {
-                            categorySelect.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                            categorySelect.innerHTML += `<option value="${item.category_id}">${item.name}</option>`;
                         });
                     });
             } else {
