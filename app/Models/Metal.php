@@ -13,6 +13,6 @@ class Metal extends Model
 
     public function purities()
     {
-        return $this->hasMany(MetalPurity::class);
+        return $this->hasMany(MetalsPurity::class);
     }
 }

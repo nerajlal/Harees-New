@@ -24,11 +24,11 @@ class PageController extends Controller
     public function goldRate()
     {
         // Fetch specific purities
-        $purity18k = \App\Models\MetalPurity::where('name', 'LIKE', '%18K%')->first();
-        $purity22k = \App\Models\MetalPurity::where('name', 'LIKE', '%22K%')->first();
-        
-        $rate18k = $purity18k ? \App\Models\GoldRate::getLatestRate($purity18k->id) : null;
-        $rate22k = $purity22k ? \App\Models\GoldRate::getLatestRate($purity22k->id) : null;
+        $purity18k = \App\Models\MetalsPurity::where('name', 'LIKE', '%18K%')->first();
+        $purity22k = \App\Models\MetalsPurity::where('name', 'LIKE', '%22K%')->first();
+
+        $rate18k = $purity18k ? \App\Models\Goldrate::getLatestRate($purity18k->id) : null;
+        $rate22k = $purity22k ? \App\Models\Goldrate::getLatestRate($purity22k->id) : null;
 
         $currentRate18k = $rate18k ? $rate18k->rate_per_gram : 0;
         $currentRate22k = $rate22k ? $rate22k->rate_per_gram : 0;
@@ -39,14 +39,20 @@ class PageController extends Controller
             'rate_18k' => $currentRate18k,
             'rate_22k' => $currentRate22k,
             'date' => $updatedOn,
-            
+
             // Default values
-            'change_18k' => 0, 'change_22k' => 0,
-            'change_percent_18k' => 0, 'change_percent_22k' => 0,
-            'trend_18k' => 'Neutral', 'trend_22k' => 'Neutral',
-            'month_change_18k' => 0, 'month_change_22k' => 0,
-            'month_percent_18k' => 0, 'month_percent_22k' => 0,
-            'prev' => null, 'month_ago' => null
+            'change_18k' => 0,
+            'change_22k' => 0,
+            'change_percent_18k' => 0,
+            'change_percent_22k' => 0,
+            'trend_18k' => 'Neutral',
+            'trend_22k' => 'Neutral',
+            'month_change_18k' => 0,
+            'month_change_22k' => 0,
+            'month_percent_18k' => 0,
+            'month_percent_22k' => 0,
+            'prev' => null,
+            'month_ago' => null
         ];
 
         // Fetch History Logic (Simplified for now - strictly needs yesterday's rate)
@@ -69,8 +75,8 @@ class PageController extends Controller
             ->where('status', 'Active')
             ->orderBy('date_posted', 'desc')
             ->get();
-            
-        $groupedPositions = $positions->groupBy(function($item) {
+
+        $groupedPositions = $positions->groupBy(function ($item) {
             $key = str_replace(['Junior ', 'Representative', 'Executive'], '', $item->position_name);
             return trim($key);
         });
@@ -129,7 +135,7 @@ class PageController extends Controller
         $purity18k = \App\Models\MetalPurity::where('name', 'LIKE', '%18K%')->first();
         $rate = $purity18k ? \App\Models\GoldRate::getLatestRate($purity18k->id) : null;
         $goldRate18k = $rate ? $rate->rate_per_gram : 0;
-        
+
         return view('pages.advance-gold-booking', compact('goldRate18k'));
     }
 

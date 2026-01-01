@@ -95,10 +95,10 @@ function getProductsFiltered($conn)
 
     // Fetch Category ID
     $cat_id = null;
-    $stmtCat = $conn->prepare("SELECT id FROM categories WHERE lowered_name = ? OR name = ? LIMIT 1");
+    $stmtCat = $conn->prepare("SELECT category_id FROM categories WHERE lowered_name = ? OR name = ? LIMIT 1");
     // Assuming categories table exists. If not, string match might be hard.
     // Let's assume name column exists.
-    $stmtCat->prepare("SELECT id FROM categories WHERE name = ? LIMIT 1");
+    $stmtCat->prepare("SELECT category_id FROM categories WHERE name = ? LIMIT 1");
     $stmtCat->bind_param("s", $category); // Case sensitivity depends on collation
     $stmtCat->execute();
     $stmtCat->bind_result($cat_id);

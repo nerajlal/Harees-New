@@ -164,7 +164,7 @@
 
                                 //---------CATEGORY
                                 $cat_name = '';
-                                $Fetch_name_query = "SELECT name FROM categories WHERE id = ?";
+                                $Fetch_name_query = "SELECT name FROM categories WHERE category_id = ?";
                                 if ($stmt = $conn->prepare($Fetch_name_query)) {
                                     $stmt->bind_param("i", $cat_id);
                                     $stmt->execute();

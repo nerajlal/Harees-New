@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Models\Product;
-use App\Models\GoldRate;
+use App\Models\Goldrate;
 use App\Models\Category;
 
 class PricingService
@@ -22,7 +22,7 @@ class PricingService
         $metalType = 'Unknown';
 
         if ($product->metalPurity) {
-            $rateRecord = GoldRate::getLatestRate($product->metal_purity_id);
+            $rateRecord = Goldrate::getLatestRate($product->metal_purity_id);
             $metalRate = $rateRecord ? $rateRecord->rate_per_gram : 0;
             $metalType = $product->metalPurity->name; // e.g., "18K Gold"
         }
@@ -33,39 +33,44 @@ class PricingService
         $metalCost = $weight * $metalRate;
 
         // 3. Calculate Making Charges (VA)
-        // Fetched from Category
-        $category = $product->category;
+        // Fetch from making_charges table using Metal, Purity, and Category
         $makingChargesAmount = 0;
+        $vaValue = 0;
+        $vaType = 'percent'; // Default mechanism seems to be percent based on legacy code context usually, but let's see.
 
-        if ($category) {
-            $vaValue = $category->making_charges ?? 0;
-            $vaType = $category->making_charges_type ?? 'percent';
+        if ($product->category_id && $product->metal_purity_id) {
+            // We need metal_id. Product should have it.
+            $metalId = $product->metal_id;
+            // If product doesn't have metal_id directly, get it from purity.
+            if (!$metalId && $product->metalPurity) {
+                $metalId = $product->metalPurity->metal_id;
+            }
 
-            if ($vaType === 'percent') {
-                // Percentage of Metal Cost
+            $mcRecord = \App\Models\MakingCharge::getCharges($metalId, $product->metal_purity_id, $product->category_id);
+
+            if ($mcRecord) {
+                // MC Types Rules:
+                // normal_mc - default MC to take
+                // discount_mc - if jewellery turn on discount (Not implemented)
+                // excp_normal_mc - Special case (Not implemented)
+                // excp_discount_mc - Special case (Not implemented)
+
+                // Currently using normal_mc as the standard
+                $vaValue = $mcRecord->normal_mc;
+
+                // Calculate as Percentage
                 $makingChargesAmount = ($metalCost * $vaValue) / 100;
             } else {
-                // Fixed amount per gram (common practice) or flat? 
-                // Let's assume Fixed Amount Per Gram based on industry standard if not specified otherwise.
-                // Or if user meant flat fee per piece. 
-                // Given "making_charges" in DB is decimal, let's treat 'fixed' as 'fixed per gram' for now as safer default for jewelry.
-                // However, user said "Fixed Amount Discount" in contexts usually implies Flat. 
-                // Let's assume it is Flat Fee per Piece for flexibility if type is 'fixed'.
-                $makingChargesAmount = $vaValue * $weight; 
+                // Fallback if missing in table
+                $makingChargesAmount = 0;
             }
-            
-            // Add wastage if applicable
-             if ($category->waste_percentage > 0) {
-                 $wastageCost = ($metalCost * $category->waste_percentage) / 100;
-                 $makingChargesAmount += $wastageCost;
-             }
         }
 
         // 4. Stone Costs
-        $stoneCost = ($product->stone_cost ?? 0) + 
-                     ($product->beads_cost ?? 0) + 
-                     ($product->pearls_cost ?? 0);
-                     
+        $stoneCost = ($product->stone_cost ?? 0) +
+            ($product->beads_cost ?? 0) +
+            ($product->pearls_cost ?? 0);
+
         // Diamonds?
         // Logic for diamonds usually implies rate per cent.
         // If 'stone_cost' is already total, good. 
@@ -80,7 +85,7 @@ class PricingService
         $subTotal = $metalCost + $makingChargesAmount + $stoneCost;
         $gstPercent = 3; // Standard jewelry GST
         $gstAmount = ($subTotal * $gstPercent) / 100;
-        
+
         $finalPrice = $subTotal + $gstAmount;
 
         return [
@@ -94,8 +99,8 @@ class PricingService
             'breakup' => [
                 'weight' => $weight,
                 'rate' => $metalRate,
-                'va_type' => $category->making_charges_type ?? 'N/A',
-                'va_value' => $category->making_charges ?? 0
+                'va_type' => $vaType,
+                'va_value' => $vaValue
             ]
         ];
     }

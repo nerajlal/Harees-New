@@ -357,9 +357,9 @@ if (!empty($_SESSION['username'])) {
             $table_name = $_SESSION['table_name'];
 
             if ($table_name === 'products') {
-                $Query = "SELECT metal_id, metal_purity_id as metalpurity_id, category_id as cat_id FROM products WHERE product_code = ?";
+                $Query = "SELECT metal_id, metal_purity_id as metalpurity_id, category_id FROM products WHERE product_code = ?";
             } else {
-                $Query = "SELECT metal_id, metalpurity_id, cat_id FROM $table_name WHERE product_code = ?";
+                $Query = "SELECT metal_id, metalpurity_id, category_id FROM $table_name WHERE product_code = ?";
             }
 
             if ($stmt = $conn->prepare($Query)) {
@@ -370,7 +370,7 @@ if (!empty($_SESSION['username'])) {
                 if ($fetched_data = $result->fetch_assoc()) {
                     $metal_id = $fetched_data['metal_id'];
                     $metalpurity_id = $fetched_data['metalpurity_id'];
-                    $cat_id = $fetched_data['cat_id'];
+                    $cat_id = $fetched_data['category_id'];
                 } else {
                     echo "No data found for product code: " . $product_code;
                 }

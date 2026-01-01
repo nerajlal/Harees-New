@@ -30,7 +30,7 @@ function generateProductCode2($conn, $brand_code, $metal_id, $metalpurity_id, $c
 
     // Step 3: Fetch category code
     $category_code = '';
-    $stmt = $conn->prepare("SELECT code FROM categories WHERE cat_id = ?");
+    $stmt = $conn->prepare("SELECT code FROM categories WHERE category_id = ?");
     $stmt->bind_param("i", $category_id);
     $stmt->execute();
     $stmt->bind_result($category_code);

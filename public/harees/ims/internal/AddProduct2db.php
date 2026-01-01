@@ -66,7 +66,7 @@ if (!empty($_SESSION['username'])) {
 
 
         $category_id = $_POST['category'];
-        $Fetch_query = "SELECT name FROM categories WHERE cat_id = ?";
+        $Fetch_query = "SELECT name FROM categories WHERE category_id = ?";
         if ($stmt = $conn->prepare($Fetch_query)) {
             $stmt->bind_param("i", $category_id);
             $stmt->execute();
